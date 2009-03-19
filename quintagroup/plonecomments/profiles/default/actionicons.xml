@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<action-icons  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="quintagroup.plonecomments">
+ <action-icon category="controlpanel"
+              action_id="prefs_comments_setup_form"
+              title="qPloneComments" priority="0"
+              icon_expr="discussionitem_icon.gif" i18n:attributes="title" />
+</action-icons>

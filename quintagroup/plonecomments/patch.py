@@ -1,0 +1,88 @@
+from DateTime import DateTime
+from Globals import InitializeClass
+from AccessControl import Unauthorized
+from AccessControl import getSecurityManager
+from Products.CMFCore.utils import getToolByName
+from Products.CMFDefault.DiscussionItem import DiscussionItem
+from Products.CMFDefault.DiscussionItem import DiscussionItemContainer
+
+from quintagroup.plonecomments.utils import getProp
+
+def createReply(self, title, text, Creator=None, email=''):
+    """Create a reply in the proper place.
+    """
+    container = self._container
+
+    id = int(DateTime().timeTime())
+    while self._container.get(str(id), None) is not None:
+        id += 1
+    id = str(id)
+
+    item = DiscussionItem(id, title=title, description=title)
+
+    if Creator:
+        if getattr(item, 'addCreator', None) is not None:
+            item.addCreator(Creator)
+        else:
+            item.creator = Creator
+
+    self._container[id] = item
+    item = item.__of__(self)
+
+    item.setFormat('structured-text')
+    item._edit(text)
+
+    pm = getToolByName(self, 'portal_membership')
+    if pm.isAnonymousUser():
+        item.manage_addProperty(id='email', value=email, type='string')
+
+    item.review_state = 'private'
+
+    # Control of performing moderation
+    if getProp(self, 'enable_moderation', marker=False):
+        roles = [role['name'] for role in self.acl_users.rolesOfPermission('Moderate Discussion')
+                 if role['selected']== 'SELECTED']
+        roles.append('DiscussionManager')
+        item.manage_permission('Delete objects', roles, acquire=1)
+        item.manage_permission('View', roles, acquire=0)
+    else:
+        item.review_state = 'published'
+
+    item.setReplyTo(self._getDiscussable())
+    item.indexObject()
+
+    return id
+
+def getReplies( self ):
+    """Return a sequence of the DiscussionResponse objects which are
+       associated with this Discussable.
+    """
+    objects = []
+    validate = getSecurityManager().validate
+
+    result_ids = self._getReplyResults()
+    for id in result_ids:
+        comment = self._container.get(id).__of__(self)
+        try:
+            if validate(self, self, id, comment):
+                objects.append(comment)
+        except Unauthorized:
+            pass
+    return objects
+
+perms = DiscussionItemContainer.__ac_permissions__
+new_perms = []
+for item in perms:
+    perm_name = item[0]
+    funcs = item[1]
+    if 'deleteReply' in funcs:
+        new_perms.append((perm_name, [f for f in funcs if f != 'deleteReply']))
+        new_perms.append(('Moderate Discussion', ('deleteReply',)))
+    else:
+        new_perms.append(item)
+
+DiscussionItemContainer.__ac_permissions__ = new_perms
+InitializeClass(DiscussionItemContainer)
+
+DiscussionItemContainer.createReply = createReply
+DiscussionItemContainer.getReplies = getReplies

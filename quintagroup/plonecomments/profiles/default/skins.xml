@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<object name="portal_skins" meta_type="Plone Skins Tool">
- <object name="quintagroup_plonecomments_custom_templates"
+<object name="portal_skins">
+ <object name="quintagroup_plonecomments"
     meta_type="Filesystem Directory View"
-    directory="quintagroup.plonecomments:skins/quintagroup_plonecomments_custom_templates"/>
- <skin-path name=""">
-  <layer name="quintagroup_plonecomments_custom_templates"/>
+    directory="quintagroup.plonecomments:skins/quintagroup_plonecomments"/>
+ <skin-path name="*">
+  <layer name="quintagroup_plonecomments" insert-after="custom"/>
  </skin-path>
 </object>

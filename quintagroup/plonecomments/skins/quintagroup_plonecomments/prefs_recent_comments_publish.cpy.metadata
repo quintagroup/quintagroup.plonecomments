@@ -1,0 +1,6 @@
+[validators]
+validators=
+
+[actions]
+action.success=redirect_to:string:prefs_recent_comments_form
+action.failure=traverse_to:string:prefs_recent_comments_form

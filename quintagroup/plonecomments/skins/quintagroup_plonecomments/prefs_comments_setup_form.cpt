@@ -1,0 +1,302 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      i18n:domain="quintagroup.plonecomments"
+      metal:use-macro="here/prefs_main_template/macros/master">
+        <!--      metal:use-macro="here/main_template/macros/master" -->
+<body>
+
+<div metal:fill-slot="prefs_configlet_main"
+     tal:define="errors python:request.get('controller_state', None).getErrors();">
+
+    <div metal:define-macro="main">
+    <div class="configlet">
+    <div class="documentEditable"
+         tal:condition="python:checkPermission('Moderate Discussion', here)">
+
+    <!-- simulating views on the configure/comments pages until we have real objects. -->
+    <ul class="contentViews">
+        <li class="selected">
+        <a href=""
+        tal:attributes="href string:${template/id}"
+        i18n:translate="label_configure">Configure qPloneComments</a>
+        </li>
+
+        <li class="">
+        <a href=""
+        tal:attributes="href string:prefs_recent_comments_form"
+        i18n:translate="label_comments">Recent comments moderation</a>
+        </li>
+    </ul>
+
+    <div class="contentActions">
+    &nbsp;
+    </div>
+    <!-- End of tabs -->
+    <div class="documentContent" metal:define-slot="prefs_content">
+        <h1 i18n:translate="heading_comments_setup">Plone Comments Setup</h1>
+
+        <a href=""
+           class="link-parent"
+           tal:attributes="href string: $portal_url/plone_control_panel"
+           i18n:translate="label_up_to_plone_setup"
+           i18n:domain="plone">
+           Up to Plone Setup
+        </a>
+
+        <form name="edit_form"
+              action="href"
+              method="post"
+              enctype="multipart/form-data"
+              tal:define ="pp here/portal_properties;
+                           props_sheet python:getattr(pp, 'qPloneComments');"
+              tal:attributes="action string:${here/getId}/${template/getId}">
+
+            <fieldset>
+                <legend i18n:translate="legend_setup_options">qPloneComments setup options</legend>
+
+                <div class="field"
+                     tal:define="property_id string:enable_moderation;
+                                 isEnabledModeration python:props_sheet.getProperty(property_id, False);"
+                     tal:condition="python:props_sheet.hasProperty(property_id)">
+
+                    <input type="checkbox" 
+                           class="noborder"
+                           name="isEnabledModeration"
+                           id="isEnabledModeration"
+                           tabindex =""
+                           tal:attributes="name property_id;
+                                           value isEnabledModeration;
+                                           checked python:test(isEnabledModeration, 'True', '');
+                                           tabindex tabindex/next;"/>
+
+                    <label i18n:translate="label_enable_moderation" 
+                           for="isEnabledModeration">Enable comment moderation</label>
+
+                </div>
+
+                <div class="field"
+                     tal:define="property_id string:require_email;
+                                 requireEmail python:props_sheet.getProperty(property_id, False);"
+                     tal:condition="python:props_sheet.hasProperty(property_id)">
+
+                    <input type="checkbox" 
+                           class="noborder"
+                           name="requireEmail"
+                           id="requireEmail"
+                           tabindex =""
+                           tal:attributes="name property_id;
+                                           value requireEmail;
+                                           checked python:test(requireEmail, 'True', '');
+                                           tabindex tabindex/next;"/>
+
+                    <label i18n:translate="label_require_anonym_email" 
+                           for="requireEmail">Require email from Anonymous commenters</label>
+
+                </div>
+
+                <div class="field"
+                     tal:define="property_id string:enable_anonymous_commenting;
+                                 isEnabledAnonymousCommenting python:props_sheet.getProperty(property_id, False);"
+                     tal:condition="python:props_sheet.hasProperty(property_id)">
+
+                    <input type="checkbox" 
+                           class="noborder"
+                           name="isEnabledAnonymousCommenting"
+                           id="isEnabledAnonymousCommenting"
+                           tabindex =""
+                           tal:attributes="name property_id;
+                                           value isEnabledAnonymousCommenting;
+                                           checked python:test(isEnabledAnonymousCommenting, 'True', '');
+                                           tabindex tabindex/next;"/>
+
+                    <label i18n:translate="label_anonymous_commenting" 
+                           for="isEnabledAnonymousCommenting">Allow comments from Anonymous users</label>
+                </div>
+
+		<div class="field"
+		     tal:define="isEnabledManagerModeration python:checkPermission('Moderate Discussion', here);">
+
+                    <input type="checkbox" 
+                           class="noborder"
+                           name="EnableManagerModeration"
+                           id="EnableManagerModeration"
+                           tabindex =""
+                           tal:attributes="value isEnabledManagerModeration;
+                                           checked python:test(isEnabledManagerModeration, 'True', '');
+                                           tabindex tabindex/next;"/>
+
+                    <label i18n:translate="enable_manager_moderation"
+                           for="isEnableApproveNotification">Enable Manager moderation</label>
+                </div>
+
+                <div class="field"
+                     tal:define="property_id string:email_discussion_manager;
+                                 email python:props_sheet.getProperty(property_id, '');
+                                 error python:test(errors.has_key(property_id), errors.get(property_id), None);"
+                     tal:attributes="class python:test(error, 'field error', 'field')"
+                     tal:condition="python:props_sheet.hasProperty(property_id)">
+
+                    <label i18n:translate="label_discussion-manager_email">Send comments notification emails to:</label>
+
+                    <div class="formHelp" id="smtp_server_help"
+                         i18n:translate="help_discussion-manager_email">
+                        The email address where comment notifications will be sent
+                    </div>
+
+                    <div tal:content="error">Validation error output</div>
+
+                    <input name="email_discussion-manager"
+                           value=""
+                           size="40"
+                           tabindex=""
+                           tal:attributes="name property_id;
+                                           value email;
+                                           tabindex tabindex/next;" />
+                </div>
+
+                <div class="field"
+                     tal:define="property_id string:email_subject_prefix;
+                                 organization_name python:props_sheet.getProperty(property_id, '');"
+                     tal:condition="python:props_sheet.hasProperty(property_id)">
+
+                    <label i18n:translate="label_organization_name">Email subject prefix (organization name)</label>
+
+                    <div class="formHelp" id="organization_name_help"
+                         i18n:translate="help_organization_name">
+                        You can change notification message templates by customizing 'approve_comment_template' and 'published_comment_template' in the qplonecomments skin.
+                    </div>
+
+                    <input name="organization_name"
+                           value=""
+                           size="40"
+                           tabindex=""
+                           tal:attributes="name property_id;
+                                           value organization_name;
+                                           tabindex tabindex/next;" />
+                </div>
+
+            </fieldset>
+
+
+
+
+            <fieldset>
+                <legend i18n:translate="legend_qpc_notification_legend">Email Notification Options</legend>
+
+                <div class="field"
+                     tal:define="property_id string:enable_published_notification;
+                                 isEnabledPublishedNotification python:props_sheet.getProperty(property_id, False);"
+                     tal:condition="python:props_sheet.hasProperty(property_id)">
+
+                    <input type="checkbox" 
+                           class="noborder"
+                           name="isEnabledPublishedNotification"
+                           id="isEnabledPublishedNotification"
+                           tabindex =""
+                           tal:attributes="name property_id;
+                                           value isEnabledPublishedNotification;
+                                           checked python:test(isEnabledPublishedNotification, 'True', '');
+                                           tabindex tabindex/next;"/>
+
+                    <label i18n:translate="label_enable_published_notification" 
+                           for="isEnabledPublishedNotification">Notify Document Owner of new comments on their documents.</label>
+                </div>
+
+                <div class="field"
+                     tal:define="property_id string:enable_approve_notification;
+                                 isEnableApproveNotification python:props_sheet.getProperty(property_id, False);"
+                     tal:condition="python:props_sheet.hasProperty(property_id)">
+
+                    <input type="checkbox" 
+                           class="noborder"
+                           name="isEnableApproveNotification"
+                           id="isEnableApproveNotification"
+                           tabindex =""
+                           tal:attributes="name property_id;
+                                           value isEnableApproveNotification;
+                                           checked python:test(isEnableApproveNotification, 'True', '');
+                                           tabindex tabindex/next;"/>
+
+                    <label i18n:translate="label_enable_approve_notification"
+                           for="isEnableApproveNotification">Notify Discussion Manager of new comments.</label>
+                </div>
+
+                <div class="field"
+                     tal:define="property_id string:enable_approve_user_notification;
+                                 isEnableApproveUserNotification python:props_sheet.getProperty(property_id, False);"
+                     tal:condition="python:props_sheet.hasProperty(property_id)">
+
+                    <input type="checkbox" 
+                           class="noborder"
+                           name="isEnableApproveUserNotification"
+                           id="isEnableApproveUserNotification"
+                           tabindex =""
+                           tal:attributes="name property_id;
+                                           value isEnableApproveUserNotification;
+                                           checked python:test(isEnableApproveUserNotification, 'True', '');
+                                           tabindex tabindex/next;"/>
+
+                    <label i18n:translate="label_enable_approve_user_notification"
+                           for="isEnableApproveUserNotification">Notify Commenter when comment is published.</label>
+                </div>
+
+                <div class="field"
+                     tal:define="property_id string:enable_rejected_user_notification;
+                                 isRejectionNotificationEnabled python:props_sheet.getProperty(property_id, False);"
+                     tal:condition="python:props_sheet.hasProperty(property_id)">
+
+                    <input type="checkbox" 
+                           class="noborder"
+                           name="isRejectionNotificationEnabled"
+                           id="isRejectionNotificationEnabled"
+                           tabindex =""
+                           tal:attributes="name property_id;
+                                           value isRejectionNotificationEnabled;
+                                           checked python:test(isRejectionNotificationEnabled, 'True', '');
+                                           tabindex tabindex/next;"/>
+
+                    <label i18n:translate="label_enable_reject_notification"
+                           for="isRejectionNotificationEnabled">Enable Commentator notification on comment was rejected.</label>
+                </div>
+
+
+                <div class="field"
+                     tal:define="property_id string:enable_reply_user_notification;
+                                 isReplyNotificationEnabled python:props_sheet.getProperty(property_id, False);"
+                     tal:condition="python:props_sheet.hasProperty(property_id)">
+
+                    <input type="checkbox" 
+                           class="noborder"
+                           name="isReplyNotificationEnabled"
+                           id="isReplyNotificationEnabled"
+                           tabindex =""
+                           tal:attributes="name property_id;
+                                           value isReplyNotificationEnabled;
+                                           checked python:test(isReplyNotificationEnabled, 'True', '');
+                                           tabindex tabindex/next;"/>
+
+                    <label i18n:translate="label_enable_reply_notification"
+                           for="isReplyNotificationEnabled">Notify Commenter when their comment receives a reply</label>
+                </div>
+            </fieldset>
+
+            <div class="formControls">
+                <input type="hidden" name="form.submitted" value="1" />
+                <input class="context"
+                       tabindex=""
+                       type="submit"
+                       name="form.button.form_submit"
+                       value="Save"
+                       i18n:domain="plone"
+                       i18n:attributes="value"
+                       tal:attributes="tabindex tabindex/next;"/>
+            </div>
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+</div>
+</body>
+</html>

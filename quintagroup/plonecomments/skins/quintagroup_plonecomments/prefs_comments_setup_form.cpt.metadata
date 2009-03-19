@@ -1,0 +1,13 @@
+[default]
+title=qPloneComments setup
+
+[security]
+View=1:Authenticated
+
+[validators]
+validators=validate_setup
+
+[actions]
+action.success..form_submit=traverse_to:string:prefs_comments_setup
+action.success=traverse_to:string:prefs_comments_setup_form
+action.failure=traverse_to:string:prefs_comments_setup_form

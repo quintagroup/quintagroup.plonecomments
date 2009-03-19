@@ -12,7 +12,7 @@
       />
 
   <genericsetup:registerProfile
-      name="default"
+      name="uninstall"
       title="quintagroup.plonecomments uninstall"
       directory="profiles/uninstall"
       description='Extension profile for the Plone Comments product.'

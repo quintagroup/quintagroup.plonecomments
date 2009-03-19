@@ -4,7 +4,7 @@
     i18n_domain="quintagroup.plonecomments">
 
   <!-- File System Directory Views registration -->
-  <cmf:registerDirectory name="quintagroup_plonecomments_custom_templates"/>
+  <cmf:registerDirectory name="quintagroup_plonecomments"/>
 
   <!-- Note: This could also be done for all folders at once
        by replacing the previous lines with this one:

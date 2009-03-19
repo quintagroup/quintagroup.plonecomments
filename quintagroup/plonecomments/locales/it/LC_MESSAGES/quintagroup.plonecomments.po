@@ -1,0 +1,229 @@
+# 
+# Yuri Carrer
+# yurj@alfa.it
+msgid ""
+msgstr ""
+"Project-Id-Version: qPloneComments\n"
+"POT-Creation-Date: 2009-03-19 19:42+0000\n"
+"PO-Revision-Date: 2007-04-19 20:21-0600\n"
+"Last-Translator: Yuri Carrer <yurj@alfa.it>\n"
+"Language-Team: Al ritmo del tam tam\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Language-Code: it\n"
+"Language-Name: Italianol\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plonecomments\n"
+"X-Is-Fallback-For: it-ch it-it\n"
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_publish_comment.py:37
+msgid "Comment published."
+msgstr "Commento pubblicato."
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_delete.cpy:34
+msgid "Comment(s) deleted."
+msgstr "Commento(i) cancellati"
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_publish.cpy:25
+msgid "Comment(s) published."
+msgstr "Commento(i) pubblicati"
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_reply.cpy:96
+msgid "Currently, all comments require approval before being published. Please check back later."
+msgstr "Tutti i commenti richiedono un'approvazione prima di essere pubblicati. Per favore controlla più tardi."
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:56
+msgid "Please correct the indicated errors."
+msgstr ""
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:45
+msgid "Please enter your name."
+msgstr "Per favore inserisci il tuo nome."
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_delete.cpy:34
+msgid "Please select items to be processed."
+msgstr ""
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_setup.vpy:23
+msgid "Please submit a valid e-mail address."
+msgstr ""
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:32
+msgid "Please submit email."
+msgstr ""
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_reply.vpy:14
+msgid "Reply not allowed because the response is to a comment waiting to be approved. Please wait for the comment to be approved before replying."
+msgstr "Non è possibile risponderere a un commento che non . stato approvato. Per favore aspetta che venga approvato prima di rispondere."
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:50
+msgid "You must correctly enter the word."
+msgstr ""
+
+#. Default: "Please review new comment added to the following page \"${title}\": ${link}"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/approve_comment_template.pt:10
+msgid "approvemail_new_comment_link"
+msgstr "Per favore modera il commento inserito nella pagina \" ${title} \": ${link}"
+
+#. Default: "Enable Manager moderation"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:129
+msgid "enable_manager_moderation"
+msgstr ""
+
+#. Default: "Recent comments"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_form.cpt:39
+msgid "heading_comments"
+msgstr "Commenti recenti"
+
+#. Default: "Plone Comments Setup"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:37
+msgid "heading_comments_setup"
+msgstr "Configurazione di qPloneComments"
+
+#. Default: "The email address where comment notifications will be sent"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:142
+msgid "help_discussion-manager_email"
+msgstr ""
+
+#. Default: "Enter your e-mail address."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_reply_form.cpt:133
+msgid "help_email"
+msgstr ""
+
+#. Default: "Tell us your name."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_reply_form.cpt:103
+msgid "help_name"
+msgstr "Per favore inserisci il tuo nome."
+
+#. Default: "You can change notification message templates by customizing 'approve_comment_template' and 'published_comment_template' in the qplonecomments skin."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:165
+msgid "help_organization_name"
+msgstr "Puoi cambiare i messaggi di notifica personalizzando i template 'approve_comment_template' e 'published_comment_template' nello skin qplonecomments."
+
+#. Default: "Allow comments from Anonymous users"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:113
+msgid "label_anonymous_commenting"
+msgstr "Permetti commenti anonimi."
+
+#. Default: "Recent comments moderation"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:26
+msgid "label_comments"
+msgstr "Modera i commenti recenti"
+
+#. Default: "Configure qPloneComments"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:20
+msgid "label_configure"
+msgstr "Configura qPloneComments"
+
+#. Default: "Send comments notification emails to:"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:140
+msgid "label_discussion-manager_email"
+msgstr ""
+
+#. Default: "Notify Discussion Manager of new comments."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:221
+msgid "label_enable_approve_notification"
+msgstr "Notifica all' administratore delle discusioni quando viene inserito un nuovo commento."
+
+#. Default: "Notify Commenter when comment is published."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:240
+msgid "label_enable_approve_user_notification"
+msgstr ""
+
+#. Default: "Enable comment moderation"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:73
+msgid "label_enable_moderation"
+msgstr "Abilita la moderazione."
+
+#. Default: "Notify Document Owner of new comments on their documents."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:202
+msgid "label_enable_published_notification"
+msgstr "Notificare al proprietario del documento quando si ricevono nuovi commenti."
+
+#. Default: "Enable Commentator notification on comment was rejected."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:259
+msgid "label_enable_reject_notification"
+msgstr ""
+
+#. Default: "Notify Commenter when their comment receives a reply"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:279
+msgid "label_enable_reply_notification"
+msgstr ""
+
+#. Default: "Email subject prefix (organization name)"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:163
+msgid "label_organization_name"
+msgstr "Prefisso del messaggio (nome dell' organizzazione)"
+
+#. Default: "Require email from Anonymous commenters"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:93
+msgid "label_require_anonym_email"
+msgstr ""
+
+#. Default: "Email Notification Options"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:185
+msgid "legend_qpc_notification_legend"
+msgstr ""
+
+#. Default: "List of recent comments"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_form.cpt:62
+msgid "legend_recent_comments"
+msgstr "Lista dei commenti recenti"
+
+#. Default: "qPloneComments setup options"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:56
+msgid "legend_setup_options"
+msgstr "Opzioni di configurazione di qPloneComments"
+
+#. Default: "Comment"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_form.cpt:80
+msgid "listingheader_comment"
+msgstr "Commento"
+
+#. Default: "Your comment on '${url}' has been published. To see your comment, go to ${url}"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/notify_comment_template.pt:12
+msgid "notifycomment_link"
+msgstr ""
+
+#. Default: "Your comment on '${url}' did not receive approval. Please direct any questions or concerns to ${mfrom}."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/rejected_comment_template.pt:13
+msgid "notifyreject_link"
+msgstr ""
+
+#. Default: "View new comment added to the following page \"${title}\": ${link}"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/published_comment_template.pt:8
+msgid "publishedmail_new_comment_link"
+msgstr "Visualizza il nuovo commento inserito nella pagina \" ${title} \": ${link}"
+
+#. Default: "qPloneComments"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/profiles/default/controlpanel.xml
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/profiles/default/actionicons.xml
+msgid "qPloneComments"
+msgstr ""
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup.cpy:53
+msgid "qPloneComments configuration changes saved."
+msgstr "Cambiamenti della configurazione salvati."
+
+#. Default: "Someone replied to your comment '${url}' on '${here_url}'. To read the response, go to '${url}'."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/reply_notify_template.pt:10
+msgid "replynotify_link"
+msgstr ""
+
+#. Default: "${organization_name} Support Team"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/reply_notify_template.pt:15
+msgid "signature"
+msgstr "Team di supporto ${organization_name}"
+
+#. Default: "Comment must be approved before replies to comment accepted."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/browser/comments.pt:106
+msgid "text_no_add_reply"
+msgstr ""
+
+#. Default: "No new comments."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_form.cpt:49
+msgid "text_no_new_comments"
+msgstr "Nessun nuovo commento."
+

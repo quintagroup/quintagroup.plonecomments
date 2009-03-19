@@ -1,0 +1,18 @@
+<tal:mail i18n:domain="quintagroup.plonecomments"
+     tal:define="charset here/portal_properties/site_properties/default_charset|string:utf-8;
+                 dummy python:request.RESPONSE.setHeader('Content-Type', 'text/html;;charset=%s' % charset);
+                 organization_name options/organization_name">
+
+<tal:new_comment define="obj nocall:options/obj" i18n:translate="publishedmail_new_comment_link">
+View new comment added to the following page "<tal:x replace="obj/Title" i18n:name="title"/>":
+<tal:x replace="obj/absolute_url" i18n:name="link"/>
+</tal:new_comment>
+
+--
+<tal:signature i18n:translate="signature">
+    <tal:organization_name condition="organization_name"
+                           replace="string:$organization_name"
+                           i18n:name="organization_name"/>
+    Support Team
+</tal:signature>
+</tal:mail>

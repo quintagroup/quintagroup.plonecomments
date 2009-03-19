@@ -1,0 +1,21 @@
+<div i18n:domain="quintagroup.plonecomments"
+     tal:omit-tag=""
+     tal:define="charset here/portal_properties/site_properties/default_charset|string:utf-8;
+                 dummy python:request.RESPONSE.setHeader('Content-Type', 'text/html;;charset=%s' % charset);
+                 organization_name options/organization_name;
+                 obj nocall:options/obj">
+<tal:x replace="options/name"/>,
+<tal:notify define="obj nocall:options/obj" 
+       i18n:translate="replynotify_link">
+       Someone replied to your comment '<tal:x replace="obj/absolute_url" i18n:name="url"/>' on '<tal:x replace="here/absolute_url" i18n:name="here_url"/>'. To read the response, go to '<tal:x replace="obj/absolute_url" i18n:name="url"/>'.
+</tal:notify>
+
+--
+<tal:signature i18n:translate="signature"> 
+    <tal:organization_name condition="organization_name" 
+                           replace="string:$organization_name" 
+                           i18n:name="organization_name"/>
+    Support Team
+</tal:signature>
+
+</div>

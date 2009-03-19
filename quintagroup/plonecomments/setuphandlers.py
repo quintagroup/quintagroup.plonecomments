@@ -1,3 +1,5 @@
+from Products.CMFCore.utils import getToolByName
+
 def install(context):
 
     # Ordinarily, GenericSetup handlers check for the existence of XML files.
@@ -10,6 +12,21 @@ def install(context):
 
     # Add additional setup code here
 
+    portal = context.getSite()
+    logger = context.getLogger('qPloneComments')
+
+    # Add 'DiscussionManagers' group
+    gtool = getToolByName(portal, 'portal_groups')
+    existing = gtool.listGroupIds()
+    if not 'DiscussionManager' in existing:
+        gtool.addGroup('DiscussionManager', roles=['DiscussionManager'])
+        logger.info('Added DiscussionManager group to portal_groups with DiscussionManager role.')
+
+    # Remove workflow-chain for Discussion Item
+    wf_tool = getToolByName(portal, 'portal_workflow')
+    wf_tool.setChainForPortalTypes(('Discussion Item',), [])
+    logger.info('Removed workflow chain for Discussion Item type.')
+
 def uninstall(context):
 
     # Ordinarily, GenericSetup handlers check for the existence of XML files.
@@ -21,3 +38,5 @@ def uninstall(context):
         return
 
     # Add additional setup code here
+    portal_conf=getToolByName(context.getSite(),'portal_controlpanel')
+    portal_conf.unregisterConfiglet('prefs_comments_setup_form')

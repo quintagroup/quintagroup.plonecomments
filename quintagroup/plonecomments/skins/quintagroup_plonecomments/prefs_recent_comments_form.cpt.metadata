@@ -1,0 +1,11 @@
+[default]
+title=Recent comments form
+
+[security]
+View=1:Authenticated
+
+[actions]
+action.success..form_delete=traverse_to:string:prefs_recent_comments_delete
+action.success..form_publish=traverse_to:string:prefs_recent_comments_publish
+action.success=traverse_to:string:prefs_recent_comments_form
+action.failure=traverse_to:string:prefs_recent_comments_form

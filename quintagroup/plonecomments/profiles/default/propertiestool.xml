@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<object name="portal_properties">
+ <object name="qPloneComments" meta_type="Plone Property Sheet">
+  <property name="title">qPloneComments properties</property>
+  <property name="enable_approve_user_notification" type="boolean">True</property>
+  <property name="enable_reply_user_notification" type="boolean">True</property>
+  <property name="enable_rejected_user_notification" type="boolean">True</property>
+  <property name="enable_moderation" type="boolean">True</property>
+  <property name="require_email" type="boolean">False</property>
+  <property name="enable_anonymous_commenting" type="boolean">True</property>
+  <property name="enable_published_notification" type="boolean">True</property>
+  <property name="enable_approve_notification" type="boolean">True</property>
+  <property name="email_discussion_manager" type="string"></property>
+  <property name="email_subject_prefix" type="string"></property>
+ </object>
+</object>

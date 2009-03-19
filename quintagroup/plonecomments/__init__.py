@@ -1,3 +1,6 @@
+from AccessControl import allow_module
 
-#def initialize(context):
-#    """Initializer called when used as a Zope 2 product."""
+# Feed our monkeys :-)
+from quintagroup.plonecomments import patch
+
+allow_module('quintagroup.plonecomments.utils')

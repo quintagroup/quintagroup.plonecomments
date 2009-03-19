@@ -1,0 +1,24 @@
+<div i18n:domain="quintagroup.plonecomments"
+     tal:omit-tag=""
+     tal:define="charset here/portal_properties/site_properties/default_charset|string:utf-8;
+                 dummy python:request.RESPONSE.setHeader('Content-Type', 'text/html;;charset=%s' % charset);
+                 organization_name options/organization_name;
+                 obj nocall:options/obj">
+
+<tal:x replace="options/name"/>,
+
+<tal:notify define="obj nocall:options/obj" 
+       i18n:translate="notifyreject_link">
+       Your comment on '<tal:x replace="obj/absolute_url" i18n:name="url"/>' did not receive
+approval. Please direct any questions or concerns to <tal:x replace="options/mfrom" i18n:name="mfrom"/>.
+</tal:notify>
+
+--
+<tal:signature i18n:translate="signature"> 
+    <tal:organization_name condition="organization_name" 
+                           replace="string:$organization_name" 
+                           i18n:name="organization_name"/>
+    Support Team
+</tal:signature>
+
+</div>

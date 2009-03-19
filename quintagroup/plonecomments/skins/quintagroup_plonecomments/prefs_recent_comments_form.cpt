@@ -1,0 +1,144 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      i18n:domain="quintagroup.plonecomments"
+      metal:use-macro="here/prefs_main_template/macros/master">
+        <!--      metal:use-macro="here/main_template/macros/master" -->
+<body>
+
+<div metal:fill-slot="prefs_configlet_main"
+     tal:define="errors python:request.get('controller_state', None).getErrors();">
+
+    <div metal:define-macro="main">
+    <div class="configlet">
+    <div class="documentEditable"
+         tal:condition="python:checkPermission('Moderate Discussion', here)">
+    <!-- simulating views on the configure/comments pages until we have real objects. -->
+    <ul class="contentViews">
+        <li class="">
+        <a href=""
+        tal:attributes="href string:prefs_comments_setup_form"
+        i18n:translate="label_configure">Configure qPloneComments</a>
+        </li>
+
+        <li class="selected">
+        <a href=""
+        tal:attributes="href string:${template/id}"
+        i18n:translate="label_comments">Recent comments moderation</a>
+        </li>
+    </ul>
+     
+    <div class="contentActions">
+    &nbsp;
+    </div>        
+    <!-- End of tabs -->
+
+    <div class="documentContent" metal:define-slot="prefs_content"
+         tal:define ="results python:here.portal_catalog.searchResults(portal_type='Discussion Item',review_state='private',sort_on='created',sort_order='reverse');">
+
+        <h1 i18n:translate="heading_comments">Recent comments</h1>
+
+        <a href=""
+           class="link-parent"
+           tal:attributes="href string: $portal_url/plone_control_panel"
+           i18n:translate="label_up_to_plone_setup"
+           i18n:domain="plone">
+           Up to Plone Setup
+        </a>
+        
+        <p tal:condition="not:results" i18n:translate="text_no_new_comments">No new comments.</p>
+
+        <div tal:condition="results"
+             tal:define="dummy python:results and results[0].getObject()"
+             tal:on-error="string:You must have DiscussionManager role to access this page">
+            
+            <form name="edit_form"
+                  action="href"
+                  method="post"
+                  enctype="multipart/form-data"
+                  tal:condition="results"
+                  tal:attributes="action string:${here/getId}/${template/getId}">
+                <fieldset>
+                    <legend i18n:translate="legend_recent_comments">List of recent comments</legend>
+
+                    <table><tbody>
+
+                      <tr>
+                      <th class="nosort">
+                          <input class="noborder"
+                                 type="checkbox"
+                                 src="select_all_icon.gif"
+                                 name="selectButton"
+                                 title="Select all items"
+                                 onClick="toggleSelect(this,'ids:list');"
+                                 tal:attributes="src string:$portal_url/select_all_icon.gif"
+                                 alt="Select all items"
+                                 i18n:attributes="title label_select_all_items; alt label_select_all_items;"
+                                 i18n:domain="plone"
+                      />
+                      </th>
+                      <th class="nosort">&nbsp;<tal:title i18n:translate="listingheader_comment"
+                          >Comment</tal:title>&nbsp;</th>
+                      </tr>
+
+                      <tal:comment tal:repeat="comment results">
+                         <tal:object tal:define="comm_url comment/getURL;
+                                                 oddrow repeat/comment/odd;">
+                             <tr class="" tal:attributes="class python:test(oddrow, 'even', 'odd')">
+                                <td><input value="0" type="checkbox"
+                                           name="ids:list" 
+                                           tal:attributes="value python:comment.getObject().getId()" /></td>
+                                <td> 
+                                   <dl>
+                                       <dt>
+                                         <a href="#" 
+                                            tal:attributes="href comment/getURL;" 
+                                            tal:content="comment/Title"/>
+                                       </dt>
+                                       <dd>
+                                          <span><em tal:content="string: ${comment/Creator}"> Creator</em></span>
+                                          <span tal:content="python: comment.getObject().text[:400]+'...'"> Description</span>
+                                       </dd>
+                                   </dl>
+                                </td>
+                             </tr>
+                         </tal:object>
+                      </tal:comment>
+
+                    </tbody></table>
+
+                    <div class="formControls"
+                               i18n:domain="plone">
+
+                        <input type="hidden" name="form.submitted" value="1" />
+
+                        <input class="context"
+                               tabindex=""
+                               type="submit"
+                               name="form.button.form_delete"
+                               value="Delete"
+                               i18n:attributes="value"
+                               tal:attributes="tabindex tabindex/next;"
+                               />
+
+                        <input class="context"
+                               tabindex=""
+                               type="submit"
+                               name="form.button.form_publish"
+                               value="Publish"
+                               i18n:attributes="value"
+                               tal:attributes="tabindex tabindex/next;"
+                               />
+
+
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</body>
+</html>
