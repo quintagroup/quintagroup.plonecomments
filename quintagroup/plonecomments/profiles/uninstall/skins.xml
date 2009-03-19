@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+ <object name="quintagroup_plonecomments_custom_templates"
+    meta_type="Filesystem Directory View"
+    directory="quintagroup.plonecomments:skins/quintagroup_plonecomments_custom_templates"/>
+
+ <skin-path name="Custom Theme" based-on="Plone Default">
+  <layer name="quintagroup_plonecomments_custom_templates"
+     insert-after="quintagroup_plonecomments_custom_images"/>
+ </skin-path>
+
+</object>

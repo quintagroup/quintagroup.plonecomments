@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<import-steps>
+  <import-step id="quintagroup.plonecomments.install"
+               version="20090319-01"
+               handler="quintagroup.plonecomments.setuphandlers.install"
+               title="quintagroup.plonecomments: miscellaneous import steps for install package">
+    <dependency step="skins" />
+    Various import steps that are not handled by GS import/export
+    handlers.
+  </import-step>
+</import-steps>
