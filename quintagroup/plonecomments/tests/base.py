@@ -6,8 +6,7 @@ from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.layer import onsetup
 from Products.CMFCore.utils import getToolByName
 
-from config import *
-#PRODUCT = 'quintagroup.plonecomments'
+from config import PRODUCT
 
 @onsetup
 def setup_product():

@@ -4,8 +4,13 @@ PROPERTY_SHEET = "qPloneComments"
 CONFIGLET_ID = "prefs_comments_setup_form"
 
 EMAIL_PID = "email_discussion_manager"
+EMAIL_SUBJECT_PID = "email_subject_prefix"
+REQUIRE_EMAIL_PID = "require_email"
 APPROVE_NOTIFICATION_PID = "enable_approve_notification"
 PUBLISHED_NOTIFICATION_PID = "enable_published_notification"
+REJECTED_NOTIFICATION_PID = "enable_rejected_user_notification"
+APPROVE_USER_NOTIFICATION_PID = "enable_approve_user_notification"
+REPLY_USER_NOTIFICATION_PID = "enable_reply_user_notification"
 MODERATION_PID = "enable_moderation"
 ANONYMOUS_COMMENTING_PID = "enable_anonymous_commenting"
 

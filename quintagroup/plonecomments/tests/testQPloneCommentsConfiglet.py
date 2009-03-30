@@ -4,7 +4,8 @@
 
 from Products.CMFCore.permissions import ReplyToItem
 from AccessControl.SecurityManagement import noSecurityManager
-from base import *
+from base import getToolByName, FunctionalTestCase
+from config import *
 
 def addUsers(self):
     self.loginAsPortalOwner()
@@ -24,8 +25,6 @@ class TestConfiglet(FunctionalTestCase):
     def afterSetUp(self):
         self.loginAsPortalOwner()
 
-        self.qi = self.portal.portal_quickinstaller
-        self.qi.installProduct(PRODUCT)
         # VERY IMPORTANT to guarantee product skin's content visibility
         self._refreshSkinData()
 
@@ -54,7 +53,8 @@ class TestConfiglet(FunctionalTestCase):
         self.prefs._updateProperty('email_discussion_manager', 'discussion.manager@test.com')
         member = self.portal.portal_membership.getAuthenticatedMember()
         member.setMemberProperties({'email':'creator@test.com'})
-        #self.fail(member.getMemberId()+' :: '+member.getUserName()+' :: '+str(member.getRoles())+' :: '+member.getProperty('email'))
+        #self.fail(member.getMemberId()+' :: '+member.getUserName()+' \
+        #    :: '+str(member.getRoles())+' :: '+member.getProperty('email'))
 
         # Add testing document to portal
         my_doc = self.portal.invokeFactory('Document', id='my_doc')
@@ -69,15 +69,17 @@ class TestConfiglet(FunctionalTestCase):
         self.request.form['enable_anonymous_commenting'] = 'True'
         self.portal.prefs_comments_setup()
         actual_reply_permission = getReplyRoles()
-        self.assert_('Anonymous' in actual_reply_permission, \
-                     "'Reply to Item' permission set for %s. 'Anonymous' role NOT added" %  actual_reply_permission)
+        self.failUnless('Anonymous' in actual_reply_permission, \
+            "'Reply to Item' permission set for %s. 'Anonymous' "
+            "role NOT added" %  actual_reply_permission)
         # Simulate switching OFF Anonymous Commenting
         if self.request.form.has_key('enable_anonymous_commenting'):
            del self.request.form['enable_anonymous_commenting']
         self.portal.prefs_comments_setup()
         actual_reply_permission = getReplyRoles()
-        self.assert_(not 'Anonymous' in actual_reply_permission, \
-                     "'Reply to Item' permission set for %s. 'Anonymous' role NOT erased" %  actual_reply_permission)
+        self.failIf('Anonymous' in actual_reply_permission, \
+            "'Reply to Item' permission set for %s. 'Anonymous' role "
+            "NOT erased" %  actual_reply_permission)
 
     def testSwitchONModeration(self):
         addUsers(self)
@@ -95,13 +97,14 @@ class TestConfiglet(FunctionalTestCase):
         for u in DM_USERS_IDS:
             self.logout()
             self.login(u)
-            self.assert_(getReplies(), "None discussion item added or discussion forbiden for %s user" % u)
+            self.failUnless(getReplies(),
+                "None discussion item added or discussion forbiden for %s user" % u)
         for u in COMMON_USERS_IDS:
             self.logout()
             if not u=='anonym':
                 self.login(u)
             noSecurityManager()
-            self.assert_(not getReplies(), "Viewing discussion item allow for Anonymous user")
+            self.failIf(getReplies(), "Viewing discussion item allow for Anonymous user")
 
     def testSwitchOFFModeration(self):
         addUsers(self)
@@ -122,31 +125,36 @@ class TestConfiglet(FunctionalTestCase):
             if not u=='anonym':
                 self.login(u)
             replies = self.discussion.getDiscussionFor(self.my_doc).getReplies()
-            self.assert_(replies, "No discussion item added or discussion forbidden for %s user" % u)
+            self.failUnless(replies,
+                "No discussion item added or discussion forbidden for %s user" % u)
 
     def testApproveNotification(self):
         # Check ON Notification Anonymous Commenting
         self.request.form['enable_approve_notification'] = 'True'
         self.portal.prefs_comments_setup()
-        self.assert_(self.prefs.getProperty('enable_approve_notification')==1,"Approve Notification not terned ON")
+        self.failUnless(self.prefs.getProperty('enable_approve_notification')==1,
+            "Approve Notification not terned ON")
 
         # Check OFF Notification Anonymous Commenting
         if self.request.form.has_key('enable_approve_notification'):
            del self.request.form['enable_approve_notification']
         self.portal.prefs_comments_setup()
-        self.assert_(self.prefs.getProperty('enable_approve_notification')==0,"Approve Notification not terned OFF")
+        self.failUnless(self.prefs.getProperty('enable_approve_notification')==0,
+            "Approve Notification not terned OFF")
 
     def testPublishedNotification(self):
         # Check ON Notification Anonymous Commenting
         self.request.form['enable_published_notification'] = 'True'
         self.portal.prefs_comments_setup()
-        self.assert_(self.prefs.getProperty('enable_published_notification')==1,"Published Notification not terned ON")
+        self.failUnless(self.prefs.getProperty('enable_published_notification')==1,
+            "Published Notification not terned ON")
 
         # Check OFF Notification Anonymous Commenting
         if self.request.form.has_key('enable_published_notification'):
            del self.request.form['enable_published_notification']
         self.portal.prefs_comments_setup()
-        self.assert_(self.prefs.getProperty('enable_published_notification')==0,"Published Notification not terned OFF")
+        self.failUnless(self.prefs.getProperty('enable_published_notification')==0,
+            "Published Notification not terned OFF")
 
 
 def test_suite():

@@ -5,14 +5,13 @@
 import re
 
 from common import *
-from base import *
-
+from base import getToolByName, FunctionalTestCase
+from config import *
 
 class TestModeration(FunctionalTestCase):
 
     def afterSetUp(self):
         self.loginAsPortalOwner()
-        self.portal.portal_quickinstaller.installProduct(PRODUCT)
 
         # Add all users
         addMembers(self.portal, USERS)
@@ -49,7 +48,9 @@ class TestModeration(FunctionalTestCase):
         for u in DM_USERS_IDS:
             self.login(u)
             replies = self.discussion.getDiscussionFor(doc).getReplies()
-            self.assert_(replies, "Viewing discussion item forbiden for %s - member of DiscussionManager group" % u)
+            self.failUnless(replies,
+                "Viewing discussion item forbiden for %s - "
+                "member of DiscussionManager group" % u)
 
     def testViewRepliesNotPublishedNotDMUsers(self):
         # All common users SHOULD NOT VIEW NOT PUBLISHED comments
@@ -62,7 +63,9 @@ class TestModeration(FunctionalTestCase):
             if not u=='anonym':
                 self.login(u)
             replies = self.discussion.getDiscussionFor(doc).getReplies()
-            self.assert_(not replies, "Viewing of NOT published discussion item allow %s - user without 'Moderate Discussion' permission" % u)
+            self.failIf(replies,
+                "Viewing of NOT published discussion item allow %s - "
+                "user without 'Moderate Discussion' permission" % u)
 
     def testViewRepliesPublishedAllUsers(self):
         # All users MUST VIEW PUBLISHED comments
@@ -78,7 +81,8 @@ class TestModeration(FunctionalTestCase):
             if not u=='anonym':
                 self.login(u)
             replies = self.discussion.getDiscussionFor(doc).getReplies()
-            self.assert_(replies, "Viewing PUBLISHED discussion item forbiden for %s user" % u)
+            self.failUnless(replies,
+                "Viewing PUBLISHED discussion item forbiden for %s user" % u)
 
     ## TEST PUBLISHING
 
@@ -98,7 +102,8 @@ class TestModeration(FunctionalTestCase):
             doc_id = "doc_%s" % u
             html = str(self.publish(self.portal.id+'/%s' % doc_id, auth))
             m = pattern.match(html)
-            self.assert_(not m, "Publish button present for %s - user without Moderate Discussion permission" % u)
+            self.failIf(m,
+                "Publish button present for %s - user without Moderate Discussion permission" % u)
 
     """
     def testViewPublishButtonDMUsers(self):
@@ -112,7 +117,8 @@ class TestModeration(FunctionalTestCase):
             doc_id = "doc_%s" % u
             html = str(self.publish(self.portal.id+'/%s' % doc_id, auth))
             m = pattern.match(html)
-            self.assert_(m, "Publish button NOT PRESENT for %s - member of DiscussionManager group" % u)
+            self.failUnless(m,
+                "Publish button NOT PRESENT for %s - member of DiscussionManager group" % u)
     """
 
     def testPublishing(self):
@@ -125,10 +131,11 @@ class TestModeration(FunctionalTestCase):
             getReplies = self.discussion.getDiscussionFor(doc_obj).getReplies
             # Check whether anonymous get no reply
             self.logout()
-            self.assert_(not getReplies(), "View not published reply ALLOW for Anonymous")
+            self.failIf(getReplies(), "View not published reply ALLOW for Anonymous")
             # Login with actual (tested) user with DiscussionManager role and publish discussion
             self.login(u)
-            self.assert_(getReplies(), "%s - member of DiscussionManager group NOT VIEW not published reply" % u)
+            self.failUnless(getReplies(),
+                "%s - member of DiscussionManager group NOT VIEW not published reply" % u)
             getReplies()[0].discussion_publish_comment()
             # Check if Publish button still present in document view page
             auth = "%s:" % u
@@ -136,10 +143,12 @@ class TestModeration(FunctionalTestCase):
                 auth = '%s:%s' % (u,USERS[u]['passw'])
             html = str(self.publish(self.portal.id+'/%s' % doc_id, auth))
             m = pattern.match(html)
-            self.assert_(not m, "Publish button present for %s - DiscussionManager role user after publishing" % u)
+            self.failIf(m,
+                "Publish button present for %s - DiscussionManager role user after publishing" % u)
             # Check whether Anonym view published reply
             self.logout()
-            self.assert_(getReplies(), "%s - member of DiscussionManager group NOT PUBLISH reply" % u)
+            self.failUnless(getReplies(),
+                "%s - member of DiscussionManager group NOT PUBLISH reply" % u)
 
     ## TEST DELETING
 
@@ -168,9 +177,13 @@ class TestModeration(FunctionalTestCase):
             html = str(self.publish(self.portal.id+'/%s' % doc_id, auth))
             m = pattern.match(html)
             if not u=='anonym' and 'Manager' in USERS[u]['roles']:
-                self.assert_(m, "%s - user with Manager role NOT VIEW Delete reply button for published reply on document view form" % u)
+                self.failUnless(m,
+                    "%s - user with Manager role NOT VIEW Delete reply button for "
+                    "published reply on document view form" % u)
             else:
-                self.assert_(not m, "%s - user without Manager role CAN VIEW Delete reply button for published reply on document view form" % u)
+                self.failIf(m,
+                    "%s - user without Manager role CAN VIEW Delete reply button for "
+                    "published reply on document view form" % u)
     """
 
     def testDeleting(self):
@@ -192,9 +205,9 @@ class TestModeration(FunctionalTestCase):
             doc_id = "doc_%s" % u
             doc_obj = getattr(self.portal, doc_id)
             getReplies = self.discussion.getDiscussionFor(doc_obj).getReplies
-            self.assert_(getReplies(), "%s - user with Manager role not view discussion reply" % u)
+            self.failUnless(getReplies(), "%s - user with Manager role not view discussion reply" % u)
             getReplies()[0].deleteDiscussion()
-            self.assert_(not getReplies(), "%s - user with Manager role not really delete discussion" % u)
+            self.failIf(getReplies(), "%s - user with Manager role not really delete discussion" % u)
 
 
 def test_suite():

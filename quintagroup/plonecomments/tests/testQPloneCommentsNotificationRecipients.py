@@ -7,11 +7,11 @@ from Products.CMFCore.permissions import ManagePortal, ReplyToItem
 from quintagroup.plonecomments.utils import getMsg
 
 import re
-from base import *
-from common import *
 from helperNotify import *
 from email.Header import Header
-#from testQPloneCommentsModeration import USERS, COMMON_USERS_IDS, DM_USERS_IDS
+from base import getToolByName, FunctionalTestCase
+from common import *
+from config import *
 
 USERS = {# Common Members
          'admin':{'passw': 'secret_admin', 'roles': ['Manager']},
@@ -40,14 +40,12 @@ class TestNotificationRecipients(FunctionalTestCase):
     def afterSetUp(self):
         self.loginAsPortalOwner()
 
-        self.qi = self.portal.portal_quickinstaller
-        self.qi.installProduct(PRODUCT)
         # VERY IMPORTANT to guarantee product skin's content visibility
         self._refreshSkinData()
-
         '''Preparation for functional testing'''
         self.membership = getToolByName(self.portal, 'portal_membership', None)
         self.discussion = getToolByName(self.portal, 'portal_discussion', None)
+
         # Allow discussion for Document
         portal_types = getToolByName(self.portal, 'portal_types', None)
         doc_fti = portal_types.getTypeInfo('Document')
@@ -56,7 +54,6 @@ class TestNotificationRecipients(FunctionalTestCase):
         # Make sure Documents are visible by default
         # XXX only do this for plone 3
         self.portal.portal_workflow.setChainForPortalTypes(('Document',), 'plone_workflow')
-
         portal_properties = getToolByName(self.portal, 'portal_properties', None)
         self.prefs = portal_properties[PROPERTY_SHEET]
 
@@ -81,15 +78,14 @@ class TestNotificationRecipients(FunctionalTestCase):
 
         # Create talkback for document and Prepare REQUEST
         self.discussion.getDiscussionFor(self.my_doc)
-
         prepareMailSendTest()
 
     def checkToANDSubj(self, mails, to, subj):
         messages = [m for m in mails if REXP_TO.search(m) and REXP_TO.search(m).group(1)==to]
-        self.assert_(len(messages) > 0, "No message sent to '%s' recipient" % to)
+        self.failUnless(len(messages) > 0, "No message sent to '%s' recipient" % to)
         mangled = str(Header(subj, 'utf-8'))
-        self.assert_([1 for m in messages if REXP_SUBJ.search(m) and REXP_SUBJ.search(m).group(1)==mangled],\
-                     "There is no message for '%s' recipient with '%s' subject" % (to,subj))
+        self.failUnless([1 for m in messages if REXP_SUBJ.search(m) and REXP_SUBJ.search(m).group(1)==mangled],\
+             "There is no message for '%s' recipient with '%s' subject" % (to,subj))
 
     def test_Reply(self):
         cleanOutputDir()

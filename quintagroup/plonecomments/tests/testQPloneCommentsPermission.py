@@ -4,17 +4,18 @@
 
 from Products.CMFDefault.DiscussionItem import DiscussionItemContainer
 
-from base import *
+from base import getToolByName, TestCase
+from config import *
+
 
 class TestPermission(TestCase):
 
     def afterSetUp(self):
         self.loginAsPortalOwner()
-        self.portal.portal_quickinstaller.installProduct(PRODUCT)
 
     def test_install_moderate_discussion_permission(self):
         roles = [item['name'] for item in self.portal.rolesOfPermission(PERM_NAME) if item['selected'] == 'SELECTED']
-        self.assert_( roles != [], '%s not installed'%PERM_NAME)
+        self.failUnless( roles != [], '%s not installed'%PERM_NAME)
 
     def test_deleteReply_permission(self):
         #dic = DiscussionItemContainer()

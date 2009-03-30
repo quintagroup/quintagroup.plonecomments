@@ -1,14 +1,16 @@
 #
 # Test configuration form working
 #
-
-from Products.CMFCore.permissions import ManagePortal, ReplyToItem
-
 import re
 from helperNotify import *
 from email.Header import Header
+
+from Products.CMFCore.permissions import ManagePortal, ReplyToItem
+
 from quintagroup.plonecomments.utils import getMsg
-from base import *
+from base import getToolByName, FunctionalTestCase
+from config import *
+
 
 class TestNotification(FunctionalTestCase):
 
@@ -19,8 +21,6 @@ class TestNotification(FunctionalTestCase):
     def afterSetUp(self):
         self.loginAsPortalOwner()
 
-        self.qi = self.portal.portal_quickinstaller
-        self.qi.installProduct(PRODUCT)
         # VERY IMPORTANT to guarantee product skin's content visibility
         self._refreshSkinData()
 
@@ -94,47 +94,47 @@ class TestNotification(FunctionalTestCase):
         cleanOutputDir()
         setProperties(self.prefs)
         self.my_doc.discussion_reply('A Reply for my_doc' ,'text of reply for my_doc')
-        self.assert_(not testMailExistance(), 'Mail was sended when all notification was disabled')
+        self.failIf(testMailExistance(), 'Mail was sended when all notification was disabled.')
 
     def test_published_comment_notification(self):
         cleanOutputDir()
         setProperties(self.prefs, 'enable_published_notification')
         self.my_doc.discussion_reply('A Reply for my_doc' ,'text of reply for my_doc')
-        self.assert_(testMailExistance(), 'Mail was not sended when enable_published_notification')
+        self.failUnless(testMailExistance(), 'Mail was not sended when enable_published_notification.')
 
     def test_approve_comment_notification(self):
         cleanOutputDir()
         setProperties(self.prefs, 'enable_approve_notification')
         self.my_doc.discussion_reply('A Reply for my_doc' ,'text of reply for my_doc')
-        self.assert_(testMailExistance(), 'Mail was not sended when enable_approve_notification')
+        self.failUnless(testMailExistance(), 'Mail was not sended when enable_approve_notification.')
 
     def test_reply_comment_user_notification(self):
         cleanOutputDir()
         setProperties(self.prefs, 'enable_reply_user_notification')
         self.my_doc.discussion_reply('A Reply for my_doc' ,'text of reply for my_doc')
-        self.assert_(not testMailExistance(), 'Mail was sended for simple reply when enable_reply_user_notification')
+        self.failIf(testMailExistance(), 'Mail was sended for simple reply when enable_reply_user_notification.')
 
         reply = self.discussion.getDiscussionFor(self.my_doc).getReplies()[0]
         reply.discussion_reply('A Reply for comment' ,'text of reply for comment')
         reply_for_comment = self.discussion.getDiscussionFor(self.my_doc).getReplies()[0]
-        self.assert_(testMailExistance(), 'Mail was not sended when enable_reply_user_notification')
+        self.failUnless(testMailExistance(), 'Mail was not sended when enable_reply_user_notification.')
 
     def test_rejected_comment_notification(self):
         cleanOutputDir()
         setProperties(self.prefs, 'enable_rejected_user_notification', 'enable_moderation')
         self.my_doc.discussion_reply('A Reply for my_doc' ,'text of reply for my_doc')
-        self.assert_(not testMailExistance(), 'Mail was sended when enable_rejected_user_notification was enabled')
+        self.failIf(testMailExistance(), 'Mail was sended when enable_rejected_user_notification was enabled.')
 
         reply = self.discussion.getDiscussionFor(self.my_doc).getReplies()[0]
         self.portal.REQUEST.set('ids', [reply.getId()])
         self.portal.prefs_recent_comments_delete()
-        self.assert_(testMailExistance(), 'Mail was not sended when enable_rejected_user_notification')
+        self.failUnless(testMailExistance(), 'Mail was not sended when enable_rejected_user_notification.')
 
     def test_approve_comment_user__notification(self):
         cleanOutputDir()
         setProperties(self.prefs, 'enable_approve_user_notification')
         self.my_doc.discussion_reply('A Reply for my_doc' ,'text of reply for my_doc')
-        self.assert_(testMailExistance(), 'Mail was not sended when enable_approve_user_notification')
+        self.failUnless(testMailExistance(), 'Mail was not sended when enable_approve_user_notification.')
 
     def test_bug_notification_on_single_reply_publish(self):
         """ Bug: no notification sent on publishing single comment.
@@ -154,12 +154,12 @@ class TestNotification(FunctionalTestCase):
         cleanOutputDir()
         reply2.discussion_publish_comment()
         mails = getMails()
-        self.assert_([1 for m in mails if re.search('^Subject:.*(replied).*$', m, re.I|re.M)] \
-                     ,'No notification for reply' % properties)
-        self.assert_([1 for m in mails if re.search('^Subject:.*(added).*$', m, re.I|re.M)] \
-                     , 'No notification for adding comment' % properties)
-        self.assert_([1 for m in mails if re.search('^Subject:.*(published).*$', m, re.I|re.M)] \
-                     , 'No notification for publishing comment' % properties)
+        self.failUnless([1 for m in mails if re.search('^Subject:.*(replied).*$', m, re.I|re.M)],
+            'No notification for reply.' % properties)
+        self.failUnless([1 for m in mails if re.search('^Subject:.*(added).*$', m, re.I|re.M)],
+            'No notification for adding comment.' % properties)
+        self.failUnless([1 for m in mails if re.search('^Subject:.*(published).*$', m, re.I|re.M)],
+            'No notification for publishing comment.' % properties)
 
     def test_bug_notification_on_single_reply_delete(self):
         """ Bug: no notification sent on deleting single comment.
@@ -176,8 +176,8 @@ class TestNotification(FunctionalTestCase):
         mails = getMails()
         regexp = re.compile("Subject:\s*(.*?)$",re.M)
         subject = str(Header('Your comment on "Doc" was not approved', 'utf-8'))
-        self.assert_([1 for m in mails if regexp.search(m).group(1) == subject] \
-                     ,'No notification for rejecting comment' % properties)
+        self.failUnless([1 for m in mails if regexp.search(m).group(1) == subject],
+            'No notification for rejecting comment.' % properties)
 
 
 def test_suite():
