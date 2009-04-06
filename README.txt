@@ -100,13 +100,13 @@ Requirements
 License
 ============
 
-  Please find license in *LICENSE.GPL*.
+Please find license in *LICENSE.GPL*.
 
 
 Author
 ============
 
-  The product is developed and maintained by http://quintagroup.com team.
+The product is developed and maintained by http://quintagroup.com team.
 
   Authors:
 
