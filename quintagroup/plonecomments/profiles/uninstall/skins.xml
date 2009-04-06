@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <object name="portal_skins">
- <object name="quintagroup_plonecomments"
-    meta_type="Filesystem Directory View"
-    remove="True"/>
+ <object name="quintagroup_plonecomments" remove="True"/>
  <skin-path name="*">
   <layer name="quintagroup_plonecomments" remove="True"/>
  </skin-path>
