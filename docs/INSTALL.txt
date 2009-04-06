@@ -58,7 +58,7 @@ recipe to manage your project, you can do this:
 
     $ ./bin/buildout
 
-- Install quintagroup.plonecomments via ZMI portal_setup. Select ``quintagroup.plonecomments install``
+- Install quintagroup.plonecomments via ZMI portal_setup. Select ``quintagroup.plonecomments``
   from the list of available profiles and press *Import all steps*.
 
   **Atention**: If you are using a Plone version **before** 3.1 you need to install
