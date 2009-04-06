@@ -3,38 +3,10 @@
 #
 
 import unittest
-import transaction
-from AccessControl.SecurityManagement import newSecurityManager, \
-    noSecurityManager
-from Products.PloneTestCase.layer import PloneSiteLayer
 
-from base import getToolByName, TestCase, ztc
-from config import *
+from base import getToolByName, TestErase
+from config import PRODUCT, PRODUCT_SKIN_NAME, CONFIGLET_ID, PROPERTY_SHEET
 
-class TestErase(TestCase):
-    # we use here nested layer for not to make an impact on
-    # the rest test cases, this test case check uninstall procedure
-    # thus it has to uninstall package which will be required to
-    # be installed for other test cases
-    class layer(PloneSiteLayer):
-        @classmethod
-        def setUp(cls):
-            app = ztc.app()
-            portal = app.plone
-            
-            # elevate permissions
-            user = portal.getWrappedOwner()
-            newSecurityManager(None, user)
-
-            tool = getToolByName(portal, 'portal_quickinstaller')
-            if tool.isProductInstalled(PRODUCT):
-                tool.uninstallProducts([PRODUCT,])
-            
-            # drop elevated perms
-            noSecurityManager()
-            
-            transaction.commit()
-            ztc.close(app)
 
 class TestUninstallation(TestErase):
 

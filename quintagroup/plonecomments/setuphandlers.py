@@ -1,4 +1,5 @@
 from Products.CMFCore.utils import getToolByName
+from config import LOGGER
 
 def install(context):
 
@@ -13,7 +14,7 @@ def install(context):
     # Add additional setup code here
 
     portal = context.getSite()
-    logger = context.getLogger('qPloneComments')
+    logger = context.getLogger(LOGGER)
 
     # Add 'DiscussionManagers' group
     gtool = getToolByName(portal, 'portal_groups')
@@ -38,5 +39,10 @@ def uninstall(context):
         return
 
     # Add additional setup code here
+
+    portal = context.getSite()
+    logger = context.getLogger(LOGGER)
+
     portal_conf=getToolByName(context.getSite(),'portal_controlpanel')
     portal_conf.unregisterConfiglet('prefs_comments_setup_form')
+    logger.info('Unregister configlet prefs_comments_setup_form. ')
