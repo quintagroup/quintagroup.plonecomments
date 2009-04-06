@@ -1,52 +1,55 @@
+=========
 Changelog
 =========
 
-4.0.0 - April 6, 2009
------------------------
+4.0.0 (2009-04-06)
+==================
 
-* Plone 3.* compatibility release
+- Plone 3.* compatibility release
   [liebster]
 
 
-3.2.1 - October 23, 2008 ( Unreleased )
------------------------
+3.2.1 (unreleased)
+==================
 
-* Added uninstall configlet and skins
+- Added uninstall configlet and skins
 
-* Converted a i18n layout to a locales layout
+- Converted a i18n layout to a locales layout
 
 
-3.1.2 - Unreleased
------------------------
+3.1.2 (unreleased)
+==================
 
-* Fixed to use the username as the comment creator. That's necessary whenever
+- Fixed to use the username as the comment creator. That's necessary whenever
   the user is authenticated. This fixes the problems where commenters weren't
   receiving any notifications.
   [deo]
 
-3.1.1 - September 19, 2008
------------------------
 
-* Fixed bug in registration of product also as a package.
+3.1.1 (2008-09-19)
+==================
+
+- Fixed bug in registration of product also as a package.
   [liebster]
 
-3.1.0 - August 28, 2008
------------------------
 
-* Added pt-br translation.
+3.1.0 (2008-08-28)
+==================
+
+- Added pt-br translation.
   [erico_andrei]
 
-* Converted `Extension/Install.py` into a complete GenericSetup profile.
+- Converted ``Extension/Install.py``` into a complete GenericSetup profile.
   [deo]
 
-* Added note about the `browser.layer` dependency for Plone 3.0.x.
+- Added note about the ``browser.layer`` dependency for Plone 3.0.x.
   [deo]
 
-* Updated tests to run with Plone 3.x.
+- Updated tests to run with Plone 3.x.
   [deo]
 
-* General code cleanup and modernization.
+- General code cleanup and modernization.
   [deo]
 
-* Synchronized the discussion templates to match Plone 3.x versions.
+- Synchronized the discussion templates to match Plone 3.x versions.
   [deo]
