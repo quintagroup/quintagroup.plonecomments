@@ -2,7 +2,50 @@ Changelog
 =========
 
 4.0.0 - Unreleased
-----------------
+-----------------------
 
-* Initial release
+* Plone 3.* compatibility release
 
+
+3.2.1 - October 23, 2008 ( Unreleased )
+-----------------------
+
+* Added uninstall configlet and skins
+
+* Converted a i18n layout to a locales layout
+
+
+3.1.2 - Unreleased
+-----------------------
+
+* Fixed to use the username as the comment creator. That's necessary whenever
+  the user is authenticated. This fixes the problems where commenters weren't
+  receiving any notifications.
+  [deo]
+
+3.1.1 - September 19, 2008
+-----------------------
+
+* Fixed bug in registration of product also as a package.
+  [liebster]
+
+3.1.0 - August 28, 2008
+-----------------------
+
+* Added pt-br translation.
+  [erico_andrei]
+
+* Converted `Extension/Install.py` into a complete GenericSetup profile.
+  [deo]
+
+* Added note about the `browser.layer` dependency for Plone 3.0.x.
+  [deo]
+
+* Updated tests to run with Plone 3.x.
+  [deo]
+
+* General code cleanup and modernization.
+  [deo]
+
+* Synchronized the discussion templates to match Plone 3.x versions.
+  [deo]
