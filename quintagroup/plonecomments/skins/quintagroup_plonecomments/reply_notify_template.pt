@@ -7,7 +7,7 @@
 <tal:x replace="options/name"/>,
 <tal:notify define="obj nocall:options/obj" 
        i18n:translate="replynotify_link">
-       Someone replied to your comment '<tal:x replace="obj/absolute_url" i18n:name="url"/>' on '<tal:x replace="here/absolute_url" i18n:name="here_url"/>'. To read the response, go to '<tal:x replace="obj/absolute_url" i18n:name="url"/>'.
+       Someone replied to your comment <tal:x replace="obj/absolute_url" i18n:name="url"/> on <tal:x replace="here/absolute_url" i18n:name="here_url"/>. To read the response, go to <tal:x replace="obj/absolute_url" i18n:name="url"/>.
 </tal:notify>
 
 --

@@ -8,7 +8,7 @@
 <tal:x replace="options/name"/>,
 <tal:notify define="obj nocall:options/obj" 
        i18n:translate="notifycomment_link">
-       Your comment on '<tal:x replace="obj/absolute_url" i18n:name="url"/>' has been
+       Your comment on <tal:x replace="obj/absolute_url" i18n:name="url"/> has been
 published. To see your comment, go to <tal:x replace="obj/absolute_url" i18n:name="url"/>
 </tal:notify>
 

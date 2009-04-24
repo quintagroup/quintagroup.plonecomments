@@ -2,6 +2,13 @@
 Changelog
 =========
 
+4.0.1 (unreleased)
+==================
+
+- Fixed links in the email messages.
+  [liebster]
+
+
 4.0.0 (2009-04-06)
 ==================
 
