@@ -98,7 +98,7 @@ def send_email(reply, context, state):
 
     subject = ''
     if state == 'enable_approve_user_notification':
-        subject = 'Your comment on "%s" is now published' % getParent(context).Title()
+        subject = 'Your comment on %s is now published' % getParent(context).Title()
         if user_email:
             template = 'notify_comment_template'
             args={'mto': user_email,
@@ -110,7 +110,7 @@ def send_email(reply, context, state):
             args = {}
 
     elif state == 'enable_rejected_user_notification':
-        subject = 'Your comment on "%s" was not approved' % getParent(context).Title()
+        subject = 'Your comment on %s was not approved' % getParent(context).Title()
         if user_email:
             template = 'rejected_comment_template'
             args={'mto': user_email,
@@ -123,7 +123,7 @@ def send_email(reply, context, state):
 
     elif state == 'enable_reply_user_notification':
         template = 'reply_notify_template'
-        subject = 'Someone replied to your comment on "%s"' % getParent(context).Title()
+        subject = 'Someone replied to your comment on %s' % getParent(context).Title()
         di_parrent = getDIParent(reply)
         if di_parrent:
             user_email = getEmail(di_parrent, context)

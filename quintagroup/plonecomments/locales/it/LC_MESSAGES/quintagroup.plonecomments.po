@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: qPloneComments\n"
-"POT-Creation-Date: 2009-03-19 19:42+0000\n"
+"POT-Creation-Date: 2009-05-29 14:53+0000\n"
 "PO-Revision-Date: 2007-04-19 20:21-0600\n"
 "Last-Translator: Yuri Carrer <yurj@alfa.it>\n"
 "Language-Team: Al ritmo del tam tam\n"
@@ -182,12 +182,12 @@ msgstr "Opzioni di configurazione di qPloneComments"
 msgid "listingheader_comment"
 msgstr "Commento"
 
-#. Default: "Your comment on '${url}' has been published. To see your comment, go to ${url}"
+#. Default: "Your comment on ${url} has been published. To see your comment, go to ${url}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/notify_comment_template.pt:12
 msgid "notifycomment_link"
 msgstr ""
 
-#. Default: "Your comment on '${url}' did not receive approval. Please direct any questions or concerns to ${mfrom}."
+#. Default: "Your comment on ${url} did not receive approval. Please direct any questions or concerns to ${mfrom}."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/rejected_comment_template.pt:13
 msgid "notifyreject_link"
 msgstr ""
@@ -207,7 +207,7 @@ msgstr ""
 msgid "qPloneComments configuration changes saved."
 msgstr "Cambiamenti della configurazione salvati."
 
-#. Default: "Someone replied to your comment '${url}' on '${here_url}'. To read the response, go to '${url}'."
+#. Default: "Someone replied to your comment ${url} on ${here_url}. To read the response, go to ${url}."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/reply_notify_template.pt:10
 msgid "replynotify_link"
 msgstr ""

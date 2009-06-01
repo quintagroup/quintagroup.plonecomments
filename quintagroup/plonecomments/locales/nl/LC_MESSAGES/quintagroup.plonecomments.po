@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-03-19 19:42+0000\n"
+"POT-Creation-Date: 2009-05-29 14:53+0000\n"
 "PO-Revision-Date: 2006-12-29 11:01+0100\n"
 "Last-Translator: Kees Hink\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -181,15 +181,15 @@ msgstr "Opties voor qPloneComments"
 msgid "listingheader_comment"
 msgstr "Opmerking"
 
-#. Default: "Your comment on '${url}' has been published. To see your comment, go to ${url}"
+#. Default: "Your comment on ${url} has been published. To see your comment, go to ${url}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/notify_comment_template.pt:12
 msgid "notifycomment_link"
-msgstr "Uw opmerking op '${url}' is gepubliceerd. Ga naar ${url} om de opmerking te bekijken."
+msgstr "Uw opmerking op ${url} is gepubliceerd. Ga naar ${url} om de opmerking te bekijken."
 
-#. Default: "Your comment on '${url}' did not receive approval. Please direct any questions or concerns to ${mfrom}."
+#. Default: "Your comment on ${url} did not receive approval. Please direct any questions or concerns to ${mfrom}."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/rejected_comment_template.pt:13
 msgid "notifyreject_link"
-msgstr "Uw opmerking op '${url}' is niet goedgekeurd. Stuur vragen of opmerkingen hierover aan ${mfrom}."
+msgstr "Uw opmerking op ${url} is niet goedgekeurd. Stuur vragen of opmerkingen hierover aan ${mfrom}."
 
 #. Default: "View new comment added to the following page \"${title}\": ${link}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/published_comment_template.pt:8
@@ -206,10 +206,10 @@ msgstr ""
 msgid "qPloneComments configuration changes saved."
 msgstr ""
 
-#. Default: "Someone replied to your comment '${url}' on '${here_url}'. To read the response, go to '${url}'."
+#. Default: "Someone replied to your comment ${url} on ${here_url}. To read the response, go to ${url}."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/reply_notify_template.pt:10
 msgid "replynotify_link"
-msgstr "Iemand heeft gereageerd op uw opmerking '${url}' bij '${here_url}'. Ga naar '${url}' om de reactie te lezen."
+msgstr "Iemand heeft gereageerd op uw opmerking ${url} bij ${here_url} . Ga naar ${url} om de reactie te lezen."
 
 #. Default: "${organization_name} Support Team"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/reply_notify_template.pt:15
