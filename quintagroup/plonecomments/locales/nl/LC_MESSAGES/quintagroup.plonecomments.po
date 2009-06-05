@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-05-29 14:53+0000\n"
+"POT-Creation-Date: 2009-06-05 17:02+0000\n"
 "PO-Revision-Date: 2006-12-29 11:01+0100\n"
 "Last-Translator: Kees Hink\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Domain: plonecomments\n"
 "X-Is-Fallback-For: nl-nl nl-be\n"
 
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_publish_comment.py:37
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_publish_comment.py:48
 msgid "Comment published."
 msgstr ""
 
@@ -61,10 +61,10 @@ msgstr ""
 msgid "You must correctly enter the word."
 msgstr ""
 
-#. Default: "Please review new comment added to the following page \"${title}\": ${link}"
+#. Default: "Please review new comment added to the following page ' ${title} ': ${here_url}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/approve_comment_template.pt:10
 msgid "approvemail_new_comment_link"
-msgstr "Bekijk alstublieft het commentaar op de volgende pagina: \" ${title} \" ${link} "
+msgstr "Bekijk alstublieft het commentaar op de volgende pagina ' ${title} ': ${here_url} "
 
 #. Default: "Enable Manager moderation"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:129
@@ -181,20 +181,20 @@ msgstr "Opties voor qPloneComments"
 msgid "listingheader_comment"
 msgstr "Opmerking"
 
-#. Default: "Your comment on ${url} has been published. To see your comment, go to ${url}"
+#. Default: "Your comment on ${url} has been published. To see your comment, go to ${here_url}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/notify_comment_template.pt:12
 msgid "notifycomment_link"
-msgstr "Uw opmerking op ${url} is gepubliceerd. Ga naar ${url} om de opmerking te bekijken."
+msgstr "Uw opmerking op ${url} is gepubliceerd. Ga naar ${here_url} om de opmerking te bekijken."
 
 #. Default: "Your comment on ${url} did not receive approval. Please direct any questions or concerns to ${mfrom}."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/rejected_comment_template.pt:13
 msgid "notifyreject_link"
 msgstr "Uw opmerking op ${url} is niet goedgekeurd. Stuur vragen of opmerkingen hierover aan ${mfrom}."
 
-#. Default: "View new comment added to the following page \"${title}\": ${link}"
+#. Default: "View new comment added to the following page ' ${title} ': ${here_url}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/published_comment_template.pt:8
 msgid "publishedmail_new_comment_link"
-msgstr "Bekijk de nieuwe opmerking bij \"${title}\": ${link}"
+msgstr "Bekijk de nieuwe opmerking bij  '${title} ': ${here_url}"
 
 #. Default: "qPloneComments"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/profiles/default/controlpanel.xml
@@ -206,10 +206,10 @@ msgstr ""
 msgid "qPloneComments configuration changes saved."
 msgstr ""
 
-#. Default: "Someone replied to your comment ${url} on ${here_url}. To read the response, go to ${url}."
+#. Default: "Someone replied to your comment on ${url}. To read the response, go to ${here_url}."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/reply_notify_template.pt:10
 msgid "replynotify_link"
-msgstr "Iemand heeft gereageerd op uw opmerking ${url} bij ${here_url} . Ga naar ${url} om de reactie te lezen."
+msgstr "Iemand heeft gereageerd op uw opmerking bij ${here_url} . Ga naar ${url} om de reactie te lezen."
 
 #. Default: "${organization_name} Support Team"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/reply_notify_template.pt:15

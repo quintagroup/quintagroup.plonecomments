@@ -30,11 +30,22 @@ manage_mails(reply, context, action='publishing')
 putils = getToolByName(context, 'plone_utils')
 redirect_target = putils.getDiscussionThread(talkback)[0]
 view = redirect_target.getTypeInfo().getActionInfo('object/view')['url']
+rt = redirect_target.absolute_url()
+
+if rt and rt[-1] == '/':
+    rt = rt[:-1]
+
+if view and view[0] == '/':
+    view = view[1:]
+
+if view and view[-1] == '/':
+    view = view[:-1]
+
 anchor = reply.getId()
 
 transaction_note('Published discussion item')
 
 context.plone_utils.addPortalMessage(_(u'Comment published.'))
-target = '%s/%s#%s' % (redirect_target.absolute_url(), view, anchor)
+target = '%s/%s#%s' % (rt, view, anchor)
 
 return context.REQUEST.RESPONSE.redirect(target)

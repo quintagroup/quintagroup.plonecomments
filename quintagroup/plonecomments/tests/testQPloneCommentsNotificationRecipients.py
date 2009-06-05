@@ -108,7 +108,7 @@ class TestNotificationRecipients(FunctionalTestCase):
         mails = getMails()
         self.assertEqual(len(mails), 2)
         self.checkToANDSubj(mails, to="owner@test.com", subj="[PREFIX] New comment added")
-        self.checkToANDSubj(mails, to="replier1@test.com", subj='Your comment on "Test document" is now published')
+        self.checkToANDSubj(mails, to="replier1@test.com", subj='Your comment on Test document is now published')
 
     def test_Publish2ndReply(self):
         self.prepareRequest4Reply('replier1')
@@ -126,8 +126,8 @@ class TestNotificationRecipients(FunctionalTestCase):
         mails = getMails()
         self.assertEqual(len(mails), 3)
         self.checkToANDSubj(mails, to="owner@test.com", subj="[PREFIX] New comment added")
-        self.checkToANDSubj(mails, to="replier1@test.com", subj='Someone replied to your comment on "Test document"')
-        self.checkToANDSubj(mails, to="replier2@test.com", subj='Your comment on "Test document" is now published')
+        self.checkToANDSubj(mails, to="replier1@test.com", subj='Someone replied to your comment on Test document')
+        self.checkToANDSubj(mails, to="replier2@test.com", subj='Your comment on Test document is now published')
 
     def test_DeleteReply(self):
         self.prepareRequest4Reply('replier1')
@@ -139,7 +139,7 @@ class TestNotificationRecipients(FunctionalTestCase):
         reply.deleteDiscussion()
         mails = getMails()
         self.assertEqual(len(mails), 1)
-        self.checkToANDSubj(mails, to="replier1@test.com", subj='Your comment on "Test document" was not approved')
+        self.checkToANDSubj(mails, to="replier1@test.com", subj='Your comment on Test document was not approved')
 
 
 def test_suite():

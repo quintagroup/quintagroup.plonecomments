@@ -5,7 +5,7 @@
 
 <tal:new_comment define="obj nocall:options/obj" i18n:translate="publishedmail_new_comment_link">
 View new comment added to the following page ' <tal:x replace="obj/Title" i18n:name="title"/> ':
-<tal:x replace="obj/absolute_url" i18n:name="link"/>
+<tal:x replace="here/absolute_url" i18n:name="here_url"/>
 </tal:new_comment>
 
 --

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-05-29 14:53+0000\n"
+"POT-Creation-Date: 2009-06-05 17:02+0000\n"
 "PO-Revision-Date: 2006-12-29 11:01+0100\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Domain: plonecomments\n"
 "X-Is-Fallback-For: de-at de-li de-lu de-ch de-de\n"
 
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_publish_comment.py:37
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_publish_comment.py:48
 msgid "Comment published."
 msgstr "Kommentar veröffentlicht"
 
@@ -62,10 +62,10 @@ msgstr "Eine Antwort ist nicht möglich, da der Kommentar noch nicht veröffentl
 msgid "You must correctly enter the word."
 msgstr ""
 
-#. Default: "Please review new comment added to the following page \"${title}\": ${link}"
+#. Default: "Please review new comment added to the following page ' ${title} ': ${here_url}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/approve_comment_template.pt:10
 msgid "approvemail_new_comment_link"
-msgstr "Bitte schalten Sie den neuen Kommentar auf der Seite \" ${title} \" (${link} frei "
+msgstr "Bitte schalten Sie den neuen Kommentar auf der Seite ' ${title} ': ${here_url} frei "
 
 #. Default: "Enable Manager moderation"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:129
@@ -182,7 +182,7 @@ msgstr "qPloneComments Optionen"
 msgid "listingheader_comment"
 msgstr "Kommentar"
 
-#. Default: "Your comment on ${url} has been published. To see your comment, go to ${url}"
+#. Default: "Your comment on ${url} has been published. To see your comment, go to ${here_url}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/notify_comment_template.pt:12
 msgid "notifycomment_link"
 msgstr ""
@@ -192,7 +192,7 @@ msgstr ""
 msgid "notifyreject_link"
 msgstr ""
 
-#. Default: "View new comment added to the following page \"${title}\": ${link}"
+#. Default: "View new comment added to the following page ' ${title} ': ${here_url}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/published_comment_template.pt:8
 msgid "publishedmail_new_comment_link"
 msgstr ""
@@ -207,7 +207,7 @@ msgstr ""
 msgid "qPloneComments configuration changes saved."
 msgstr "qPloneComment Konfiguration gespeichert."
 
-#. Default: "Someone replied to your comment ${url} on ${here_url}. To read the response, go to ${url}."
+#. Default: "Someone replied to your comment on ${url}. To read the response, go to ${here_url}."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/reply_notify_template.pt:10
 msgid "replynotify_link"
 msgstr ""

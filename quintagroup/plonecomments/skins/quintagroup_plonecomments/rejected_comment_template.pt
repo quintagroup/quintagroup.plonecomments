@@ -9,7 +9,7 @@
 
 <tal:notify define="obj nocall:options/obj" 
        i18n:translate="notifyreject_link">
-       Your comment on <tal:x replace="obj/absolute_url" i18n:name="url"/> did not receive
+       Your comment on <tal:x replace="string:${obj/absolute_url}/view" i18n:name="url"/> did not receive
 approval. Please direct any questions or concerns to <tal:x replace="options/mfrom" i18n:name="mfrom"/>.
 </tal:notify>
 

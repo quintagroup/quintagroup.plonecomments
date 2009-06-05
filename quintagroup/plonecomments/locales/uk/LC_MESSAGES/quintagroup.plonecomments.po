@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: qPloneComments\n"
-"POT-Creation-Date: 2009-05-29 14:53+0000\n"
+"POT-Creation-Date: 2009-06-05 17:02+0000\n"
 "PO-Revision-Date: 2008-09-22 10:55+0300\n"
 "Last-Translator: Olha <olha.pelishok@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: Quintagroup Support <support@quintagroup.com>\n"
 "X-Rosetta-Export-Date: 2007-06-12 09:19+0000\n"
 
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_publish_comment.py:37
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_publish_comment.py:48
 msgid "Comment published."
 msgstr "Коментар опубліковано."
 
@@ -65,10 +65,10 @@ msgstr "Відповіати на неопубліковані коментар�
 msgid "You must correctly enter the word."
 msgstr ""
 
-#. Default: "Please review new comment added to the following page \"${title}\": ${link}"
+#. Default: "Please review new comment added to the following page ' ${title} ': ${here_url}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/approve_comment_template.pt:10
 msgid "approvemail_new_comment_link"
-msgstr "Будь-ласка, перегляньте новий коментар, доданий до сторінки \\\" ${title} \\\": ${link}"
+msgstr "Будь-ласка, перегляньте новий коментар, доданий до сторінки ' ${title} ': ${here_url}"
 
 #. Default: "Enable Manager moderation"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:129
@@ -185,20 +185,20 @@ msgstr "Опції налаштувань qPloneComments"
 msgid "listingheader_comment"
 msgstr "Коментар"
 
-#. Default: "Your comment on ${url} has been published. To see your comment, go to ${url}"
+#. Default: "Your comment on ${url} has been published. To see your comment, go to ${here_url}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/notify_comment_template.pt:12
 msgid "notifycomment_link"
-msgstr "Ваш коментар до ${url} опубліковано. Щоб переглянути його - зайдіть на ${url}"
+msgstr "Ваш коментар до ${url} опубліковано. Щоб переглянути його - зайдіть на ${here_url}"
 
 #. Default: "Your comment on ${url} did not receive approval. Please direct any questions or concerns to ${mfrom}."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/rejected_comment_template.pt:13
 msgid "notifyreject_link"
 msgstr "Ваш коментар до ${url} відхилено. Усі питання стосовно цього надсилайте на ${mfrom}."
 
-#. Default: "View new comment added to the following page \"${title}\": ${link}"
+#. Default: "View new comment added to the following page ' ${title} ': ${here_url}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/published_comment_template.pt:8
 msgid "publishedmail_new_comment_link"
-msgstr "Перегляньте коментар доданий до сторінки ' ${title} ': ${link}"
+msgstr "Перегляньте коментар доданий до сторінки ' ${title} ': ${here_url}"
 
 #. Default: "qPloneComments"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/profiles/default/controlpanel.xml
@@ -210,10 +210,10 @@ msgstr ""
 msgid "qPloneComments configuration changes saved."
 msgstr "Записано зміни конфігурації qPloneComments."
 
-#. Default: "Someone replied to your comment ${url} on ${here_url}. To read the response, go to ${url}."
+#. Default: "Someone replied to your comment on ${url}. To read the response, go to ${here_url}."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/reply_notify_template.pt:10
 msgid "replynotify_link"
-msgstr "Надійшла відповідь на ваш коментар ${url} до ${here_url}. Для перегляду  - перейдіть на ${url}."
+msgstr "Надійшла відповідь на ваш коментар до ${url}. Для перегляду  - перейдіть на ${here_url}."
 
 #. Default: "${organization_name} Support Team"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/reply_notify_template.pt:15
