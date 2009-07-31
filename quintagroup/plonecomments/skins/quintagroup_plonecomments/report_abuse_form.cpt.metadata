@@ -1,0 +1,9 @@
+[default]
+title=Reply to Comment
+
+[validators]
+validators = validate_report_abuse
+
+[actions]
+action.success = traverse_to:string:report_abuse
+action.failure = traverse_to:string:report_abuse_form

@@ -1,0 +1,214 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+    <body>
+
+        <metal:block fill-slot="top_slot"
+                    tal:define="dummy python:request.set('disable_border',1)" />
+
+        <metal:block fill-slot="sub" />
+
+        <div metal:fill-slot="main"
+            tal:define="errors options/state/getErrors;
+                        thread python:putils.getDiscussionThread(here);
+                        discussable python:thread[0];
+                        replies python:thread[1:];
+                        props_sheet here/portal_properties/qPloneComments;
+                        require_email python:props_sheet.getProperty('require_email')">
+
+            <tal:discussable define="template python:getattr(here, discussable.getLayout(), None);
+                                    macros template/macros | nothing;
+                                    main_macro macros/main | nothing;
+                                    showDiscussable python:main_macro;">
+
+                <div class="comment"
+                    tal:condition="showDiscussable"
+                    tal:define="here python:discussable">
+                    <div metal:use-macro="main_macro"/>
+                </div>
+            </tal:discussable>
+
+            <tal:thread tal:repeat="reply replies">
+                <tal:block tal:define="level repeat/reply/index">
+                    <div class="comment"
+                        tal:attributes="style python:'margin-left:'+str((int(level)+1)*2)+'em'">
+                    <h3>
+                        <tal:block replace="structure portal/discussionitem_icon.gif"/>
+                        <span tal:replace="reply/pretty_title_or_id">Comment title</span>
+                    </h3>
+                    <div class="documentByLine"
+                            tal:define="anonymous_creator python:reply.Creator()=='Anonymous User'">
+                        <span i18n:translate="label_comment_by">Posted by</span>
+                        <span tal:content="reply/Creator"
+                                tal:condition="not:anonymous_creator">Poster Name</span>
+                        <span i18n:translate="label_anonymous_user"
+                                tal:condition="anonymous_creator">Anonymous User</span>
+                        <span i18n:translate="label_commented_at">at</span>
+                        <span tal:replace="python:toLocalizedTime(reply.ModificationDate(),
+                                            long_format=1)">8/23/2001 12:40:44 PM</span>
+                    </div>
+                    <div class="commentBody"
+                            tal:content="structure reply/CookedBody">
+                            This is the body text of the comment.
+                    </div>
+                </div>
+
+                </tal:block>
+            </tal:thread>
+
+            <a name="discussion"></a>
+            <form name="edit_form"
+                class="enableAutoFocus"
+                method="post"
+                action="talkback"
+                tal:attributes="action string:$here_url/$template_id"
+                tal:define="isForAnonymous python:here.portal_properties.qPloneComments.getProperty('enable_anonymous_commenting', 0)">
+
+                <tal:set define="show_form python:True;
+                                comment_id context/id">
+                    <metal:macro define-macro="form"
+                            tal:define="isAjaxReportAbuseEnabled view/ajax_report_abuse_enabled|python:portal.portal_properties.qPloneComments.enable_ajax_report_abuse;
+                                        visible show_form|request/show_form|nothing;
+                                        portal_url portal_url|view/portal_url;
+                                        tabindex tabindex|request/tabindex|view/tabindex;
+                                        member member|request/member|view/member;">
+
+                        <span tal:define="email_from_address portal/email_from_address|view/email_from_address;
+                                            comment_id comment_id|request/comment_id"
+                            tal:attributes="style python:not visible and 'display: none' or '';
+                                            id string:span-reply-form-${comment_id}">
+
+                            <tal:if_not condition="not:email_from_address">
+                                <p class="documentDescription"
+                                i18n:translate="text_no_email_setup">
+                                    This site doesn't have a valid email setup, so you cannot use
+                                    the report abuse form. 
+                                </p>
+                            </tal:if_not>
+                            <tal:if condition="email_from_address">
+                                <form name="feedback_form"
+                                    method="post"
+                                    class="enableAutoFocus"
+                                    tal:attributes="action string:${here/absolute_url}/${template/id}"
+                                    tal:define="errors errors|request/errors|python:{}" >
+
+                                    <input type="hidden" name="comment_id" tal:attributes="value comment_id" />
+
+                                    <fieldset>
+                                        <h1 i18n:translate="heading_report_abuse_form">Report Abuse</h1>
+
+                                        <tal:feedbackForm condition="isAnon">
+                                            <input type="hidden" name="Creator" tal:condition="not:isAnon" tal:attributes="value member/getUserName" />
+
+                                            <div class="field"
+                                                tal:define="error errors/creator|nothing"
+                                                tal:attributes="class python:error and 'field error' or 'field'">
+                                                <label for="creator" i18n:translate="label_creator">
+                                                    Name
+                                                </label>
+                                                <span class="fieldRequired" title="Required"
+                                                        i18n:attributes="title title_required;"
+                                                        i18n:translate="label_required">(Required)</span>
+                                                <div class="formHelp" i18n:translate="help_creator">
+                                                    Please enter your full name
+                                                </div>
+                                                <div tal:content="error">Validation error output</div>
+                                                <input type="text"
+                                                        id="creator"
+                                                        name="creator"
+                                                        size="40"
+                                                        value=""
+                                                        tal:attributes="value request/creator|nothing"
+                                                        />
+                                            </div>
+                                            <div class="field"
+                                                tal:define="error errors/email|nothing"
+                                                tal:attributes="class python:error and 'field error' or 'field'">
+                                                <label for="email" i18n:translate="label_email">
+                                                    E-Mail
+                                                </label>
+                                                <span class="fieldRequired" title="Required"
+                                                        i18n:attributes="title title_required;"
+                                                        i18n:translate="label_required">(Required)</span>
+                                                <div class="formHelp" i18n:translate="help_email">
+                                                    Please enter your e-mail address
+                                                </div>
+                                                <div tal:content="error">Validation error output</div>
+                                                <input type="text"
+                                                        id="email"
+                                                        name="email"
+                                                        size="40"
+                                                        value=""
+                                                        tal:attributes="value request/email|nothing"
+                                                        />
+                                            </div>
+                                        </tal:feedbackForm>
+                                        <tal:feedbackForm condition="not:isAnon" 
+                                                        define="fullname python:request.get('fullname', member.getProperty('fullname', ''));
+                                                                email python:request.get('email', member.getProperty('email',''));">
+                                            <input type="hidden" name="sender_fullname" value="fullname" tal:attributes="value fullname" />
+                                            <input type="hidden" name="email" value="email" tal:attributes="value email" />
+                                        </tal:feedbackForm>
+                                        <div class="field"
+                                            tal:define="error errors/message|nothing"
+                                            tal:attributes="class python:error and 'field error' or 'field'">
+                                            <label for="message" i18n:translate="label_message">
+                                                Description
+                                            </label>
+                                            <span class="fieldRequired" title="Required"
+                                                    i18n:attributes="title title_required;"
+                                                    i18n:translate="label_required">(Required)</span>
+
+                                            <div class="formHelp" i18n:translate="help_message">
+                                                Please state your reasons why you would like to report this comment as abusive.
+                                                Our administrator will be notified with your message.
+                                            </div>
+                                            <div tal:content="error">Validation error output</div>
+                                            <textarea name="message" id="message" rows="5" cols="25" tal:content="request/message|nothing"> </textarea>
+                                        </div>
+                                        <metal:macro define-macro="captcha">
+                                            <div tal:define="comment_id comment_id|request/comment_id" 
+                                                tal:attributes="id string:div-captcha-${comment_id}" 
+                                                tal:condition="nocall:here/captcha_widget|nothing">
+                                                <div metal:use-macro="here/captcha_widget/macros/captcha" />
+                                            </div>
+                                        </metal:macro>
+
+                                        <div class="formControls">
+                                            <input type="hidden" name="form.submitted" value="1" />
+
+                                            <input type="hidden" name="require_email:boolean" value=""
+                                                tal:attributes="value python:isAnon" />
+
+                                            <input 
+                                                value="Send"
+                                                type="submit"
+                                                tal:attributes="comment_id comment_id;
+                                                                class python:isAjaxReportAbuseEnabled  and 'context input-report-abuse-send' or 'context'"
+                                                i18n:attributes="value label_send;"
+                                                />
+
+                                            <input 
+                                                id="input-report-abuse-cancel"
+                                                class="destructive"
+                                                value="Cancel"
+                                                type="button"
+                                                tal:condition="isAjaxReportAbuseEnabled"
+                                                tal:attributes="onclick string:javascript:remove_abuse_report_form(${comment_id})"
+                                                i18n:attributes="value label_cancel;"
+                                                />
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </tal:if>
+                        </span>
+                    </metal:macro>
+                </tal:set>
+
+            </form>
+        </div>
+    </body>
+</html>

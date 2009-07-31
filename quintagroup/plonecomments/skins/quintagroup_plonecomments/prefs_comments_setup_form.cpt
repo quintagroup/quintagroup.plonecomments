@@ -114,6 +114,73 @@
                            for="isEnabledAnonymousCommenting">Allow comments from Anonymous users</label>
                 </div>
 
+                <div class="field"
+                     tal:define="property_id string:enable_authenticated_report_abuse;
+                                 isEnabledReportAbuse python:props_sheet.getProperty(property_id, False);"
+                     tal:condition="python:props_sheet.hasProperty(property_id)">
+
+                    <input type="checkbox" 
+                           class="noborder"
+                           name="isEnabledReportAbuse"
+                           id="isEnabledReportAbuse"
+                           tabindex =""
+                           tal:attributes="name property_id;
+                                           value isEnabledReportAbuse;
+                                           checked python:test(isEnabledReportAbuse, 'True', '');
+                                           tabindex tabindex/next;"/>
+
+                    <label i18n:translate="label_enable_report_abuse"
+                           for="isEnabledReportAbuse">Enable authenticated users to report abusive comments</label>
+                </div>
+
+                <div class="field"
+                     tal:define="property_id string:enable_anonymous_report_abuse;
+                                 isEnabledAnonymousReportAbuse python:props_sheet.getProperty(property_id, False);"
+                     tal:condition="python:props_sheet.hasProperty(property_id)">
+
+                    <input type="checkbox" 
+                           class="noborder"
+                           name="isEnabledAnonymousReportAbuse"
+                           id="isEnabledAnonymousReportAbuse"
+                           tabindex =""
+                           tal:attributes="name property_id;
+                                           value isEnabledAnonymousReportAbuse;
+                                           checked python:test(isEnabledAnonymousReportAbuse, 'True', '');
+                                           tabindex tabindex/next;"/>
+
+                    <label i18n:translate="label_enable_anonymous_report_abuse"
+                           for="isEnabledAnonymousReportAbuse">Enable anonymous users to report abusive comments</label>
+
+                    <div class="formHelp" id="anonymous_report_abuse_help"
+                         i18n:translate="help_enable_anonymous_report_abuse">
+                        This setting will allow ALL users, including non logged in users to report abusive comments.
+                    </div>
+                </div>
+
+                <div class="field"
+                     tal:define="property_id string:enable_ajax_report_abuse;
+                                 isEnabledAjaxReportAbuse python:props_sheet.getProperty(property_id, False);"
+                     tal:condition="python:props_sheet.hasProperty(property_id)">
+
+                    <input type="checkbox" 
+                           class="noborder"
+                           name="isEnabledAjaxReportAbuse"
+                           id="isEnabledAjaxReportAbuse"
+                           tabindex =""
+                           tal:attributes="name property_id;
+                                           value isEnabledAjaxReportAbuse;
+                                           checked python:test(isEnabledAjaxReportAbuse, 'True', '');
+                                           tabindex tabindex/next;"/>
+
+                    <label i18n:translate="label_enable_ajax_report_abuse"
+                           for="isEnabledAjaxReportAbuse">Enable AJAX powered abuse reports</label>
+
+                    <div class="formHelp" id="ajax_report_abuse_help"
+                         i18n:translate="help_enable_ajax_report_abuse">
+                        This setting will only take effect if abuse reports are enabled.
+                    </div>
+                </div>
+
 		<div class="field"
 		     tal:define="isEnabledManagerModeration python:checkPermission('Moderate Discussion', here);">
 

@@ -5,17 +5,18 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="quintagroup.plonecomments">
 
-  <five:registerPackage package="." />
-  <i18n:registerTranslations directory="locales" />
+    <five:registerPackage package="." />
 
-  <include package="plone.browserlayer" />
-  <include package=".browser" />
-  <include file="skins.zcml" />
-  <include file="profiles.zcml" />
+    <include package="plone.browserlayer" />
+    <include package=".browser" />
+    <include file="skins.zcml" />
+    <include file="profiles.zcml" />
 
-  <permission
-      id="moderate.discussion"
-      title="Moderate Discussion"
-      />
+    <i18n:registerTranslations directory="locales" />
+
+    <permission
+        id="moderate.discussion"
+        title="Moderate Discussion"
+        />
 
 </configure>

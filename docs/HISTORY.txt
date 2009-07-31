@@ -1,6 +1,13 @@
-=========
 Changelog
 =========
+
+
+4.0.4 (unreleased)
+==================
+
+- Added "report abuse" feature contributed by jcbrand.
+  [liebster]
+
 
 4.0.1 (2009-06-05)
 ==================

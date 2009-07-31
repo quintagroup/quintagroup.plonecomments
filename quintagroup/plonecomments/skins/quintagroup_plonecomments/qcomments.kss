@@ -1,0 +1,5 @@
+input.input-report-abuse-send:click {
+    evt-click-preventdefault: True;
+    action-server: kss_submit_abuse_report;
+    kss_submit_abuse_report-kssSubmitForm: currentForm();
+}

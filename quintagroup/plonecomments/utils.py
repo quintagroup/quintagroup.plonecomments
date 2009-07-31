@@ -1,5 +1,8 @@
+import smtplib
 from Products.CMFPlone import MessageFactory
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone import PloneMessageFactory as _
+from config import warning
 
 # Get apropriate property from (propery_sheeet) configlet
 def getProp(self, prop_name, marker=None):
@@ -37,7 +40,9 @@ def manage_mails(reply, context, action):
                               'enable_reply_user_notification',
                               'enable_published_notification'),
                 'onDelete' :  ('enable_rejected_user_notification',),
-                'onApprove': ('enable_approve_notification',)}
+                'onApprove': ('enable_approve_notification',),
+                'onAnonymousReportAbuse': ('enable_anonymous_report_abuse',),
+                'onAuthenticatedReportAbuse': ('enable_authenticated_report_abuse')}
 
     if action == 'publishing':
         sendMails(props, actions, 'onPublish')
@@ -47,6 +52,13 @@ def manage_mails(reply, context, action):
 
     elif action == 'aproving':
         sendMails(props, actions, 'onApprove')
+
+    elif action == 'report_abuse':
+        pm = getToolByName(context, 'portal_membership')
+        if pm.isAnonymousUser():
+            sendMails(props, actions, 'onAnonymousReportAbuse')
+        else:
+            sendMails(props, actions, 'onAuthenticatedReportAbuse')
 
 def getMsg(context, template, args):
     return getattr(context, template)(**args)
@@ -162,17 +174,45 @@ def send_email(reply, context, state):
         else:
             args = {}
 
+    elif state in ('enable_authenticated_report_abuse', 'enable_anonymous_report_abuse'):
+        template = 'report_abuse_template'
+        user_email = getProp(context, "email_discussion_manager", None)
+        if user_email:
+            message = context.REQUEST.get('message')
+            comment_id = context.REQUEST.get('comment_id')
+            pd = context.portal_discussion
+            dl = pd.getDiscussionFor(context)
+            comment = dl._container.get(comment_id)
+            args = {'mto': user_email,
+                    'mfrom': admin_email,
+                    'obj': reply_parent,
+                    'message':message,
+                    'organization_name': organization_name,
+                    'name': creator_name,
+                    'comment_id':comment_id,
+                    'comment_desc':comment.description,
+                    'comment_text':comment.text
+                    }
+            subject = '[%s] A comment on "%s" has been reported for abuse.' \
+                            % (organization_name, getParent(context).Title())
+        else:
+            args = {}
+
     if args:
         msg = getMsg(context, template, args)
         p_utils = context.plone_utils
         site_props = context.portal_properties.site_properties
         host = p_utils.getMailHost()
-        host.secureSend(msg, user_email, admin_email,
-                        subject = subject,
-                        subtype = 'plain',
-                        debug = False,
-                        charset = site_props.getProperty('default_charset', 'utf-8'),
-                        From = admin_email)
+        try:
+            host.secureSend(msg, user_email, admin_email,
+                            subject = subject,
+                            subtype = 'plain',
+                            debug = False,
+                            charset = site_props.getProperty('default_charset', 'utf-8'),
+                            From = admin_email)
+        except smtplib.SMTPRecipientsRefused:
+            log.error(_('SMTPRecipientsRefused: Could not send the email'
+            'notification. Have you configured an email server for Plone?'))
 
 def setStatusMsg(state, context, msg):
     context.plone_utils.addPortalMessage(msg)

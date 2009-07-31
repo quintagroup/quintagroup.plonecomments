@@ -1,0 +1,42 @@
+<div i18n:domain="quintagroup.plonecomments"
+     tal:omit-tag=""
+     tal:define="charset here/portal_properties/site_properties/default_charset|string:utf-8;
+                 dummy python:request.RESPONSE.setHeader('Content-Type', 'text/html;;charset=%s' % charset);
+                 organization_name options/organization_name;
+                 obj nocall:options/obj;
+                 comment_id nocall:options/comment_id|nothing;
+                 comment_desc nocall:options/comment_desc|nothing;
+                 comment_text nocall:options/comment_text|nothing;
+                 message options/message;">
+
+<tal:x replace="options/name"/>,
+<tal:notify define="obj nocall:options/obj" 
+            i18n:translate="notifyreject_link">
+
+A comment '<tal:x replace="string:${obj/absolute_url}/#${comment_id}" i18n:name="url"/>' has been reported as abusive.
+
+
+<tal:render_if condition="python:comment_desc and comment_text">
+The comment:
+------------
+<tal:message replace="comment_desc"/>
+
+<tal:message replace="comment_text"/>
+
+
+</tal:render_if>
+
+The abuse report:
+-----------------
+<tal:message replace="message"/>
+
+
+</tal:notify>
+--
+<tal:signature i18n:translate="signature"> 
+    <tal:organization_name condition="organization_name" 
+                           replace="string:$organization_name" 
+                           i18n:name="organization_name"/>
+    Support Team
+</tal:signature>
+</div>

@@ -2,15 +2,19 @@ import urllib, md5
 
 from Acquisition import aq_inner
 from AccessControl import getSecurityManager
-from Products.CMFPlone.utils import getToolByName
 
+from Products.CMFPlone.utils import IndexIterator
+from Products.CMFPlone.utils import getToolByName
+from Products.CMFFormController.ControllerState import ControllerState
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from quintagroup.plonecomments.utils import manage_mails
+
 from plone.app.layout.viewlets import comments
+from plone.app.kss.plonekssview import PloneKSSView
 
 class CommentsViewlet(comments.CommentsViewlet):
     """A custom version of the comments viewlet
     """
-
     render = ViewPageTemplateFile('comments.pt')
 
     def is_moderation_enabled(self):
@@ -51,3 +55,110 @@ class CommentsViewlet(comments.CommentsViewlet):
             'default':default, 'size':str(size)})
 
         return gravatar_url
+
+    def authenticated_report_abuse_enabled(self):
+        """ """
+        portal_properties = getToolByName(self.context, 'portal_properties')
+        prop_sheet = portal_properties['qPloneComments']
+        value =  prop_sheet.getProperty('enable_authenticated_report_abuse', False)
+        return value
+
+    def anonymous_report_abuse_enabled(self):
+        """ """
+        portal_properties = getToolByName(self.context, 'portal_properties')
+        prop_sheet = portal_properties['qPloneComments']
+        value =  prop_sheet.getProperty('enable_anonymous_report_abuse', False)
+        return value
+
+    def ajax_report_abuse_enabled(self):
+        """ """
+        portal_properties = getToolByName(self.context, 'portal_properties')
+        prop_sheet = portal_properties['qPloneComments']
+        value =  prop_sheet.getProperty('enable_ajax_report_abuse', False)
+        return value
+
+    def email_from_address(self):
+        """ """
+        portal_url = getToolByName(self.context, 'portal_url')
+        portal = portal_url.getPortalObject()
+        return portal.email_from_address
+
+    def member(self):
+        """ """
+        pm = getToolByName(self.context, 'portal_membership')
+        return pm.getAuthenticatedMember()
+
+    def tabindex(self):
+        """ Needed for BBB, tabindex has been deprecated.
+        """
+        return IndexIterator()
+
+    def portal_url(self):
+        """ """
+        return getToolByName(self.context, 'portal_url')
+
+
+
+class CommentsKSS(PloneKSSView):
+    """ Operations on the report abuse form using KSS.
+    """   
+
+    def submit_abuse_report(self):
+        """ Send an email with the abuse report message and hide abuse report form.
+        """
+        errors = {}
+        context = aq_inner(self.context)
+        request = context.REQUEST
+        portal = getToolByName(self.context, 'portal_url').getPortalObject()
+        if hasattr(context, 'captcha_validator'):
+            dummy_controller_state = ControllerState(
+                                            id='comments.pt',
+                                            context=context,
+                                            button='submit',
+                                            status='success',
+                                            errors={},
+                                            next_action=None,)
+            # get the form controller
+            controller = portal.portal_form_controller
+            # send the validate script to the form controller with the dummy state object
+            controller_state = controller.validate(dummy_controller_state, request, ['captcha_validator',])
+            errors.update(controller_state.errors)
+
+        message = request.get('message')
+        if not message:
+            errors.update({'message': 'Please provide a message'})
+
+        mtool = getToolByName(self.context, "portal_membership")
+        member = mtool.getAuthenticatedMember()
+        comment_id = self.context.request.get('comment_id')
+        ksscore = self.getCommandSet('core')
+        if errors:
+            html = self.macroContent('context/report_abuse_form/macros/form',
+                                     errors=errors,
+                                     show_form=True,
+                                     tabindex=IndexIterator(),
+                                     member=member,
+                                     **request.form)
+            node = ksscore.getHtmlIdSelector('span-reply-form-holder-%s' % comment_id)
+            ksscore.replaceInnerHTML(node,  html)
+            return self.render()
+
+        # report_abuse(context, context, message, comment)
+        manage_mails(context, self.context, 'report_abuse')
+
+        html = self.macroContent('context/report_abuse_form/macros/form',
+                                 tabindex=IndexIterator(),
+                                 member=member,
+                                 **request.form)
+        node = ksscore.getHtmlIdSelector('span-reply-form-holder-%s' % comment_id)
+        html = '<br/><span style="color:red">You have reported this comment for abuse.</span>'
+        self.commands.addCommand('remove_abuse_report_form', 
+                                 node, 
+                                 comment_id=comment_id, 
+                                 html=html)
+
+        node = ksscore.getHtmlIdSelector('div-captcha-%s' % comment_id)
+        html = self.macroContent('context/report_abuse_form/macros/captcha',
+                                 **request.form)
+        ksscore.replaceInnerHTML(node,  html)
+        return self.render()

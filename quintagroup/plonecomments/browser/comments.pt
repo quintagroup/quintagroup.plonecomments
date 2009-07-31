@@ -3,7 +3,11 @@
                    replies view/get_replies;
                    isAnon view/is_anonymous;
                    ifModerate view/is_moderation_enabled;
-                   isModerationAllowed view/can_moderate"
+                   isModerationAllowed view/can_moderate;
+                   isAuthenticatedReportAbuseEnabled view/authenticated_report_abuse_enabled;
+                   isAjaxReportAbuseEnabled view/ajax_report_abuse_enabled;
+                   isAnonymousReportAbuseEnabled view/anonymous_report_abuse_enabled;
+                   isReportAbuseEnabled python:isAnonymousReportAbuseEnabled or not isAnon and isAuthenticatedReportAbuseEnabled"
                    i18n:domain="plone">
     <div class="discussion"
          tal:condition="python:replies or (userHasReplyPermission and isDiscussionAllowed) or (isAnon and not userHasReplyPermission and isDiscussionAllowed)">
@@ -35,6 +39,7 @@
                 tal:condition="python:isModerationAllowed or isPublished"
                 tal:define="indent python:reply_dict['depth']*2;
                             reply python:reply_dict['object'];
+                            comment_id python:reply_dict['object'].id;
                             isPublished python:reply.review_state=='published';"
                 tal:attributes="style string:margin-left:${indent}em;">
 
@@ -89,6 +94,28 @@
                            i18n:attributes="value label_remove;"
                            />
                 </form>
+                <tal:if tal:condition="python:isReportAbuseEnabled and isPublished">
+                    <form class="report_abuse"
+                          name="report_abuse"
+                          method="post"
+                          style="display: inline;"
+                          tal:attributes="action string:${reply/absolute_url}/report_abuse_form#discussion">
+                        <input type="hidden" name="comment_id" tal:attributes="value comment_id" />
+                        <input class="standalone"
+                            type="submit"
+                            value="Report Abuse"
+                            tal:define="onclick string:javascript:render_abuse_report_form(${comment_id})"
+                            tal:attributes="onclick python:isAjaxReportAbuseEnabled and onclick or '';
+                                            id string:input-render-abuse-cancel-${comment_id}"
+                            i18n:attributes="value label_report_abuse;"
+                            />
+                    </form>
+                    <span tal:attributes="id string:span-reply-form-holder-${comment_id}"
+                            tal:condition="isReportAbuseEnabled">
+                        <metal:macro use-macro="here/report_abuse_form/macros/form"/>
+                    </span>
+                    <span tal:attributes="id string:span-abuse-count-holder-${comment_id}"></span>
+                </tal:if>
                 <form name="publish_discussion"
                       action=""
                       method="post"
@@ -107,7 +134,6 @@
                      i18n:translate="text_no_add_reply"
                      i18n:domain="quintagroup.plonecomments"
                      tal:condition="not:isPublished">Comment must be approved before replies to comment accepted.</div>
-
             </div>
         </tal:getreplies>
     </div>
