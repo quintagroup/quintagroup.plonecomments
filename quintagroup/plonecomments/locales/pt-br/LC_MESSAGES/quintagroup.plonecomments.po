@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: qPloneComments\n"
-"POT-Creation-Date: 2009-07-31 16:11+0000\n"
+"POT-Creation-Date: 2009-07-31 17:42+0000\n"
 "PO-Revision-Date: 2008-07-18 03:51-0300\n"
 "Last-Translator: Érico Andrei <erico@simplesconsultoria.com.br>\n"
 "Language-Team: Simples Consultoria\n"
@@ -91,6 +91,11 @@ msgstr "Comentários recentes"
 msgid "heading_comments_setup"
 msgstr "Configurações do qPloneComments"
 
+#. Default: "Report Abuse"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse_form.cpt:102
+msgid "heading_report_abuse_form"
+msgstr ""
+
 #. Default: "The email address where comment notifications will be sent"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:209
 msgid "help_discussion-manager_email"
@@ -109,6 +114,11 @@ msgstr ""
 #. Default: "This setting will allow ALL users, including non logged in users to report abusive comments."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:154
 msgid "help_enable_anonymous_report_abuse"
+msgstr ""
+
+#. Default: "Please state your reasons why you would like to report this comment as abusive. Our administrator will be notified with your message."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse_form.cpt:166
+msgid "help_message"
 msgstr ""
 
 #. Default: "Tell us your name."
@@ -191,6 +201,11 @@ msgstr ""
 msgid "label_organization_name"
 msgstr "Prefixo do assunto do e-mail (nome do site)"
 
+#. Default: "Report Abuse"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/browser/comments.pt:105
+msgid "label_report_abuse"
+msgstr ""
+
 #. Default: "Require email from Anonymous commenters"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:93
 msgid "label_require_anonym_email"
@@ -255,6 +270,11 @@ msgstr "Equipe de suporte ${organization_name}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/viewThreadsAtBottom.pt:113
 msgid "text_no_add_reply"
 msgstr "O comentário deve ser aprovado antes de poder receber respostas."
+
+#. Default: "This site doesn't have a valid email setup, so you cannot use the report abuse form."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse_form.cpt:85
+msgid "text_no_email_setup"
+msgstr ""
 
 #. Default: "No new comments."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_form.cpt:49

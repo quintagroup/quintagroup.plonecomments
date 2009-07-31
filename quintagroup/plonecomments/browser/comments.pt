@@ -99,6 +99,7 @@
                           name="report_abuse"
                           method="post"
                           style="display: inline;"
+                          i18n:domain="quintagroup.plonecomments"
                           tal:attributes="action string:${reply/absolute_url}/report_abuse_form#discussion">
                         <input type="hidden" name="comment_id" tal:attributes="value comment_id" />
                         <input class="standalone"
