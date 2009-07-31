@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: qPloneComments\n"
-"POT-Creation-Date: 2009-06-05 17:02+0000\n"
+"POT-Creation-Date: 2009-07-31 16:11+0000\n"
 "PO-Revision-Date: 2008-09-22 10:55+0300\n"
 "Last-Translator: Olha <olha.pelishok@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -37,11 +37,11 @@ msgstr "Коментар(і) опубліковано."
 msgid "Currently, all comments require approval before being published. Please check back later."
 msgstr "Наразі коментарі очікують на опублікування. Завітайте сюди пізніше."
 
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:56
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:57
 msgid "Please correct the indicated errors."
 msgstr ""
 
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:45
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:46
 msgid "Please enter your name."
 msgstr "Введіть своє ім'я, будь-ласка."
 
@@ -53,6 +53,10 @@ msgstr "Будь-ласка, відзначте коментарі для под
 msgid "Please submit a valid e-mail address."
 msgstr "Будь-ласка, введіть дійсну електронну адресу."
 
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:34
+msgid "Please submit an email address."
+msgstr ""
+
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:32
 msgid "Please submit email."
 msgstr "Будь-ласка, введіть електронну адресу."
@@ -61,8 +65,16 @@ msgstr "Будь-ласка, введіть електронну адресу."
 msgid "Reply not allowed because the response is to a comment waiting to be approved. Please wait for the comment to be approved before replying."
 msgstr "Відповіати на неопубліковані коментарі заборонено. Зачекайте на затвердження коментаря перед тим, як відповідати."
 
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:50
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:214
+msgid "SMTPRecipientsRefused: Could not send the emailnotification. Have you configured an email server for Plone?"
+msgstr ""
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:51
 msgid "You must correctly enter the word."
+msgstr ""
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse.cpy:72
+msgid "Your abuse report has been sent."
 msgstr ""
 
 #. Default: "Please review new comment added to the following page ' ${title} ': ${here_url}"
@@ -71,7 +83,7 @@ msgid "approvemail_new_comment_link"
 msgstr "Будь-ласка, перегляньте новий коментар, доданий до сторінки ' ${title} ': ${here_url}"
 
 #. Default: "Enable Manager moderation"
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:129
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:196
 msgid "enable_manager_moderation"
 msgstr "Дозволити модерування уравляючому."
 
@@ -86,7 +98,7 @@ msgid "heading_comments_setup"
 msgstr "Налаштування qPloneComments"
 
 #. Default: "The email address where comment notifications will be sent"
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:142
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:209
 msgid "help_discussion-manager_email"
 msgstr "Електронна адреса, на яку буде надіслано повідомлення про нові коментарі."
 
@@ -95,13 +107,23 @@ msgstr "Електронна адреса, на яку буде надіслан
 msgid "help_email"
 msgstr ""
 
+#. Default: "This setting will only take effect if abuse reports are enabled."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:178
+msgid "help_enable_ajax_report_abuse"
+msgstr ""
+
+#. Default: "This setting will allow ALL users, including non logged in users to report abusive comments."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:154
+msgid "help_enable_anonymous_report_abuse"
+msgstr ""
+
 #. Default: "Tell us your name."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_reply_form.cpt:103
 msgid "help_name"
 msgstr "Буль-ласка, вкажіть своє ім'я."
 
 #. Default: "You can change notification message templates by customizing 'approve_comment_template' and 'published_comment_template' in the qplonecomments skin."
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:165
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:232
 msgid "help_organization_name"
 msgstr "Ви можете поміняти шаблон повідомлення змінюючи 'approve_comment_template' та 'published_comment_template' з шару qplonecomments в шкірах."
 
@@ -121,17 +143,27 @@ msgid "label_configure"
 msgstr "Налаштування qPloneComments"
 
 #. Default: "Send comments notification emails to:"
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:140
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:207
 msgid "label_discussion-manager_email"
 msgstr "Надсилати повідомлення по коментарях на електронну адресу:"
 
+#. Default: "Enable AJAX powered abuse reports"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:175
+msgid "label_enable_ajax_report_abuse"
+msgstr ""
+
+#. Default: "Enable anonymous users to report abusive comments"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:151
+msgid "label_enable_anonymous_report_abuse"
+msgstr ""
+
 #. Default: "Notify Discussion Manager of new comments."
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:221
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:288
 msgid "label_enable_approve_notification"
 msgstr "Повідомляти управляючого дискусіями (Discussion Manager) про нові коментарі."
 
 #. Default: "Notify Commenter when comment is published."
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:240
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:307
 msgid "label_enable_approve_user_notification"
 msgstr "Повідомляти автора про опублікування його коментаря."
 
@@ -141,22 +173,27 @@ msgid "label_enable_moderation"
 msgstr "Увімкнути модерування."
 
 #. Default: "Notify Document Owner of new comments on their documents."
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:202
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:269
 msgid "label_enable_published_notification"
 msgstr "Повідомляти автора документа про нові коментарі."
 
 #. Default: "Enable Commentator notification on comment was rejected."
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:259
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:326
 msgid "label_enable_reject_notification"
 msgstr "Повідомляти автора про відхилення його коментаря."
 
 #. Default: "Notify Commenter when their comment receives a reply"
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:279
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:346
 msgid "label_enable_reply_notification"
 msgstr "Повідомляти автора про відповідь на його коментар."
 
+#. Default: "Enable authenticated users to report abusive comments"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:132
+msgid "label_enable_report_abuse"
+msgstr ""
+
 #. Default: "Email subject prefix (organization name)"
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:163
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:230
 msgid "label_organization_name"
 msgstr "Префікс заголовка електронних листів (назва організації)"
 
@@ -166,7 +203,7 @@ msgid "label_require_anonym_email"
 msgstr "Вимагати електронну адресу від Анонімного користувача."
 
 #. Default: "Email Notification Options"
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:185
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:252
 msgid "legend_qpc_notification_legend"
 msgstr "Налаштування інформування"
 
@@ -221,7 +258,7 @@ msgid "signature"
 msgstr "Команда підтримки ${organization_name}."
 
 #. Default: "Comment must be approved before replies to comment accepted."
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/browser/comments.pt:106
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/viewThreadsAtBottom.pt:113
 msgid "text_no_add_reply"
 msgstr "Незатверджений коментар коментувати неможна."
 

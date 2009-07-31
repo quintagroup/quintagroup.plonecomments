@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-06-05 17:02+0000\n"
+"POT-Creation-Date: 2009-07-31 16:11+0000\n"
 "PO-Revision-Date: 2006-12-29 11:01+0100\n"
 "Last-Translator: Kees Hink\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,11 +33,11 @@ msgstr ""
 msgid "Currently, all comments require approval before being published. Please check back later."
 msgstr ""
 
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:56
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:57
 msgid "Please correct the indicated errors."
 msgstr "Verbeter de aangegeven fouten."
 
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:45
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:46
 msgid "Please enter your name."
 msgstr ""
 
@@ -49,6 +49,10 @@ msgstr ""
 msgid "Please submit a valid e-mail address."
 msgstr ""
 
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:34
+msgid "Please submit an email address."
+msgstr ""
+
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:32
 msgid "Please submit email."
 msgstr ""
@@ -57,8 +61,16 @@ msgstr ""
 msgid "Reply not allowed because the response is to a comment waiting to be approved. Please wait for the comment to be approved before replying."
 msgstr ""
 
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:50
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:214
+msgid "SMTPRecipientsRefused: Could not send the emailnotification. Have you configured an email server for Plone?"
+msgstr ""
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:51
 msgid "You must correctly enter the word."
+msgstr ""
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse.cpy:72
+msgid "Your abuse report has been sent."
 msgstr ""
 
 #. Default: "Please review new comment added to the following page ' ${title} ': ${here_url}"
@@ -67,7 +79,7 @@ msgid "approvemail_new_comment_link"
 msgstr "Bekijk alstublieft het commentaar op de volgende pagina ' ${title} ': ${here_url} "
 
 #. Default: "Enable Manager moderation"
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:129
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:196
 msgid "enable_manager_moderation"
 msgstr "Beoordelen door beheerder aanzetten"
 
@@ -82,7 +94,7 @@ msgid "heading_comments_setup"
 msgstr "Plone Opmerkingen instellen"
 
 #. Default: "The email address where comment notifications will be sent"
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:142
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:209
 msgid "help_discussion-manager_email"
 msgstr "Het e-mailadres waarheen kennisgevingen van opmerkingen worden verstuurd"
 
@@ -91,13 +103,23 @@ msgstr "Het e-mailadres waarheen kennisgevingen van opmerkingen worden verstuurd
 msgid "help_email"
 msgstr "Vul uw e-mailadres in."
 
+#. Default: "This setting will only take effect if abuse reports are enabled."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:178
+msgid "help_enable_ajax_report_abuse"
+msgstr ""
+
+#. Default: "This setting will allow ALL users, including non logged in users to report abusive comments."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:154
+msgid "help_enable_anonymous_report_abuse"
+msgstr ""
+
 #. Default: "Tell us your name."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_reply_form.cpt:103
 msgid "help_name"
 msgstr "Vertel ons hoe u heet."
 
 #. Default: "You can change notification message templates by customizing 'approve_comment_template' and 'published_comment_template' in the qplonecomments skin."
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:165
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:232
 msgid "help_organization_name"
 msgstr "U kunt de e-mails die als kennisgeving worden verstuurd aanpassen door de templates 'approve_comment_template' en 'published_comment_template' te wijzigen in de qplonecomments skin."
 
@@ -117,17 +139,27 @@ msgid "label_configure"
 msgstr "qPloneComments instellen"
 
 #. Default: "Send comments notification emails to:"
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:140
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:207
 msgid "label_discussion-manager_email"
 msgstr "Kennisgevingen over opmerkingen sturen aan:"
 
+#. Default: "Enable AJAX powered abuse reports"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:175
+msgid "label_enable_ajax_report_abuse"
+msgstr ""
+
+#. Default: "Enable anonymous users to report abusive comments"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:151
+msgid "label_enable_anonymous_report_abuse"
+msgstr ""
+
 #. Default: "Notify Discussion Manager of new comments."
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:221
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:288
 msgid "label_enable_approve_notification"
 msgstr "Discussiebeheerder inlichten over nieuwe opmerkingen."
 
 #. Default: "Notify Commenter when comment is published."
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:240
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:307
 msgid "label_enable_approve_user_notification"
 msgstr "Inzender berichten wanneer opmerking is gepubliceerd."
 
@@ -137,22 +169,27 @@ msgid "label_enable_moderation"
 msgstr "Beoordelen van opmerkingen aanzetten."
 
 #. Default: "Notify Document Owner of new comments on their documents."
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:202
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:269
 msgid "label_enable_published_notification"
 msgstr "Kennisgeving van nieuwe opmerking versturen aan eigenaar van document."
 
 #. Default: "Enable Commentator notification on comment was rejected."
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:259
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:326
 msgid "label_enable_reject_notification"
 msgstr "Inzender berichten van geweigerde opmerking."
 
 #. Default: "Notify Commenter when their comment receives a reply"
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:279
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:346
 msgid "label_enable_reply_notification"
 msgstr "Inzenders berichten dat er een reactie is op hun opmerking."
 
+#. Default: "Enable authenticated users to report abusive comments"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:132
+msgid "label_enable_report_abuse"
+msgstr ""
+
 #. Default: "Email subject prefix (organization name)"
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:163
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:230
 msgid "label_organization_name"
 msgstr "Voorvoegsel in onderwerp van email (naam van organisatie)"
 
@@ -162,7 +199,7 @@ msgid "label_require_anonym_email"
 msgstr "Anonieme inzenders moeten hun e-mailadres opgeven."
 
 #. Default: "Email Notification Options"
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:185
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:252
 msgid "legend_qpc_notification_legend"
 msgstr "Instellingen voor kennisgevingen per e-mail."
 
@@ -217,7 +254,7 @@ msgid "signature"
 msgstr "${organization_name}"
 
 #. Default: "Comment must be approved before replies to comment accepted."
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/browser/comments.pt:106
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/viewThreadsAtBottom.pt:113
 msgid "text_no_add_reply"
 msgstr "Opmerkingen moeten worden goedgekeurd voordat reacties geaccepteerd worden."
 
