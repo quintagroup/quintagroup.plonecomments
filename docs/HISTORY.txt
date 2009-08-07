@@ -8,6 +8,12 @@ Changelog
 - Added "report abuse" feature contributed by jcbrand.
   [liebster]
 
+- Added edit comment functionality
+  [mylan]
+
+- Updated comments viewlet - now comment form present
+  without needing to push on 'Add comment' button.
+  [mylan]
 
 4.0.1 (2009-06-05)
 ==================

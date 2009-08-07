@@ -7,32 +7,13 @@
                    isAuthenticatedReportAbuseEnabled view/authenticated_report_abuse_enabled;
                    isAjaxReportAbuseEnabled view/ajax_report_abuse_enabled;
                    isAnonymousReportAbuseEnabled view/anonymous_report_abuse_enabled;
-                   isReportAbuseEnabled python:isAnonymousReportAbuseEnabled or not isAnon and isAuthenticatedReportAbuseEnabled"
+                   isReportAbuseEnabled python:isAnonymousReportAbuseEnabled or not isAnon and isAuthenticatedReportAbuseEnabled;
+                   foo context/@@plone/globalize;
+                   props_sheet here/portal_properties/qPloneComments;
+                   require_email python:props_sheet.getProperty('require_email');"
                    i18n:domain="plone">
     <div class="discussion"
          tal:condition="python:replies or (userHasReplyPermission and isDiscussionAllowed) or (isAnon and not userHasReplyPermission and isDiscussionAllowed)">
-        <form name="reply"
-              action=""
-              method="post"
-              tal:condition="python:userHasReplyPermission and isDiscussionAllowed"
-              tal:attributes="action string:${context/absolute_url}/discussion_reply_form#discussion">
-
-              <input class="standalone"
-                     style="margin-bottom: 1.25em;"
-                     type="submit"
-                     value="Add Comment"
-                     i18n:attributes="value label_add_comment;"
-                     />
-        </form>
-        <form tal:condition="python:isAnon and not userHasReplyPermission and isDiscussionAllowed"
-              tal:attributes="action view/login_action">
-            <input class="standalone"
-                   style="margin-bottom: 1.25em;"
-                   type="submit"
-                   value="Log in to add comments"
-                   i18n:attributes="value label_login_to_add_comments;"
-                   />
-        </form>
 
         <tal:getreplies repeat="reply_dict replies">
             <div class="comment" style=""
@@ -80,6 +61,18 @@
                            type="submit"
                            value="Reply"
                            i18n:attributes="value label_reply;"
+                           />
+                </form>
+                <form name="edit"
+                      action="discussion_edit_form"
+                      method="post"
+                      style="display: inline;"
+                      tal:attributes="action string:${reply/absolute_url}/discussion_edit_form"
+                      tal:condition="isModerationAllowed">
+                    <input class="standalone"
+                           type="submit"
+                           value="Edit"
+                           i18n:attributes="value label_edit;"
                            />
                 </form>
                 <form name="delete"
@@ -137,5 +130,22 @@
                      tal:condition="not:isPublished">Comment must be approved before replies to comment accepted.</div>
             </div>
         </tal:getreplies>
+
+        <!-- Start of Adding comment form-->
+        <tal:addcomment define="template_id string:discussion_reply_form;">
+            <metal:block metal:use-macro="here/discussion_reply_form/macros/add-comment-form" />
+        </tal:addcomment>
+        <!-- End of Adding comment form -->
+
+        <form tal:condition="python:isAnon and not userHasReplyPermission and isDiscussionAllowed"
+              tal:attributes="action view/login_action">
+            <input class="standalone"
+                   style="margin-bottom: 1.25em;"
+                   type="submit"
+                   value="Log in to add comments"
+                   i18n:attributes="value label_login_to_add_comments;"
+                   />
+        </form>
+
     </div>
 </tal:block>
