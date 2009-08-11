@@ -68,7 +68,9 @@ Links
 -----
 
 * Get latest development version from "SVN": http://svn.quintagroup.com/products/quintagroup.plonecomments/trunk
+
 * Watch Plone Comments Screencast (http://quintagroup.com/cms/screencasts/plone-comments) to learn how to install and set up Plone Comments on your buildout-based Plone instance for Plone 3.2 or above. You will also find one of the possible use cases of using Plone Comments Plone add-on included.
+
 * Watch Plone Comments Use Cases Screencast (http://quintagroup.com/cms/screencasts/plone-comments/use-cases) to learn about integration of Plone Comments with Plone Captchas, see 2 examples of possible use cases: anonymous and registered users commenting. 
 
 Requirements
@@ -89,14 +91,13 @@ Authors
 
 The product is developed and maintained by http://quintagroup.com team.
 
-Authors:
-
 * Volodymyr Cherepanyak
 * Andriy Mylenkyy
 * Mykola Kharechko
 * Vitaliy Stepanov
 
-Contributors:
+Contributors
+------------
  
 * Gerry Kirk: product translations improvement and proofreading
 * Dorneles Tremea: code cleanup and generic setup porting

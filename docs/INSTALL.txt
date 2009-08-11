@@ -3,41 +3,32 @@ Installation/Uninstallation
 ===========================
 
 Installation
-==============
+------------
 
 To install quintagroup.plonecomments into the global Python environment (or a workingenv),
 using a traditional Zope 2 instance, you can do this:
 
-- When you're reading this you have probably already run 
-  ``easy_install quintagroup.plonecomments``. Find out how to install setuptools
-  (and EasyInstall) here:
-  http://peak.telecommunity.com/DevCenter/EasyInstall
+* Copy ``quintagroup`` folder to the ``/path/to/instance/lib/python`` directory.
 
-- If you are using Zope 2.9 (not 2.10), get `pythonproducts`_ and install it 
-  via::
-
-    python setup.py install --home /path/to/instance
-
-into your Zope instance.
-
-- Create a file called ``quintagroup.plonecomments-configure.zcml`` in the
-  ``/path/to/instance/etc/package-includes`` directory.  The file
-  should only contain this::
+* Creare a file called ``quintagroup.plonecomments-configure.zcml`` in the
+  */path/to/instance/etc/package-includes* directory. The file should
+  only contain this::
 
     <include package="quintagroup.plonecomments" file="configure.zcml" />
 
-- Create a file called ``quintagroup.plonecomments-overrides.zcml`` in the
-  ``/path/to/instance/etc/package-includes`` directory.  The file
-  should only contain this::
+* Create a file called ``quintagroup.plonecomments-overrides.zcml`` into the   */path/to/instance/etc/package-includes* directory. The file should
+  only contain this::
 
-    <include package="quintagroup.plonecomments" file="overrides.zcml" />
+  <include package="quintagroup.plonecomments" file="overrides.zcml" />
 
-.. _pythonproducts: http://plone.org/products/pythonproducts
+* Restart the Zope server, for example, with the following command in the terminal::
+
+   $ ./bin/zopectl restart
 
 Alternatively, if you are using zc.buildout and the plone.recipe.zope2instance
 recipe to manage your project, you can do this:
 
-- Add ``quintagroup.plonecomments`` to the list of eggs to install, e.g.::
+* Add ``quintagroup.plonecomments`` to the list of eggs to install, e.g.::
 
     [buildout]
     ...
@@ -45,7 +36,7 @@ recipe to manage your project, you can do this:
         ...
         quintagroup.plonecomments
        
-- Tell the plone.recipe.zope2instance recipe to install a ZCML slug::
+* Tell the plone.recipe.zope2instance recipe to install a ZCML slug::
 
     [instance]
     recipe = plone.recipe.zope2instance
@@ -54,12 +45,17 @@ recipe to manage your project, you can do this:
         quintagroup.plonecomments
         quintagroup.plonecomments-overrides
       
-- Re-run buildout, e.g. with::
+* Re-run buildout, e.g. with::
 
     $ ./bin/buildout
 
-- Install quintagroup.plonecomments via ZMI portal_setup. Select ``quintagroup.plonecomments``
+* Restart the Zope server, for example, with the following command in the terminal::
+
+    $ ./bin/instance restart
+
+* Install quintagroup.plonecomments via ZMI portal_setup. Select ``quintagroup.plonecomments``
   from the list of available profiles and press *Import all steps*.
+
 
   **Atention**: If you are using a Plone version **before** 3.1 you need to install
   "plone.browserlayer":http://pypi.python.org/pypi/plone.browserlayer (which also
@@ -69,7 +65,7 @@ recipe to manage your project, you can do this:
 
 
 Uninstallation
-==============
+--------------
 
-- To uninstall quintagroup.plonecomments - select ``quintagroup.plonecomments uninstall``
+* To uninstall quintagroup.plonecomments - select ``quintagroup.plonecomments uninstall``
   profile from the list of available profiles and press *Import all steps*.

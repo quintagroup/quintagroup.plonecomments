@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-4.1.0 (unreleased)
+4.1.0 (2009-08-11)
 ==================
 
 - Added "report abuse" feature contributed by jcbrand.
