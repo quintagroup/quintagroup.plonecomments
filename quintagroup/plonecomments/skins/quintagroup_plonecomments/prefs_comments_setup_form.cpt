@@ -11,8 +11,7 @@
 
     <div metal:define-macro="main">
     <div class="configlet">
-    <div class="documentEditable"
-         tal:condition="python:checkPermission('Moderate Discussion', here)">
+    <div class="documentEditable">
 
     <!-- simulating views on the configure/comments pages until we have real objects. -->
     <ul class="contentViews">
@@ -24,8 +23,9 @@
 
         <li class="">
         <a href=""
-        tal:attributes="href string:prefs_recent_comments_form"
-        i18n:translate="label_comments">Recent comments moderation</a>
+           tal:condition="python:checkPermission('Moderate Discussion', here)"
+           tal:attributes="href string:prefs_recent_comments_form"
+           i18n:translate="label_comments">Recent comments moderation</a>
         </li>
     </ul>
 
@@ -182,6 +182,7 @@
                 </div>
 
 		<div class="field"
+             tal:condition="python:checkPermission('Moderate Discussion', here)"
 		     tal:define="isEnabledManagerModeration python:checkPermission('Moderate Discussion', here);">
 
                     <input type="checkbox" 

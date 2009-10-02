@@ -11,8 +11,7 @@
 
     <div metal:define-macro="main">
     <div class="configlet">
-    <div class="documentEditable"
-         tal:condition="python:checkPermission('Moderate Discussion', here)">
+    <div class="documentEditable">
     <!-- simulating views on the configure/comments pages until we have real objects. -->
     <ul class="contentViews">
         <li class="">
@@ -34,6 +33,7 @@
     <!-- End of tabs -->
 
     <div class="documentContent" metal:define-slot="prefs_content"
+         tal:condition="python:checkPermission('Moderate Discussion', here)"
          tal:define ="results python:here.portal_catalog.searchResults(portal_type='Discussion Item',review_state='private',sort_on='created',sort_order='reverse');">
 
         <h1 i18n:translate="heading_comments">Recent comments</h1>
