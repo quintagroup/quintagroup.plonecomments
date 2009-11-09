@@ -1,6 +1,11 @@
 Changelog
 =========
 
+4.1.1 (2009-11-09)
+==================
+
+- Hide 'Recent comments' tab and 'Enable Manager moderation'
+  checkbox for manager [crchemist]
 
 4.1.0 (2009-08-11)
 ==================
