@@ -4,7 +4,7 @@ Introduction
 Copyright (c) "Quintagroup": http://quintagroup.com, 2004-2009
 
 Plone Comments (quintagroup.plonecomments) is a Plone product developed 
-to improve the site managers and editors expirience with standard 
+to improve the site managers and editors experience with standard 
 commenting mechanism in Plone.
 
 
