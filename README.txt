@@ -11,7 +11,7 @@ commenting mechanism in Plone.
 Features
 --------
 
-Plone Comments alows to:
+Plone Comments allows to:
 
 * Notify admin about comment posted
 * Notify commentator about his comment aproval
@@ -46,8 +46,8 @@ commentors that pretend to be one person or other one, we use Boldness of
 name. The Comment author is in bold when posted by logged in member. The
 names provided when posting Anonymously are in plain text.
 
-Notification subject control allows to enter custom prefix to disctinct
-notifications comming from different sites.
+Notification subject control allows to enter custom prefix to distinct
+notifications coming from different sites.
 
 
 Usage
