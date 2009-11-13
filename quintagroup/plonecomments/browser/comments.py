@@ -43,26 +43,26 @@ class CommentsViewlet(comments.CommentsViewlet):
         if creator and not creator=='Anonymous User':
             mtool = getToolByName(self.context, "portal_membership")
             member = mtool.getMemberById(creator)
+            portrait = mtool.getPersonalPortrait(member.getId())
+            portrait_url =  portrait.absolute_url()
             email = member and member.getProperty('email','') or ''
         else:
             email = reply.getProperty('email',d='')
         if not email:
             return default
 
-        size = 40
-        gravatar_url = "http://www.gravatar.com/avatar.php?"
-        # construct the url
-        gravatar_url += urllib.urlencode({'gravatar_id':md5.md5(email).hexdigest(), 
-            'default':member, 'size':str(size)})
-
-        try:
-    	    murl = '/portal_memberdata/portraits/'
-    	    gravatar_url=purl() + murl + member.getProperty('id','')
-	except: 
-	    gravatar_url += urllib.urlencode({'gravatar_id':md5.md5(email).hexdigest(),
-	         'default':member, 'size':str(size)})
-	                 
-        return gravatar_url
+        murl = '/portal_memberdata/portraits/'
+    	murl = purl() + murl + member.getId()
+	
+        if portrait_url == murl:
+            return portrait_url 	    
+	else: 
+            size = 40
+            gravatar_url = "http://www.gravatar.com/avatar.php?"
+            # construct the url
+            gravatar_url += urllib.urlencode({'gravatar_id':md5.md5(email).hexdigest(),
+                'default':default, 'size':str(size)})
+	    return gravatar_url
         
 
     def authenticated_report_abuse_enabled(self):
