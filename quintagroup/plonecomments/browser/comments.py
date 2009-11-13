@@ -35,6 +35,7 @@ class CommentsViewlet(comments.CommentsViewlet):
 
     def getGravatar(self, reply):
         purl = getToolByName(self.context, 'portal_url')
+        mtool = getToolByName(self.context, 'portal_membership')            
         default = purl() + '/defaultUser.gif' 
         email = ''
 
@@ -52,9 +53,17 @@ class CommentsViewlet(comments.CommentsViewlet):
         gravatar_url = "http://www.gravatar.com/avatar.php?"
         # construct the url
         gravatar_url += urllib.urlencode({'gravatar_id':md5.md5(email).hexdigest(), 
-            'default':default, 'size':str(size)})
+            'default':member, 'size':str(size)})
 
+        try:
+    	    murl = '/portal_memberdata/portraits/'
+    	    gravatar_url=purl() + murl + member.getProperty('id','')
+	except: 
+	    gravatar_url += urllib.urlencode({'gravatar_id':md5.md5(email).hexdigest(),
+	         'default':member, 'size':str(size)})
+	                 
         return gravatar_url
+        
 
     def authenticated_report_abuse_enabled(self):
         """ """
