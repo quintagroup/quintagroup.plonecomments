@@ -43,16 +43,24 @@ class CommentsViewlet(comments.CommentsViewlet):
         if creator and not creator=='Anonymous User':
             mtool = getToolByName(self.context, "portal_membership")
             member = mtool.getMemberById(creator)
-            portrait = mtool.getPersonalPortrait(member.getId())
-            portrait_url =  portrait.absolute_url()
+            #portrait = mtool.getPersonalPortrait(member.getId())
+            #portrait_url =  portrait.absolute_url()
             email = member and member.getProperty('email','') or ''
         else:
             email = reply.getProperty('email',d='')
         if not email:
             return default
 
+	try:
+	    memberId = member.getId()
+	    portrait = mtool.getPersonalPortrait(member.getId())
+	    portrait_url =  portrait.absolute_url()
+	except:
+	    memberId = 'Anonimous User'
+	            
+
         murl = '/portal_memberdata/portraits/'
-    	murl = purl() + murl + member.getId()
+    	murl = purl() + murl + memberId
 	
         if portrait_url == murl:
             return portrait_url 	    
