@@ -6,7 +6,8 @@ from helperNotify import *
 from email.Header import Header
 
 from Products.CMFCore.permissions import ManagePortal, ReplyToItem
-
+import base64
+from email import message_from_string
 from quintagroup.plonecomments.utils import getMsg
 from base import getToolByName, FunctionalTestCase
 from config import *
@@ -174,9 +175,9 @@ class TestNotification(FunctionalTestCase):
         cleanOutputDir()
         reply.deleteDiscussion()
         mails = getMails()
-        regexp = re.compile("Subject:\s*(.*?)$",re.M)
-        subject = str(Header('Your comment on "Doc" was not approved', 'utf-8'))
-        self.failUnless([1 for m in mails if regexp.search(m).group(1) == subject],
+        subject = str(Header('Your comment on Doc was not approved', 'utf-8'))
+        subjs = [message_from_string(m)['Subject'] for m in mails]
+        self.failUnless([1 for m in subjs if m == subject],
             'No notification for rejecting comment.' % properties)
 
 
