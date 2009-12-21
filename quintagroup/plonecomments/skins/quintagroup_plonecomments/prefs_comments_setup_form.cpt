@@ -50,7 +50,7 @@
               enctype="multipart/form-data"
               tal:define ="pp here/portal_properties;
                            props_sheet python:getattr(pp, 'qPloneComments');"
-              tal:attributes="action string:${here/getId}/${template/getId}">
+              tal:attributes="action string:${here_url}/${template/getId}">
 
             <fieldset>
                 <legend i18n:translate="legend_setup_options">qPloneComments setup options</legend>
