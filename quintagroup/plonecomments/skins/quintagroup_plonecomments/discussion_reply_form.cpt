@@ -64,10 +64,10 @@
     <metal:block metal:define-macro="add-comment-form">
 
     <form name="edit_form"
-          class="enableAutoFocus"
           method="post"
           action="talkback"
-          tal:attributes="action string:$here_url/$template_id"
+          tal:attributes="action string:$here_url/$template_id;
+                          class python:'discussion_reply_form' in current_page_url and 'enableAutoFocus' or ''"
           tal:define="isForAnonymous python:here.portal_properties.qPloneComments.getProperty('enable_anonymous_commenting', 0)">
 
         <fieldset>
