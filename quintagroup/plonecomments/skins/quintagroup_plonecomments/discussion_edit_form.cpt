@@ -121,11 +121,6 @@
 
             </div>
 
-             <div tal:condition="nocall:here/captcha_widget|nothing"
-                  tal:omit-tag="">
-                <div metal:use-macro="here/captcha_widget/macros/captcha" />
-             </div>
-	     
             <div class="formControls">
 
                 <input class="context"
