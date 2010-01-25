@@ -182,7 +182,6 @@
                 </div>
 
 		<div class="field"
-             tal:condition="python:checkPermission('Moderate Discussion', here)"
 		     tal:define="isEnabledManagerModeration python:checkPermission('Moderate Discussion', here);">
 
                     <input type="checkbox" 
