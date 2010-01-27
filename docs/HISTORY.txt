@@ -1,6 +1,17 @@
 Changelog
 =========
 
+4.1.2 (2010-01-27)
+==================
+
+- Fixed auto focus in commenting form [kroman0]
+
+- Updated the image thumb logic [mylan]
+
+- 'Enable Manager moderation' condition rolled back [kroman0]
+
+- Captcha removed from comment edit form [kroman0]
+
 4.1.1 (2009-11-09)
 ==================
 
