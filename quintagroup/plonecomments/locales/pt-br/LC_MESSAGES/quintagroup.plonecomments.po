@@ -29,7 +29,7 @@ msgstr "Comentário(s) publicado(s)"
 
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_reply.cpy:96
 msgid "Currently, all comments require approval before being published. Please check back later."
-msgstr "Os comentários necessitam de aprovação pr�via a sua publicação. Por favor, acesse novamente mais tarde para verificar sua publicação."
+msgstr "Os comentários necessitam de aprovação prévia a sua publicação. Por favor, acesse novamente mais tarde para verificar sua publicação."
 
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:57
 msgid "Please correct the indicated errors."
