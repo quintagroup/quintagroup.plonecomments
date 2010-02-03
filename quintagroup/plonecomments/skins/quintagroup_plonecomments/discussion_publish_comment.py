@@ -46,6 +46,6 @@ anchor = reply.getId()
 transaction_note('Published discussion item')
 
 context.plone_utils.addPortalMessage(_(u'Comment published.'))
-target = '%s/%s#%s' % (rt, view, anchor)
+target = '%s#%s' % (rt, anchor)
 
 return context.REQUEST.RESPONSE.redirect(target)
