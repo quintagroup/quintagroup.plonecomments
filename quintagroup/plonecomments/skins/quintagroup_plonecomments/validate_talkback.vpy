@@ -5,7 +5,7 @@
 ##bind script=script
 ##bind state=state
 ##bind subpath=traverse_subpath
-##parameters=subject='',body_text='', email='', require_email
+##parameters=subject='',body_text='', email='', require_email=False
 ##title=validates a discussion entry
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import MessageFactory
