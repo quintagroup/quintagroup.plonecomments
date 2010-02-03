@@ -4,6 +4,7 @@
     i18n:domain="quintagroup.plonecomments">
   <configlet title="qPloneComments" action_id="prefs_comments_setup_form"
      appId="qPloneComments" category="Products" condition_expr=""
+     icon_expr="string:${portal_url}/discussionitem_icon.gif"
      url_expr="string:${portal_url}/prefs_comments_setup_form"
      visible="True" i18n:attributes="title">
     <permission>Manage portal</permission>
