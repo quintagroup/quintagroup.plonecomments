@@ -11,25 +11,21 @@
 
 <tal:x replace="options/name"/>,
 <tal:notify define="obj nocall:options/obj" 
-            i18n:translate="notifyreject_link">
+            i18n:translate="notifyabuse_link">
 
 A comment '<tal:x replace="string:${obj/absolute_url}/#${comment_id}" i18n:name="url"/>' has been reported as abusive.
 
 
-<tal:render_if condition="python:comment_desc and comment_text">
 The comment:
 ------------
-<tal:message replace="comment_desc"/>
+<tal:message replace="comment_desc" i18n:name="comment_desc"/>
 
-<tal:message replace="comment_text"/>
+<tal:message replace="comment_text" i18n:name="comment_text"/>
 
-
-</tal:render_if>
 
 The abuse report:
 -----------------
-<tal:message replace="message"/>
-
+<tal:message replace="message" i18n:name="report"/>
 
 </tal:notify>
 --

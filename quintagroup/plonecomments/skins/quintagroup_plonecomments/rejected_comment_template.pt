@@ -6,7 +6,6 @@
                  obj nocall:options/obj">
 
 <tal:x replace="options/name"/>,
-
 <tal:notify define="obj nocall:options/obj" 
        i18n:translate="notifyreject_link">
        Your comment on <tal:x replace="string:${obj/absolute_url}/view" i18n:name="url"/> did not receive
