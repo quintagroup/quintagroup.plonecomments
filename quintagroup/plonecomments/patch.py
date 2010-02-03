@@ -1,5 +1,8 @@
 from DateTime import DateTime
-from Globals import InitializeClass
+try:
+    from App.class_init import InitializeClass
+except ImportError:
+    from Globals import InitializeClass
 from AccessControl import Unauthorized
 from AccessControl import getSecurityManager
 from Products.CMFCore.utils import getToolByName

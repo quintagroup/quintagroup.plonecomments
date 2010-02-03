@@ -1,4 +1,8 @@
-import urllib, md5
+import urllib
+try:
+    import hashlib as md5
+except ImportError:
+    import md5
 
 from Acquisition import aq_inner
 from AccessControl import getSecurityManager
