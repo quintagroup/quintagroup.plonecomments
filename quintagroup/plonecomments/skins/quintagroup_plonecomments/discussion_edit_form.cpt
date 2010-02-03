@@ -11,6 +11,16 @@
 
 <div metal:fill-slot="main"
      tal:define="errors options/state/getErrors;
+                 putils context/plone_utils;
+                 toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                 portal context/@@plone_portal_state/portal;
+                 here_url context/@@plone_context_state/object_url;
+                 current_page_url context/@@plone_context_state/current_page_url;
+                 isAnon context/@@plone_portal_state/anonymous;
+                 member context/@@plone_portal_state/member;
+                 template_id template/getId;
+                 Iterator python:modules['Products.CMFPlone'].IndexIterator;
+                 tabindex python:Iterator(mainSlot=False);
                  thread python:putils.getDiscussionThread(here);
                  discussable python:thread[0];
                  replies python:thread[1:]">

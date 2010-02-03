@@ -13,6 +13,14 @@
 
 <div metal:fill-slot="main"
      tal:define="errors options/state/getErrors;
+                 putils context/plone_utils;
+                 toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                 portal context/@@plone_portal_state/portal;
+                 here_url context/@@plone_context_state/object_url;
+                 current_page_url context/@@plone_context_state/current_page_url;
+                 isAnon context/@@plone_portal_state/anonymous;
+                 member context/@@plone_portal_state/member;
+                 template_id template/getId;
                  thread python:putils.getDiscussionThread(here);
                  discussable python:thread[0];
                  replies python:thread[1:];
@@ -104,7 +112,7 @@
 
                     <div class="formHelp" i18n:translate="help_name"
                          i18n:domain="quintagroup.plonecomments">
-                        Tell us your name.
+                        Please enter your name.
                     </div>
 
                     <div tal:content="error">Validation error output</div>
@@ -134,7 +142,7 @@
 
                     <div class="formHelp" i18n:translate="help_email"
                          i18n:domain="quintagroup.plonecomments">
-                        Enter your e-mail address.
+                        Please enter your e-mail address.
                     </div>
 
                     <div tal:content="error">Validation error output</div>
@@ -151,9 +159,10 @@
                         Info
                     </dt>
                     <dd i18n:translate="legend_note_reply_anonymous">
-                        You are not logged in. You may optionally enter your
-                        username and password below. If you don't enter anything,
-                        this comment will be posted as 'Anonymous User'.
+                        Note: you are not logged in. You may optionally enter your
+                        username and password below. If you don't enter your
+                        username and password below, this comment will be posted as
+                        the 'Anonymous User'.
                     </dd>
                 </dl>
 

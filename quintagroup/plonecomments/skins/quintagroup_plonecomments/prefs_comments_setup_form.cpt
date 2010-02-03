@@ -7,7 +7,10 @@
 <body>
 
 <div metal:fill-slot="prefs_configlet_main"
-     tal:define="errors python:request.get('controller_state', None).getErrors();">
+     tal:define="here_url context/@@plone_context_state/object_url;
+                 Iterator python:modules['Products.CMFPlone'].IndexIterator;
+                 tabindex python:Iterator(mainSlot=False);
+                 errors python:request.get('controller_state', None).getErrors();">
 
     <div metal:define-macro="main">
     <div class="configlet">
@@ -21,9 +24,9 @@
         i18n:translate="label_configure">Configure qPloneComments</a>
         </li>
 
-        <li class="">
+        <li class=""
+            tal:condition="python:checkPermission('Moderate Discussion', here)">
         <a href=""
-           tal:condition="python:checkPermission('Moderate Discussion', here)"
            tal:attributes="href string:prefs_recent_comments_form"
            i18n:translate="label_comments">Recent comments moderation</a>
         </li>
