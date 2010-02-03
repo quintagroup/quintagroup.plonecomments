@@ -8,10 +8,13 @@ from quintagroup.plonecomments.utils import getMsg
 
 import re
 from helperNotify import *
+from email import message_from_string
 from email.Header import Header
 from base import getToolByName, FunctionalTestCase
 from common import *
 from config import *
+
+from Products.CMFPlone.tests.utils import MockMailHost
 
 USERS = {# Common Members
          'admin':{'passw': 'secret_admin', 'roles': ['Manager']},
@@ -37,7 +40,13 @@ class TestNotificationRecipients(FunctionalTestCase):
         self.request.form['subject'] = "Reply of '%s'" % self.request.form['Creator']
         self.request.form['body_text'] = "text of reply"
 
+    def beforeTearDown(self):
+        self.portal.MailHost = self.portal._original_MailHost
+
     def afterSetUp(self):
+        self.portal._original_MailHost = self.portal.MailHost
+        self.portal.MailHost = mailhost = MockMailHost('MailHost')
+
         self.loginAsPortalOwner()
 
         # VERY IMPORTANT to guarantee product skin's content visibility
@@ -78,21 +87,22 @@ class TestNotificationRecipients(FunctionalTestCase):
 
         # Create talkback for document and Prepare REQUEST
         self.discussion.getDiscussionFor(self.my_doc)
-        prepareMailSendTest()
+        #prepareMailSendTest()
 
     def checkToANDSubj(self, mails, to, subj):
-        messages = [m for m in mails if REXP_TO.search(m) and REXP_TO.search(m).group(1)==to]
+        messages = [str(m) for m in mails if REXP_TO.search(str(m)) and REXP_TO.search(str(m)).group(1)==to]
         self.failUnless(len(messages) > 0, "No message sent to '%s' recipient" % to)
         mangled = str(Header(subj, 'utf-8'))
         self.failUnless([1 for m in messages if REXP_SUBJ.search(m) and REXP_SUBJ.search(m).group(1)==mangled],\
              "There is no message for '%s' recipient with '%s' subject" % (to,subj))
 
     def test_Reply(self):
-        cleanOutputDir()
+        self.portal.MailHost.reset()
+        
         self.prepareRequest4Reply('replier1')
         self.my_doc.discussion_reply('A Reply for my_doc' ,'text of reply for my_doc')
 
-        mails = getMails()
+        mails = self.portal.MailHost.messages
         self.assertEqual(len(mails), 1)
         self.checkToANDSubj(mails, to="discussion.manager@test.com",
                             subj="[PREFIX] New comment awaits moderation")
@@ -102,10 +112,11 @@ class TestNotificationRecipients(FunctionalTestCase):
         self.my_doc.discussion_reply('A Reply for my_doc' ,'text of reply for my_doc')
         self.login('dm_admin')
         reply = self.discussion.getDiscussionFor(self.my_doc).getReplies()[0]
-        cleanOutputDir()
+        self.portal.MailHost.reset()
+        
 
         reply.discussion_publish_comment()
-        mails = getMails()
+        mails = self.portal.MailHost.messages
         self.assertEqual(len(mails), 2)
         self.checkToANDSubj(mails, to="owner@test.com", subj="[PREFIX] New comment added")
         self.checkToANDSubj(mails, to="replier1@test.com", subj='Your comment on Test document is now published')
@@ -120,10 +131,11 @@ class TestNotificationRecipients(FunctionalTestCase):
         reply.discussion_reply('A Reply for reply for my_doc' ,'text of reply on reply for my_doc')
         self.login('dm_admin')
         reply2 = self.discussion.getDiscussionFor(reply).getReplies()[0]
-        cleanOutputDir()
+        self.portal.MailHost.reset()
+        
 
         reply2.discussion_publish_comment()
-        mails = getMails()
+        mails = self.portal.MailHost.messages
         self.assertEqual(len(mails), 3)
         self.checkToANDSubj(mails, to="owner@test.com", subj="[PREFIX] New comment added")
         self.checkToANDSubj(mails, to="replier1@test.com", subj='Someone replied to your comment on Test document')
@@ -134,10 +146,11 @@ class TestNotificationRecipients(FunctionalTestCase):
         self.my_doc.discussion_reply('A Reply for my_doc' ,'text of reply for my_doc')
         self.login('dm_admin')
         reply = self.discussion.getDiscussionFor(self.my_doc).getReplies()[0]
-        cleanOutputDir()
+        self.portal.MailHost.reset()
+        
 
         reply.deleteDiscussion()
-        mails = getMails()
+        mails = self.portal.MailHost.messages
         self.assertEqual(len(mails), 1)
         self.checkToANDSubj(mails, to="replier1@test.com", subj='Your comment on Test document was not approved')
 
