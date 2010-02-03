@@ -38,11 +38,11 @@ def manage_mails(reply, context, action):
 
     actions = { 'onPublish': ('enable_approve_user_notification',
                               'enable_reply_user_notification',
-                              'enable_published_notification'),
-                'onDelete' :  ('enable_rejected_user_notification',),
+                              'enable_published_notification',),
+                'onDelete' : ('enable_rejected_user_notification',),
                 'onApprove': ('enable_approve_notification',),
                 'onAnonymousReportAbuse': ('enable_anonymous_report_abuse',),
-                'onAuthenticatedReportAbuse': ('enable_authenticated_report_abuse')}
+                'onAuthenticatedReportAbuse': ('enable_authenticated_report_abuse',),}
 
     if action == 'publishing':
         sendMails(props, actions, 'onPublish')
@@ -208,8 +208,7 @@ def send_email(reply, context, state):
                             subject = subject,
                             subtype = 'plain',
                             debug = False,
-                            charset = site_props.getProperty('default_charset', 'utf-8'),
-                            From = admin_email)
+                            charset = site_props.getProperty('default_charset', 'utf-8'))
         except smtplib.SMTPRecipientsRefused:
             log.error(_('SMTPRecipientsRefused: Could not send the email'
             'notification. Have you configured an email server for Plone?'))
