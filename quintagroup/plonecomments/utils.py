@@ -200,17 +200,17 @@ def send_email(reply, context, state):
 
     if args:
         msg = getMsg(context, template, args)
-        p_utils = context.plone_utils
-        site_props = context.portal_properties.site_properties
-        host = p_utils.getMailHost()
+        charset = context.portal_properties.site_properties.getProperty('default_charset', 'utf-8')
+        msg = msg.encode(charset)
+        host = context.plone_utils.getMailHost()
         try:
             host.secureSend(msg, user_email, admin_email,
                             subject = subject,
                             subtype = 'plain',
                             debug = False,
-                            charset = site_props.getProperty('default_charset', 'utf-8'))
+                            charset = charset)
         except smtplib.SMTPRecipientsRefused:
-            log.error(_('SMTPRecipientsRefused: Could not send the email'
+            log.error(_('SMTPRecipientsRefused: Could not send the email '
             'notification. Have you configured an email server for Plone?'))
 
 def setStatusMsg(state, context, msg):
