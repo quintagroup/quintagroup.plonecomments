@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: qPloneComments\n"
-"POT-Creation-Date: 2010-02-03 16:16+0000\n"
+"POT-Creation-Date: 2010-02-04 13:51+0000\n"
 "PO-Revision-Date: 2008-09-22 10:55+0300\n"
 "Last-Translator: Olha <olha.pelishok@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -42,13 +42,13 @@ msgstr "Коментар(і) опубліковано."
 msgid "Currently, all comments require approval before being published. Please check back later."
 msgstr "Наразі коментарі очікують на опублікування. Завітайте сюди пізніше."
 
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:57
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:56
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:59
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:58
 msgid "Please correct the indicated errors."
-msgstr ""
+msgstr "Будь-ласка, виправте вказані помилки."
 
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:46
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:45
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:48
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:47
 msgid "Please enter your name."
 msgstr "Введіть своє ім'я, будь-ласка."
 
@@ -57,16 +57,15 @@ msgstr "Введіть своє ім'я, будь-ласка."
 msgid "Please select items to be processed."
 msgstr "Будь-ласка, відзначте коментарі для подальшого опрацювання."
 
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:36
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_setup.vpy:23
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:34
 msgid "Please submit a valid e-mail address."
 msgstr "Будь-ласка, введіть дійсну електронну адресу."
 
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:34
-msgid "Please submit an email address."
-msgstr ""
-
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:32
-msgid "Please submit email."
+msgid "Please submit an email address."
 msgstr "Будь-ласка, введіть електронну адресу."
 
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_reply.vpy:14
@@ -74,11 +73,11 @@ msgid "Reply not allowed because the response is to a comment waiting to be appr
 msgstr "Відповіати на неопубліковані коментарі заборонено. Зачекайте на затвердження коментаря перед тим, як відповідати."
 
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:213
-msgid "SMTPRecipientsRefused: Could not send the emailnotification. Have you configured an email server for Plone?"
+msgid "SMTPRecipientsRefused: Could not send the email notification. Have you configured an email server for Plone?"
 msgstr "SMTPRecipientsRefused: Не вдалося відправити повідомлення по електронній пошті. Ви налаштували сервер електронної пошти для Plone?"
 
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:51
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:50
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:53
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:52
 msgid "You must correctly enter the word."
 msgstr "Ви повинні правильно ввести слово."
 
@@ -120,7 +119,7 @@ msgstr "Електронна адреса, на яку буде надіслан
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_reply_form.cpt:143
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse_form.cpt:146
 msgid "help_email"
-msgstr ""
+msgstr "Будь-ласка, введіть електронну адресу."
 
 #. Default: "This setting will only take effect if abuse reports are enabled."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:181
@@ -297,7 +296,7 @@ msgstr "Записано зміни конфігурації qPloneComments."
 #. Default: "Someone replied to your comment on ${url}. To read the response, go to ${here_url}."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/reply_notify_template.pt:10
 msgid "replynotify_link"
-msgstr "Надійшла відповідь на ваш коментар до ${url}. Для перегляду  - перейдіть на ${here_url}."
+msgstr "Надійшла відповідь на ваш коментар до ${url}. Для перегляду - перейдіть на ${here_url}."
 
 #. Default: "${organization_name} Support Team"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/approve_comment_template.pt:15
@@ -310,7 +309,7 @@ msgstr "Команда підтримки ${organization_name}."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/browser/comments.pt:129
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/viewThreadsAtBottom.pt:113
 msgid "text_no_add_reply"
-msgstr "Незатверджений коментар коментувати неможна."
+msgstr "Незатверджений коментар коментувати не можна."
 
 #. Default: "This site doesn't have a valid email setup, so you cannot use the report abuse form."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse_form.cpt:94

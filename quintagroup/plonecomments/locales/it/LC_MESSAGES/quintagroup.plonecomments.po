@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: qPloneComments\n"
-"POT-Creation-Date: 2010-02-03 16:16+0000\n"
+"POT-Creation-Date: 2010-02-04 13:51+0000\n"
 "PO-Revision-Date: 2007-04-19 20:21-0600\n"
 "Last-Translator: Yuri Carrer <yurj@alfa.it>\n"
 "Language-Team: Al ritmo del tam tam\n"
@@ -39,13 +39,13 @@ msgstr "Commento(i) pubblicati"
 msgid "Currently, all comments require approval before being published. Please check back later."
 msgstr "Tutti i commenti richiedono un'approvazione prima di essere pubblicati. Per favore controlla più tardi."
 
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:57
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:56
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:59
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:58
 msgid "Please correct the indicated errors."
 msgstr ""
 
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:46
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:45
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:48
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:47
 msgid "Please enter your name."
 msgstr "Per favore inserisci il tuo nome."
 
@@ -54,16 +54,15 @@ msgstr "Per favore inserisci il tuo nome."
 msgid "Please select items to be processed."
 msgstr ""
 
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:36
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_setup.vpy:23
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:34
 msgid "Please submit a valid e-mail address."
 msgstr ""
 
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:34
-msgid "Please submit an email address."
-msgstr ""
-
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:32
-msgid "Please submit email."
+msgid "Please submit an email address."
 msgstr ""
 
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_reply.vpy:14
@@ -71,11 +70,11 @@ msgid "Reply not allowed because the response is to a comment waiting to be appr
 msgstr "Non è possibile risponderere a un commento che non . stato approvato. Per favore aspetta che venga approvato prima di rispondere."
 
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:213
-msgid "SMTPRecipientsRefused: Could not send the emailnotification. Have you configured an email server for Plone?"
+msgid "SMTPRecipientsRefused: Could not send the email notification. Have you configured an email server for Plone?"
 msgstr ""
 
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:51
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:50
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:53
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:52
 msgid "You must correctly enter the word."
 msgstr ""
 
