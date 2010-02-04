@@ -30,8 +30,10 @@ if not message:
     state.setError('message', PloneMessageFactory(u'Please submit a message.'), 'message_required')
 
 if require_email:
-    if not (email and context.portal_registration.isValidEmail(email)):
+    if not email:
         state.setError('email', _(u'Please submit an email address.'), 'email_required')
+    elif not context.portal_registration.isValidEmail(email):
+        state.setError('email', _(u'Please submit a valid e-mail address.'), 'email_required')
 
 if hasattr(context, 'captcha_validator'):
     context.captcha_validator()
