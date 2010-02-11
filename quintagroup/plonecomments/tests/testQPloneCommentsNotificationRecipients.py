@@ -92,8 +92,7 @@ class TestNotificationRecipients(FunctionalTestCase):
     def checkToANDSubj(self, mails, to, subj):
         messages = [str(m) for m in mails if REXP_TO.search(str(m)) and REXP_TO.search(str(m)).group(1)==to]
         self.failUnless(len(messages) > 0, "No message sent to '%s' recipient" % to)
-        mangled = str(Header(subj, 'utf-8'))
-        self.failUnless([1 for m in messages if REXP_SUBJ.search(m) and REXP_SUBJ.search(m).group(1)==mangled],\
+        self.failUnless([1 for m in messages if REXP_SUBJ.search(m) and REXP_SUBJ.search(m).group(1)==subj],\
              "There is no message for '%s' recipient with '%s' subject" % (to,subj))
 
     def test_Reply(self):

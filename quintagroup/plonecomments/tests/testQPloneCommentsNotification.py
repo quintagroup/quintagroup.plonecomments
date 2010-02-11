@@ -186,7 +186,7 @@ class TestNotification(FunctionalTestCase):
         self.portal.MailHost.reset()
         reply.deleteDiscussion()
         mails = [str(m) for m in self.portal.MailHost.messages]
-        subject = str(Header('Your comment on Doc was not approved', 'utf-8'))
+        subject = 'Your comment on Doc was not approved'
         self.failUnless([1 for m in mails if REXP_SUBJ.search(m) and REXP_SUBJ.search(m).group(1)==subject],
             'No notification for rejecting comment.' % properties)
 
