@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-02-04 13:51+0000\n"
+"POT-Creation-Date: 2010-02-11 16:40+0000\n"
 "PO-Revision-Date: 2006-12-29 11:01+0100\n"
 "Last-Translator: \n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,6 +34,10 @@ msgstr "Kommentare gelöscht"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_publish.cpy:25
 msgid "Comment(s) published."
 msgstr "Kommentar(e) veröffentlicht."
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:228
+msgid "Could not send the email notification. Have you configured an email server for Plone?"
+msgstr ""
 
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_reply.cpy:96
 msgid "Currently, all comments require approval before being published. Please check back later."
@@ -69,10 +73,6 @@ msgstr ""
 msgid "Reply not allowed because the response is to a comment waiting to be approved. Please wait for the comment to be approved before replying."
 msgstr "Eine Antwort ist nicht möglich, da der Kommentar noch nicht veröffentlicht wurde."
 
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:213
-msgid "SMTPRecipientsRefused: Could not send the email notification. Have you configured an email server for Plone?"
-msgstr ""
-
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:53
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:52
 msgid "You must correctly enter the word."
@@ -80,6 +80,16 @@ msgstr ""
 
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse.cpy:72
 msgid "Your abuse report has been sent."
+msgstr ""
+
+#. Default: "[${organization_name}] New comment awaits moderation"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:186
+msgid "approve_notification_subject"
+msgstr ""
+
+#. Default: "Your comment on ${title} is now published"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:114
+msgid "approve_user_notification_subject"
 msgstr ""
 
 #. Default: "Please review new comment added to the following page ' ${title} ': ${here_url}"
@@ -261,6 +271,11 @@ msgstr ""
 msgid "notifyreject_link"
 msgstr ""
 
+#. Default: "[${organization_name}] New comment added"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:171
+msgid "published_notification_subject"
+msgstr ""
+
 #. Default: "View new comment added to the following page ' ${title} ': ${here_url}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/published_comment_template.pt:8
 msgid "publishedmail_new_comment_link"
@@ -276,9 +291,24 @@ msgstr ""
 msgid "qPloneComments configuration changes saved."
 msgstr "qPloneComment Konfiguration gespeichert."
 
+#. Default: "Your comment on ${title} was not approved"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:129
+msgid "rejected_user_notification_subject"
+msgstr ""
+
+#. Default: "Someone replied to your comment on ${title}"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:145
+msgid "reply_user_notification_subject"
+msgstr ""
+
 #. Default: "Someone replied to your comment on ${url}. To read the response, go to ${here_url}."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/reply_notify_template.pt:10
 msgid "replynotify_link"
+msgstr ""
+
+#. Default: "[${organization_name}] A comment on ${title} has been reported for abuse."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:211
+msgid "report_abuse_subject"
 msgstr ""
 
 #. Default: "${organization_name} Support Team"
