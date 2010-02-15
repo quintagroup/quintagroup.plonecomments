@@ -22,10 +22,10 @@ def publishDiscussion(self):
     self.reindexObject()
 
 def setAnonymCommenting(context, allow=False):
+    portal = getToolByName(context, 'portal_url').getPortalObject()
     roles = [r['name']
              for r in portal.rolesOfPermission('Reply to item')
              if r['selected']]
-    portal = getToolByName(context, 'portal_url').getPortalObject()
     if allow:
         if not 'Anonymous' in roles:
             roles.append('Anonymous')
