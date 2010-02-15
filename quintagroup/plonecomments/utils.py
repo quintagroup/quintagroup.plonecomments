@@ -22,11 +22,18 @@ def publishDiscussion(self):
     self.reindexObject()
 
 def setAnonymCommenting(context, allow=False):
+    roles = [r['name']
+             for r in portal.rolesOfPermission('Reply to item')
+             if r['selected']]
     portal = getToolByName(context, 'portal_url').getPortalObject()
     if allow:
-        portal.manage_permission('Reply to item', ['Anonymous','Manager','Member'], 1)
+        if not 'Anonymous' in roles:
+            roles.append('Anonymous')
+            portal.manage_permission('Reply to item', roles, 1)
     else:
-        portal.manage_permission('Reply to item', ['Manager','Member'], 1)
+        if 'Anonymous' in roles:
+            roles.remove('Anonymous')
+            portal.manage_permission('Reply to item', roles, 1)
 
 def manage_mails(reply, context, action):
     def sendMails(props, actions, key):
