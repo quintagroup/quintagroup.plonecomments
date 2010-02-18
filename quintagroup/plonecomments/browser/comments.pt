@@ -101,7 +101,7 @@
                             type="submit"
                             value="Report Abuse"
                             tal:define="onclick string:javascript:render_abuse_report_form(${comment_id})"
-                            tal:attributes="onclick python:isAjaxReportAbuseEnabled and onclick or '';
+                            tal:attributes="onclick python:not isAnon and isAjaxReportAbuseEnabled and onclick or '';
                                             id string:input-render-abuse-cancel-${comment_id}"
                             i18n:attributes="value label_report_abuse;"
                             />
