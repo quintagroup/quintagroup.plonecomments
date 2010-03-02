@@ -1,0 +1,6 @@
+* > .anchor:link, * > .anchor:visited {
+ visibility: hidden;
+}
+h3:hover .anchor {
+ visibility: visible;
+}
