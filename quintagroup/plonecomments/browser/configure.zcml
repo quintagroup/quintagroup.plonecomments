@@ -4,18 +4,4 @@
     xmlns:kss="http://namespaces.zope.org/kss"
     i18n_domain="quintagroup.plonecomments">
 
-    <browser:page
-        for="*"
-        attribute="submit_abuse_report"
-        class=".comments.CommentsKSS"
-        name="kss_submit_abuse_report"
-        permission="zope2.View"
-        /> 
-
-    <kss:action
-        name="remove_abuse_report_form"
-        command_factory="selector"
-        jsfile="../skins/quintagroup_plonecomments/qcomments.js"
-        />
-
 </configure>
