@@ -1,34 +1,53 @@
-function render_abuse_report_form(comment_id) {
-    jq('form.report_abuse').bind("submit", function(event){
+function render_edit_form(comment_id, form_name) {
+    var cholder = jq("#"+comment_id).parent();
+    var cform = jq("form[name='"+form_name+"']",cholder);
+    var url = jq(cform).attr("action");
+    var cspan = jq("#span-forms-holder-"+comment_id);
+    cspan.hide().empty()
+    jq(cform).bind("submit", function(event){
         event.preventDefault();
     });
-    var render_button = 'input#input-render-abuse-cancel-' + comment_id;
-    jq(render_button).attr('disabled', 'disabled');
-    var form = 'span#span-reply-form-' + comment_id;
-    jq(form).slideToggle(500);
-    var holder = 'span#span-reply-form-holder-' + comment_id;
-    var cancel_button = holder + ' input#input-report-abuse-cancel';
-    var qq = jq(cancel_button);
-    jq(cancel_button).attr('comment_id', comment_id);
+    jq.get(url,
+    function(data){
+        jq("input", cform).attr("disabled", "disabled");
+        ddt = jq("form[name='edit_form']", data)[0];
+        cspan.append(ddt).slideToggle(1000);
+        jq("input[name='form.button.Cancel']",cspan).attr("onclick", "javascript:remove_edit_form("+comment_id+",'"+form_name+"')");
+    });
 }
 
-function remove_abuse_report_form(comment_id, html) {
-    jq('form.report_abuse').bind("submit", function(event){
+function remove_edit_form(comment_id, form_name) {
+    var cholder = jq("#"+comment_id).parent();
+    var cform = jq(cholder).find("form[name='"+form_name+"']");
+    var cspan = jq("#span-forms-holder-"+comment_id);
+    jq("form",cspan).bind("submit", function(event){
         event.preventDefault();
     });
-    var form = 'span#span-reply-form-' + comment_id;
-    jq(form).fadeOut();
-    var render_button = 'input#input-render-abuse-cancel-' + comment_id;
-    jq(render_button).attr('disabled', '');
-    if (html != undefined) {
-        var holder = 'span#span-abuse-count-holder-' + comment_id;
-        jq(holder).append(html);
-    }
+    jq("input", cform).attr("disabled", '');
+    cspan.fadeOut();
 }
 
-kukit.actionsGlobalRegistry.register("remove_abuse_report_form", function(oper) {
-    var comment_id = oper.parms.comment_id;
-    var html = oper.parms.html
-    remove_abuse_report_form(comment_id, html);
-});
-kukit.commandsGlobalRegistry.registerFromAction('remove_abuse_report_form', kukit.cr.makeSelectorCommand);
+function render_delete_comment(comment_id) {
+    var cholder = jq("#"+comment_id).parent();
+    var cform = jq("form[name='delete']",cholder);
+    var url = jq(cform).attr("action");
+    jq(cform).bind("submit", function(event){
+        event.preventDefault();
+    });
+    jq(cholder).detach()
+    jq.post(url);
+}
+
+function render_comment_form() {
+    var cform = jq("form#reply");
+    var url = jq(cform).attr("action");
+    jq(cform).bind("submit", function(event){
+        event.preventDefault();
+    });
+    jq.get(url,
+    function(data){
+        ddt = jq("form[name='edit_form']", data)[0];
+        jq(cform).replaceWith(ddt);
+    });
+}
+

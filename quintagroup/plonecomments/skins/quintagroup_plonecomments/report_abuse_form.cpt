@@ -20,7 +20,7 @@
                         template_id template/getId;
                         Iterator python:modules['Products.CMFPlone'].IndexIterator;
                         tabindex python:Iterator(mainSlot=False);
-                        isAnon context/@@plone_portal_state/anonymous;
+                        isAnon context/@@plone_portal_state/anonymous|string:False;
                         member context/@@plone_portal_state/member;
                         thread python:putils.getDiscussionThread(here);
                         discussable python:thread[0];
@@ -79,11 +79,11 @@
                 <tal:set define="show_form python:True;
                                 comment_id context/id">
                     <metal:macro define-macro="form"
-                            tal:define="isAjaxReportAbuseEnabled view/ajax_report_abuse_enabled|python:portal.portal_properties.qPloneComments.enable_ajax_report_abuse;
+                            tal:define="isAjaxReportAbuseEnabled view/ajax_report_abuse_enabled|python:here.portal_properties.qPloneComments.enable_ajax_report_abuse;
                                         visible show_form|request/show_form|nothing;
                                         portal_url portal_url|view/portal_url;
-                                        tabindex tabindex|request/tabindex|view/tabindex;
-                                        member member|request/member|view/member;">
+                                        isAnon isAnon|context/@@plone_portal_state/anonymous;
+                                        member member|context/@@plone_portal_state/member;">
 
                         <span tal:define="email_from_address portal/email_from_address|view/email_from_address;
                                             comment_id comment_id|request/comment_id"
@@ -197,8 +197,9 @@
                                             <input 
                                                 value="Send"
                                                 type="submit"
-                                                tal:attributes="comment_id comment_id;
-                                                                class python:isAjaxReportAbuseEnabled  and 'context input-report-abuse-send' or 'context'"
+                                                class="context"
+                                                name="form.button.Send"
+                                                tal:attributes="comment_id comment_id"
                                                 i18n:attributes="value label_send;"
                                                 />
 
@@ -206,9 +207,8 @@
                                                 id="input-report-abuse-cancel"
                                                 class="destructive"
                                                 value="Cancel"
-                                                type="button"
-                                                tal:condition="isAjaxReportAbuseEnabled"
-                                                tal:attributes="onclick string:javascript:remove_abuse_report_form(${comment_id})"
+                                                type="submit"
+                                                name="form.button.Cancel"
                                                 i18n:attributes="value label_cancel;"
                                                 />
                                         </div>

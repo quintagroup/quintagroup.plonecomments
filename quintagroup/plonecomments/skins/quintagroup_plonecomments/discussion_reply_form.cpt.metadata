@@ -3,7 +3,9 @@ title=Reply to Comment
 
 [validators]
 validators = validate_talkback
+validators..Cancel=
 
 [actions]
-action.success = traverse_to:string:discussion_reply
+action.success = redirect_to:string:view
+action.success..Save = traverse_to:string:discussion_reply
 action.failure = traverse_to:string:discussion_reply_form

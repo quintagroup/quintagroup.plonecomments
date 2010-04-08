@@ -47,7 +47,9 @@
                           tal:condition="anonymous_creator">Anonymous User</span>
                     <span i18n:translate="label_commented_at">at</span>
                     <span tal:replace="python:view.format_time(reply.ModificationDate())">8/23/2001 12:40:44 PM</span>
-                    <span tal:condition="python:ifModerate and not isPublished">[pending]</span>
+                    <span i18n:domain="quintagroup.plonecomments"
+                          i18n:translate="label_pending_state"
+                          tal:condition="python:ifModerate and not isPublished">[pending]</span>
                 </div>
                 <div class="commentBody"
                      tal:content="structure reply/CookedBody">
@@ -62,6 +64,8 @@
                     <input class="standalone"
                            type="submit"
                            value="Reply"
+                           tal:define="onclick string:javascript:render_edit_form(${comment_id},'reply')"
+                           tal:attributes="onclick python:isAjaxReportAbuseEnabled and onclick or ''"
                            i18n:attributes="value label_reply;"
                            />
                 </form>
@@ -74,6 +78,8 @@
                     <input class="standalone"
                            type="submit"
                            value="Edit"
+                           tal:define="onclick string:javascript:render_edit_form(${comment_id},'edit')"
+                           tal:attributes="onclick python:isAjaxReportAbuseEnabled and onclick or ''"
                            i18n:attributes="value label_edit;"
                            />
                 </form>
@@ -86,32 +92,26 @@
                     <input class="destructive"
                            type="submit"
                            value="Remove"
+                           tal:define="onclick string:javascript:render_delete_comment(${comment_id})"
+                           tal:attributes="onclick python:isAjaxReportAbuseEnabled and onclick or ''"
                            i18n:attributes="value label_remove;"
                            />
                 </form>
-                <tal:if tal:condition="python:isReportAbuseEnabled and isPublished">
-                    <form class="report_abuse"
-                          name="report_abuse"
-                          method="post"
-                          style="display: inline;"
-                          i18n:domain="quintagroup.plonecomments"
-                          tal:attributes="action string:${reply/absolute_url}/report_abuse_form#discussion">
-                        <input type="hidden" name="comment_id" tal:attributes="value comment_id" />
-                        <input class="standalone"
-                            type="submit"
-                            value="Report Abuse"
-                            tal:define="onclick string:javascript:render_abuse_report_form(${comment_id})"
-                            tal:attributes="onclick python:not isAnon and isAjaxReportAbuseEnabled and onclick or '';
-                                            id string:input-render-abuse-cancel-${comment_id}"
-                            i18n:attributes="value label_report_abuse;"
-                            />
-                    </form>
-                    <span tal:attributes="id string:span-reply-form-holder-${comment_id}"
-                            tal:condition="isReportAbuseEnabled">
-                        <metal:macro use-macro="here/report_abuse_form/macros/form"/>
-                    </span>
-                    <span tal:attributes="id string:span-abuse-count-holder-${comment_id}"></span>
-                </tal:if>
+                <form name="report_abuse"
+                      action=""
+                      method="post"
+                      style="display: inline;"
+                      i18n:domain="quintagroup.plonecomments"
+                      tal:condition="python:isReportAbuseEnabled and isPublished"
+                      tal:attributes="action string:${reply/absolute_url}/report_abuse_form#discussion">
+                    <input class="standalone"
+                        type="submit"
+                        value="Report Abuse"
+                        tal:define="onclick string:javascript:render_edit_form(${comment_id},'report_abuse')"
+                        tal:attributes="onclick python:isAjaxReportAbuseEnabled and onclick or ''"
+                        i18n:attributes="value label_report_abuse;"
+                        />
+                </form>
                 <form name="publish_discussion"
                       action=""
                       method="post"
@@ -130,11 +130,29 @@
                      i18n:translate="text_no_add_reply"
                      i18n:domain="quintagroup.plonecomments"
                      tal:condition="not:isPublished">Comment must be approved before replies to comment accepted.</div>
+                <span tal:attributes="id string:span-forms-holder-${comment_id}"></span>
             </div>
         </tal:getreplies>
 
         <!-- Start of Adding comment form-->
-        <tal:addcomment define="template_id string:discussion_reply_form;">
+        <form id="reply"
+              name="reply"
+              action=""
+              method="post"
+              tal:condition="python:isAjaxReportAbuseEnabled and userHasReplyPermission and isDiscussionAllowed"
+              tal:attributes="action string:${context/absolute_url}/discussion_reply_form">
+
+              <input class="standalone"
+                     style="margin-bottom: 1.25em;"
+                     type="button"
+                     value="Add Comment"
+                     tal:attributes="onclick string:javascript:render_comment_form()"
+                     i18n:attributes="value label_add_comment;"
+                     />
+        </form>
+
+        <tal:addcomment condition="python:not isAjaxReportAbuseEnabled"
+                        define="template_id string:discussion_reply_form;">
             <metal:block metal:use-macro="here/discussion_reply_form/macros/add-comment-form" />
         </tal:addcomment>
         <!-- End of Adding comment form -->

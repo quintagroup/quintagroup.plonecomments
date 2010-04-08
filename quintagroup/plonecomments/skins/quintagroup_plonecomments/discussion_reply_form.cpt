@@ -251,6 +251,11 @@
                        name="form.button.Save"
                        i18n:attributes="value label_save;"
                        tal:attributes="name string:discussion_reply:method;" />
+                <input class="standalone"
+                       type="submit"
+                       value="Cancel"
+                       name="form.button.Cancel"
+                       i18n:attributes="value label_cancel;" />
 
             </div>
 
