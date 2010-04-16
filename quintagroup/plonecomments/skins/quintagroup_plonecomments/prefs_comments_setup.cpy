@@ -15,11 +15,13 @@ _ = MessageFactory('quintagroup.plonecomments')
 form = context.REQUEST.form
 pp = getToolByName(context, 'portal_properties')
 props_sheet = getattr(pp, 'qPloneComments')
-property_maps=[(m['id'], m['type']) for m in props_sheet.propertyMap() if not m['id']=='title']
+property_maps = [(m['id'], m['type'])
+                 for m in props_sheet.propertyMap()
+                 if not m['id']=='title']
 request_ids = form.keys()
 
 kw={}
-for id,type in property_maps:
+for id, type in property_maps:
     if type == 'boolean':
         if id in request_ids:
             kw[id] = True
