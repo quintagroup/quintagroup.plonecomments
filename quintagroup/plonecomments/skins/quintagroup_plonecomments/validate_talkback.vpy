@@ -19,43 +19,51 @@ except AttributeError:
     content = context
 
 if not dtool.isDiscussionAllowedFor(content):
-    raise Exception, "Discussion not allowed."
+    raise Exception("Discussion not allowed.")
 
 if not subject:
-    state.setError('subject', PloneMessageFactory(u'Please submit a subject.'), 'subject_required')
+    state.setError('subject', PloneMessageFactory(u'Please submit a subject.'),
+                   'subject_required')
 
 if not body_text:
-    state.setError('body_text', PloneMessageFactory(u'Please submit a body.'), 'body_required')
+    state.setError('body_text', PloneMessageFactory(u'Please submit a body.'),
+                   'body_required')
 
 if require_email:
     if not email:
-        state.setError('email', _(u'Please submit an email address.'), 'email_required')
+        state.setError('email', _(u'Please submit an email address.'),
+                       'email_required')
     elif not context.portal_registration.isValidEmail(email):
-        state.setError('email', _(u'Please submit a valid e-mail address.'), 'email_required')
+        state.setError('email', _(u'Please submit a valid e-mail address.'),
+                       'email_required')
 
 if hasattr(context, 'captcha_validator'):
     context.captcha_validator()
 
-pp = getToolByName(context, 'portal_properties')
-isForAnonymous = pp['qPloneComments'].getProperty('enable_anonymous_commenting', None)
+pp = getToolByName(context, 'portal_properties')['qPloneComments']
+isForAnonymous = pp.getProperty('enable_anonymous_commenting', None)
 if isForAnonymous:
     pm = getToolByName(context, 'portal_membership')
     isAnonym = pm.isAnonymousUser()
     if isAnonym:
         req = context.REQUEST
-        if not (req.form.has_key('Creator') and not req.form['Creator'] == ""):
-            state.setError('Creator', _(u'Please enter your name.'), 'name_required')
+        if not ('Creator' in req.form and not req.form['Creator'] == ""):
+            state.setError('Creator', _(u'Please enter your name.'),
+                           'name_required')
 
         try:
             captcha_view = context.restrictedTraverse('@@captcha')
             if not captcha_view.verify(captcha):
-                state.setError('captcha', _(u'You must correctly enter the word.'), 'captcha')
+                state.setError('captcha',
+                               _(u'You must correctly enter the word.'),
+                               'captcha')
         except:
             # no collective.captcha installed
             pass
 
 if state.getErrors():
-    context.plone_utils.addPortalMessage(_(u'Please correct the indicated errors.'))
+    context.plone_utils.addPortalMessage(_(u'Please correct '
+                                           u'the indicated errors.'))
     return state.set(status='failure')
 else:
     return state

@@ -19,11 +19,12 @@ mtool = getToolByName(context, 'portal_membership')
 dtool = getToolByName(context, 'portal_discussion')
 
 req = context.REQUEST
-pp = getToolByName(context,'portal_properties')
+pp = getToolByName(context, 'portal_properties')
 # Get properties
-isForAnonymous = pp['qPloneComments'].getProperty('enable_anonymous_commenting', False)
-ifModerate = pp['qPloneComments'].getProperty('enable_moderation', False)
-requireEmail = pp['qPloneComments'].getProperty('require_email', False)
+pqprops = pp['qPloneComments']
+isForAnonymous = pqprops.getProperty('enable_anonymous_commenting', False)
+ifModerate = pqprops.getProperty('enable_moderation', False)
+requireEmail = pqprops.getProperty('require_email', False)
 if username or password:
     # The user username/password inputs on on the comment form were used,
     # which might happen when anonymous commenting is enabled. If they typed
@@ -33,7 +34,8 @@ if username or password:
     # and show them the result.  if 'logged_in' fails, the user will be
     # presented with the stock login failure page.  This all depends
     # heavily on cookiecrumbler, but I believe that is a Plone requirement.
-    came_from = '%s?subject=%s&amp;body_text=%s' % (req['URL'], subject, body_text)
+    came_from = '%s?subject=%s&amp;body_text=%s' % (req['URL'], subject,
+                                                    body_text)
     came_from = url_quote_plus(came_from)
     portal_url = context.portal_url()
 
@@ -67,7 +69,8 @@ if requireEmail:
     else:
         email = mtool.getAuthenticatedMember().getProperty('email')
 
-    id = tb.createReply(title=subject, text=body_text, Creator=comment_creator, email=email)
+    id = tb.createReply(title=subject, text=body_text, Creator=comment_creator,
+                        email=email)
 else:
     id = tb.createReply(title=subject, text=body_text, Creator=comment_creator)
 
@@ -91,9 +94,10 @@ view = redirect_target.getTypeInfo().getActionInfo('object/view',
 anchor = reply.getId()
 
 # Inform user about awaiting moderation
-portal_status_message=_(u'Comment published.')
+portal_status_message = _(u'Comment published.')
 if ifModerate and reply:
-    portal_status_message=_(u'Currently, all comments require approval before being published. Please check back later.')
+    portal_status_message = _(u'Currently, all comments require approval befo'
+                              u're being published. Please check back later.')
 
 from Products.CMFPlone.utils import transaction_note
 transaction_note('Added comment to %s at %s' % (parent.title_or_id(),

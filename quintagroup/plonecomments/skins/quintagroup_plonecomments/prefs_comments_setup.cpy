@@ -15,11 +15,13 @@ _ = MessageFactory('quintagroup.plonecomments')
 form = context.REQUEST.form
 pp = getToolByName(context, 'portal_properties')
 props_sheet = getattr(pp, 'qPloneComments')
-property_maps=[(m['id'], m['type']) for m in props_sheet.propertyMap() if not m['id']=='title']
+property_maps = [(m['id'], m['type'])
+                 for m in props_sheet.propertyMap()
+                 if not m['id'] == 'title']
 request_ids = form.keys()
 
-kw={}
-for id,type in property_maps:
+kw = {}
+for id, type in property_maps:
     if type == 'boolean':
         if id in request_ids:
             kw[id] = True
@@ -40,13 +42,15 @@ props_sheet.manage_changeProperties(**kw)
 
 moderate_discussion = 'Moderate Discussion'
 if not 'EnableManagerModeration' in request_ids:
-    roles = [item['name'] for item in context.rolesOfPermission(moderate_discussion)
-	     if (item['name'] != 'Manager') and (item['selected'] == 'SELECTED')]
+    roles = [item['name']
+        for item in context.rolesOfPermission(moderate_discussion)
+        if (item['name'] != 'Manager') and (item['selected'] == 'SELECTED')]
     context.manage_permission(moderate_discussion, roles,  acquire=0)
 
 else:
-    roles = [item['name'] for item in context.rolesOfPermission(moderate_discussion)
-	     if item['selected'] == 'SELECTED']
+    roles = [item['name']
+        for item in context.rolesOfPermission(moderate_discussion)
+        if item['selected'] == 'SELECTED']
     roles.append('Manager')
     context.manage_permission(moderate_discussion, roles,  acquire=0)
 

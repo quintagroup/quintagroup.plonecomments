@@ -12,7 +12,7 @@ from quintagroup.plonecomments.utils import manage_mails
 from Products.CMFPlone import PloneMessageFactory
 
 if obj is None:
-    obj=context
+    obj = context
 
 parent = obj.inReplyTo()
 if parent is not None:
@@ -21,7 +21,7 @@ else:
     talkback = parent = obj.aq_parent
 
 # remove the discussion item
-talkback.deleteReply( obj.getId() )
+talkback.deleteReply(obj.getId())
 manage_mails(obj, context, 'deleting')
 
 # redirect to the object that is being discussed
@@ -30,4 +30,5 @@ view = redirect_target.getTypeInfo().immediate_view
 
 context.plone_utils.addPortalMessage(PloneMessageFactory(u'Reply deleted.'))
 
-context.REQUEST['RESPONSE'].redirect( redirect_target.absolute_url() + '/%s' % view )
+context.REQUEST['RESPONSE'].redirect(
+    redirect_target.absolute_url() + '/%s' % view)

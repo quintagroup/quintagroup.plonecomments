@@ -14,8 +14,10 @@ class TestPermission(TestCase):
         self.loginAsPortalOwner()
 
     def test_install_moderate_discussion_permission(self):
-        roles = [item['name'] for item in self.portal.rolesOfPermission(PERM_NAME) if item['selected'] == 'SELECTED']
-        self.failUnless( roles != [], '%s not installed'%PERM_NAME)
+        roles = [item['name']
+            for item in self.portal.rolesOfPermission(PERM_NAME)
+            if item['selected'] == 'SELECTED']
+        self.failUnless(roles != [], '%s not installed' % PERM_NAME)
 
     def test_deleteReply_permission(self):
         #dic = DiscussionItemContainer()

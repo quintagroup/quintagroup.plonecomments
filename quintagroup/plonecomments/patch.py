@@ -8,8 +8,8 @@ from AccessControl import getSecurityManager
 from Products.CMFCore.utils import getToolByName
 from Products.CMFDefault.DiscussionItem import DiscussionItem
 from Products.CMFDefault.DiscussionItem import DiscussionItemContainer
-
 from quintagroup.plonecomments.utils import getProp
+
 
 def createReply(self, title, text, Creator=None, email=''):
     """Create a reply in the proper place.
@@ -43,8 +43,9 @@ def createReply(self, title, text, Creator=None, email=''):
 
     # Control of performing moderation
     if getProp(self, 'enable_moderation', marker=False):
-        roles = [role['name'] for role in self.acl_users.rolesOfPermission('Moderate Discussion')
-                 if role['selected']== 'SELECTED']
+        roles = [role['name']
+            for role in self.acl_users.rolesOfPermission('Moderate Discussion')
+            if role['selected'] == 'SELECTED']
         roles.append('DiscussionManager')
         item.manage_permission('Delete objects', roles, acquire=1)
         item.manage_permission('View', roles, acquire=0)
@@ -56,7 +57,8 @@ def createReply(self, title, text, Creator=None, email=''):
 
     return id
 
-def getReplies( self ):
+
+def getReplies(self):
     """Return a sequence of the DiscussionResponse objects which are
        associated with this Discussable.
     """

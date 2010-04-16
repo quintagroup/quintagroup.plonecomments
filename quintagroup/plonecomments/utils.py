@@ -5,14 +5,16 @@ _ = MessageFactory("quintagroup.plonecomments")
 from Products.CMFCore.utils import getToolByName
 from config import warning
 
+
 # Get apropriate property from (propery_sheeet) configlet
 def getProp(self, prop_name, marker=None):
     result = marker
     pp = getToolByName(self, 'portal_properties')
     config_ps = getattr(pp, 'qPloneComments', None)
     if config_ps:
-        result =  getattr(config_ps, prop_name, marker)
+        result = getattr(config_ps, prop_name, marker)
     return result
+
 
 def publishDiscussion(self):
     roles = ['Anonymous']
@@ -20,6 +22,7 @@ def publishDiscussion(self):
     self.manage_permission('View', roles, acquire=1)
     self._p_changed = 1
     self.reindexObject()
+
 
 def setAnonymCommenting(context, allow=False):
     portal = getToolByName(context, 'portal_url').getPortalObject()
@@ -35,6 +38,7 @@ def setAnonymCommenting(context, allow=False):
             roles.remove('Anonymous')
             portal.manage_permission('Reply to item', roles, 1)
 
+
 def manage_mails(reply, context, action):
     def sendMails(props, actions, key):
         for p in props:
@@ -42,25 +46,24 @@ def manage_mails(reply, context, action):
                 send_email(reply, context, p)
 
     prop_sheet = context.portal_properties['qPloneComments']
-    props = filter(lambda x: prop_sheet.getProperty(x), prop_sheet.propertyIds())
-
-    actions = { 'onPublish': ('enable_approve_user_notification',
-                              'enable_reply_user_notification',
-                              'enable_published_notification',),
-                'onDelete' : ('enable_rejected_user_notification',),
-                'onApprove': ('enable_approve_notification',),
-                'onAnonymousReportAbuse': ('enable_anonymous_report_abuse',),
-                'onAuthenticatedReportAbuse': ('enable_authenticated_report_abuse',),}
+    props = filter(lambda x: prop_sheet.getProperty(x),
+                   prop_sheet.propertyIds())
+    actions = {
+        'onPublish':                    ('enable_approve_user_notification',
+                                         'enable_reply_user_notification',
+                                         'enable_published_notification',),
+        'onDelete':                     ('enable_rejected_user_notification',),
+        'onApprove':                    ('enable_approve_notification',),
+        'onAnonymousReportAbuse':       ('enable_anonymous_report_abuse',),
+        'onAuthenticatedReportAbuse':   ('enable_authenticated_report_abuse',),
+        }
 
     if action == 'publishing':
         sendMails(props, actions, 'onPublish')
-
     elif action == 'deleting':
         sendMails(props, actions, 'onDelete')
-
     elif action == 'aproving':
         sendMails(props, actions, 'onApprove')
-
     elif action == 'report_abuse':
         pm = getToolByName(context, 'portal_membership')
         if pm.isAnonymousUser():
@@ -68,8 +71,10 @@ def manage_mails(reply, context, action):
         else:
             sendMails(props, actions, 'onAuthenticatedReportAbuse')
 
+
 def getMsg(context, template, args):
     return getattr(context, template)(**args)
+
 
 def allowEmail(context, reply, state, creator):
     condition = getattr(context, 'emailCommentNotification', True)
@@ -77,13 +82,20 @@ def allowEmail(context, reply, state, creator):
         condition = condition(reply=reply, state=state, creator=creator)
     return condition
 
+
+def setStatusMsg(state, context, msg):
+    context.plone_utils.addPortalMessage(msg)
+
+
 def send_email(reply, context, state):
     def getEmail(obj, context):
         email = obj.getProperty('email', None)
         if email is None:
-            creators = hasattr(obj, 'listCreators') and obj.listCreators() or [obj.Creator(),]
+            creators = hasattr(obj, 'listCreators') and obj.listCreators() or \
+                [obj.Creator(), ]
             userid = creators and creators[0] or ""
-            creator = getToolByName(context, 'portal_membership').getMemberById(userid)
+            portal_membership = getToolByName(context, 'portal_membership')
+            creator = portal_membership.getMemberById(userid)
             if creator and allowEmail(context, reply, state, creator):
                 return creator.getProperty('email', '')
         else:
@@ -102,7 +114,8 @@ def send_email(reply, context, state):
 
     def getParentOwnerEmail(reply, context):
         creator_id = getParent(reply).getOwnerTuple()[1]
-        creator = getToolByName(context, 'portal_membership').getMemberById(creator_id)
+        portal_membership = getToolByName(context, 'portal_membership')
+        creator = portal_membership.getMemberById(creator_id)
         if creator and allowEmail(context, reply, state, creator):
             return creator.getProperty('email', '')
         return ''
@@ -114,36 +127,37 @@ def send_email(reply, context, state):
 
     organization_name = getProp(context, 'email_subject_prefix', '')
     creator_name = reply.getOwnerTuple()[1]
-    admin_email = context.portal_url.getPortalObject().getProperty('email_from_address')
+    portal = getToolByName(context, 'portal_url').getPortalObject()
+    admin_email = portal.getProperty('email_from_address')
     translate = getToolByName(context, 'translation_service').translate
     subject = ''
     if state == 'enable_approve_user_notification':
         subject = translate(_(u"approve_user_notification_subject",
             default=u"Your comment on ${title} is now published",
-            mapping={u"title" : getParent(context).Title()}),
+            mapping={u"title": getParent(context).Title()}),
             context=context.REQUEST)
         if user_email:
             template = 'notify_comment_template'
-            args={'mto': user_email,
-                  'mfrom': admin_email,
-                  'obj': reply_parent,
-                  'organization_name': organization_name,
-                  'name': creator_name}
+            args = {'mto': user_email,
+                    'mfrom': admin_email,
+                    'obj': reply_parent,
+                    'organization_name': organization_name,
+                    'name': creator_name}
         else:
             args = {}
 
     elif state == 'enable_rejected_user_notification':
         subject = translate(_(u"rejected_user_notification_subject",
             default=u"Your comment on ${title} was not approved",
-            mapping={u"title" : getParent(context).Title()}),
+            mapping={u"title": getParent(context).Title()}),
             context=context.REQUEST)
         if user_email:
             template = 'rejected_comment_template'
-            args={'mto': user_email,
-                  'mfrom': admin_email,
-                  'obj': reply_parent,
-                  'organization_name': organization_name,
-                  'name': creator_name}
+            args = {'mto': user_email,
+                    'mfrom': admin_email,
+                    'obj': reply_parent,
+                    'organization_name': organization_name,
+                    'name': creator_name}
         else:
             args = {}
 
@@ -151,17 +165,17 @@ def send_email(reply, context, state):
         template = 'reply_notify_template'
         subject = translate(_(u"reply_user_notification_subject",
             default=u"Someone replied to your comment on ${title}",
-            mapping={u"title" : getParent(context).Title()}),
+            mapping={u"title": getParent(context).Title()}),
             context=context.REQUEST)
         di_parrent = getDIParent(reply)
         if di_parrent:
             user_email = getEmail(di_parrent, context)
             if user_email:
-                args={'mto': user_email,
-                      'mfrom': admin_email,
-                      'obj': reply_parent,
-                      'organization_name': organization_name,
-                      'name': di_parrent.getOwnerTuple()[1]}
+                args = {'mto': user_email,
+                        'mfrom': admin_email,
+                        'obj': reply_parent,
+                        'organization_name': organization_name,
+                        'name': di_parrent.getOwnerTuple()[1]}
             else:
                 args = {}
         else:
@@ -171,13 +185,13 @@ def send_email(reply, context, state):
         template = 'published_comment_template'
         user_email = getParentOwnerEmail(reply, context)
         if user_email:
-            args={'mto':user_email,
-                  'mfrom':admin_email,
-                  'obj':reply_parent,
-                  'organization_name':organization_name}
+            args = {'mto': user_email,
+                    'mfrom': admin_email,
+                    'obj': reply_parent,
+                    'organization_name': organization_name}
             subject = translate(_(u"published_notification_subject",
                 default=u"[${organization_name}] New comment added",
-                mapping={u"organization_name" : organization_name}),
+                mapping={u"organization_name": organization_name}),
                 context=context.REQUEST)
         else:
             args = {}
@@ -186,18 +200,20 @@ def send_email(reply, context, state):
         template = 'approve_comment_template'
         user_email = getProp(context, "email_discussion_manager", None)
         if user_email:
-            args={'mto':user_email,
-                  'mfrom':admin_email,
-                  'obj':reply_parent,
-                  'organization_name':organization_name}
+            args = {'mto': user_email,
+                    'mfrom': admin_email,
+                    'obj': reply_parent,
+                    'organization_name': organization_name}
             subject = translate(_(u"approve_notification_subject",
-                default=u"[${organization_name}] New comment awaits moderation",
-                mapping={u"organization_name" : organization_name}),
+                default=u"[${organization_name}] New comment awaits "
+                        u"moderation",
+                mapping={u"organization_name": organization_name}),
                 context=context.REQUEST)
         else:
             args = {}
 
-    elif state in ('enable_authenticated_report_abuse', 'enable_anonymous_report_abuse'):
+    elif state in ('enable_authenticated_report_abuse',
+                   'enable_anonymous_report_abuse'):
         template = 'report_abuse_template'
         user_email = getProp(context, "email_discussion_manager", None)
         if user_email:
@@ -209,30 +225,31 @@ def send_email(reply, context, state):
             args = {'mto': user_email,
                     'mfrom': admin_email,
                     'obj': reply_parent,
-                    'message':message,
+                    'message': message,
                     'organization_name': organization_name,
                     'name': creator_name,
-                    'comment_id':comment_id,
-                    'comment_desc':comment.description,
-                    'comment_text':comment.text}
+                    'comment_id': comment_id,
+                    'comment_desc': comment.description,
+                    'comment_text': comment.text}
             subject = translate(_(u"report_abuse_subject",
-                default=u"[${organization_name}] A comment on ${title} has been reported for abuse.",
-                mapping={u"organization_name" : organization_name, u"title" : getParent(context).Title()}),
+                default=u"[${organization_name}] A comment on ${title} has "
+                        u"been reported for abuse.",
+                mapping={u"organization_name": organization_name,
+                         u"title": getParent(context).Title()}),
                 context=context.REQUEST)
         else:
             args = {}
 
     if args:
         msg = getMsg(context, template, args)
-        charset = context.portal_properties.site_properties.getProperty('default_charset', 'utf-8')
+        site_properties = context.portal_properties.site_properties
+        charset = site_properties.getProperty('default_charset', 'utf-8')
         msg = msg.encode(charset)
         host = context.plone_utils.getMailHost()
         try:
-            host.secureSend(msg, user_email, admin_email, subject = subject,
-                            subtype = 'plain', debug = False, charset = charset)
-        except (smtplib.SMTPRecipientsRefused,smtplib.SMTPServerDisconnected):
+            host.secureSend(msg, user_email, admin_email, subject=subject,
+                            subtype='plain', debug=False, charset=charset)
+        except (smtplib.SMTPRecipientsRefused, smtplib.SMTPServerDisconnected):
             setStatusMsg(None, context,
-                _('Could not send the email notification. Have you configured an email server for Plone?'))
-
-def setStatusMsg(state, context, msg):
-    context.plone_utils.addPortalMessage(msg)
+                _('Could not send the email notification. Have you configured '
+                  'an email server for Plone?'))

@@ -69,11 +69,10 @@ class TestErase(TestCase):
 
             tool = getToolByName(portal, 'portal_quickinstaller')
             if tool.isProductInstalled(PRODUCT):
-                tool.uninstallProducts([PRODUCT,])
+                tool.uninstallProducts([PRODUCT, ])
 
             # drop elevated perms
             noSecurityManager()
 
             transaction.commit()
             ztc.close(app)
-

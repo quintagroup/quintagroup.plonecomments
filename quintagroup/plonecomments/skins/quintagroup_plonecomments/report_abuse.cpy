@@ -19,9 +19,9 @@ _ = MessageFactory('quintagroup.plonecomments')
 req = context.REQUEST
 mtool = getToolByName(context, 'portal_membership')
 dtool = getToolByName(context, 'portal_discussion')
-pp = getToolByName(context,'portal_properties')
+pp = getToolByName(context, 'portal_properties')['qPloneComments']
 
-isForAnonymous = pp['qPloneComments'].getProperty('enable_anonymous_report_abuse', False)
+isForAnonymous = pp.getProperty('enable_anonymous_report_abuse', False)
 
 if username or password:
     # The user username/password inputs on on the comment form were used,
@@ -32,7 +32,8 @@ if username or password:
     # and show them the result.  if 'logged_in' fails, the user will be
     # presented with the stock login failure page.  This all depends
     # heavily on cookiecrumbler, but I believe that is a Plone requirement.
-    came_from = '%s?subject=%s&amp;body_text=%s' % (req['URL'], subject, body_text)
+    came_from = '%s?subject=%s&amp;body_text=%s' % (req['URL'], subject,
+                                                    body_text)
     came_from = url_quote_plus(came_from)
     portal_url = context.portal_url()
 
@@ -69,8 +70,7 @@ redirect_target = context.plone_utils.getDiscussionThread(tb)[0]
 view = redirect_target.getTypeInfo().getActionInfo('object/view',
                                                    redirect_target)['url']
 
-portal_status_message=_(u'Your abuse report has been sent.')
+portal_status_message = _(u'Your abuse report has been sent.')
 context.plone_utils.addPortalMessage(portal_status_message)
 target = '%s' % view
 return req.RESPONSE.redirect(target)
-

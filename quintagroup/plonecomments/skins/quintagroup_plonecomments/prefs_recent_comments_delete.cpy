@@ -19,19 +19,21 @@ request = context.REQUEST
 comment_ids = request.get('ids', [])
 
 for comment_id in comment_ids:
-    comment = portal_catalog(id=comment_id,portal_type='Discussion Item')[0].getObject()
-
+    comment = portal_catalog(id=comment_id,
+                             portal_type='Discussion Item')[0].getObject()
     parent = comment.inReplyTo()
     if parent is not None:
         talkback = portal_discussion.getDiscussionFor(parent)
     else:
         talkback = parent = comment.aq_parent
 
-    comment = portal_catalog(id=comment_id,portal_type='Discussion Item')[0].getObject()
+    comment = portal_catalog(id=comment_id,
+                             portal_type='Discussion Item')[0].getObject()
     talkback.deleteReply(comment_id)
     manage_mails(comment, context, 'deleting')
 
-msg = comment_ids and _(u'Comment(s) deleted.') or _(u'Please select items to be processed.')
+msg = comment_ids and _(u'Comment(s) deleted.') or \
+    _(u'Please select items to be processed.')
 setStatusMsg(state, context, msg)
 
 return state

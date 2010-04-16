@@ -1,6 +1,7 @@
 from Products.CMFCore.utils import getToolByName
 from config import LOGGER
 
+
 def install(context):
 
     # Ordinarily, GenericSetup handlers check for the existence of XML files.
@@ -21,12 +22,14 @@ def install(context):
     existing = gtool.listGroupIds()
     if not 'DiscussionManager' in existing:
         gtool.addGroup('DiscussionManager', roles=['DiscussionManager'])
-        logger.info('Added DiscussionManager group to portal_groups with DiscussionManager role.')
+        logger.info('Added DiscussionManager group to portal_groups with '
+                    'DiscussionManager role.')
 
     # Remove workflow-chain for Discussion Item
     wf_tool = getToolByName(portal, 'portal_workflow')
     wf_tool.setChainForPortalTypes(('Discussion Item',), [])
     logger.info('Removed workflow chain for Discussion Item type.')
+
 
 def uninstall(context):
 
@@ -43,6 +46,6 @@ def uninstall(context):
     portal = context.getSite()
     logger = context.getLogger(LOGGER)
 
-    portal_conf=getToolByName(context.getSite(),'portal_controlpanel')
+    portal_conf = getToolByName(context.getSite(), 'portal_controlpanel')
     portal_conf.unregisterConfiglet('prefs_comments_setup_form')
     logger.info('Unregister configlet prefs_comments_setup_form. ')
