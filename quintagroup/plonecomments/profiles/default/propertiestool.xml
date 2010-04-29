@@ -14,8 +14,8 @@
   <property name="enable_approve_notification" type="boolean">True</property>
   <property name="enable_authenticated_report_abuse" type="boolean">True</property>
   <property name="enable_anonymous_report_abuse" type="boolean">True</property>
-  <property name="enable_ajax_report_abuse" type="boolean">False</property>
-  <property name="email_discussion_manager" type="string"></property>
-  <property name="email_subject_prefix" type="string"></property>
+  <property name="email_discussion_manager" type="string" purge="False"></property>
+  <property name="email_subject_prefix" type="string" purge="False"></property>
+  <property name="visual_effects" type="int">0</property>
  </object>
 </object>

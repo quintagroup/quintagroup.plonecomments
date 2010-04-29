@@ -161,31 +161,31 @@
                 </div>
 
                 <div class="field"
-                     tal:define="property_id string:enable_ajax_report_abuse;
-                                 isEnabledAjaxReportAbuse python:props_sheet.getProperty(property_id, False);"
+                     tal:define="property_id string:visual_effects;
+                                 VisualEffectsLevel python:props_sheet.getProperty(property_id, False);"
                      tal:condition="python:props_sheet.hasProperty(property_id)">
-
-                    <input type="checkbox" 
-                           class="noborder"
-                           name="isEnabledAjaxReportAbuse"
-                           id="isEnabledAjaxReportAbuse"
-                           tabindex =""
-                           tal:attributes="name property_id;
-                                           value isEnabledAjaxReportAbuse;
-                                           checked python:test(isEnabledAjaxReportAbuse, 'True', '');
-                                           tabindex tabindex/next;"/>
-
-                    <label i18n:translate="label_enable_ajax_report_abuse"
-                           for="isEnabledAjaxReportAbuse">Enable AJAX powered abuse reports</label>
-
-                    <div class="formHelp" id="ajax_report_abuse_help"
-                         i18n:translate="help_enable_ajax_report_abuse">
-                        This setting will only take effect if abuse reports are enabled.
-                    </div>
+                  <label i18n:translate="label_visual_effects">Visual Effects Level</label>                       
+                  <div class="formHelp" i18n:translate="visual_effects_help">
+                        This setting controls what the visual effects are used for commenting.
+                  </div>
+                  <select id="VisualEffectsLevel" size="1" tal:attributes="name property_id;">
+                    <option value="-1"
+                           tal:attributes="selected python:test(VisualEffectsLevel==-1, 'selected', '');"/>
+                    <label i18n:translate="">Switched off visual effects</label>                       
+                    <option value="0"
+                           tal:attributes="selected python:test(VisualEffectsLevel==0, 'selected', '');"/>
+                    <label i18n:translate="">Default visual effects(popup forms if enabled)</label>                       
+                    <option value="1"
+                           tal:attributes="selected python:test(VisualEffectsLevel==1, 'selected', '');"/>
+                    <label i18n:translate="">Jquery AJAX forms</label>                       
+                    <option value="2"
+                           tal:attributes="selected python:test(VisualEffectsLevel==2, 'selected', '');"/>
+                    <label i18n:translate="">Popup forms</label>                       
+                  </select>
                 </div>
 
-		<div class="field"
-		     tal:define="isEnabledManagerModeration python:checkPermission('Moderate Discussion', here);">
+                <div class="field"
+                     tal:define="isEnabledManagerModeration python:checkPermission('Moderate Discussion', here);">
 
                     <input type="checkbox" 
                            class="noborder"

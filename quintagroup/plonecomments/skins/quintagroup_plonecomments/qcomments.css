@@ -4,3 +4,6 @@
 h3:hover .anchor {
  visibility: visible;
 }
+.discussion textarea {
+ width: 100%;
+}

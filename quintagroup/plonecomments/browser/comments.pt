@@ -8,7 +8,8 @@
                    ifModerate view/is_moderation_enabled;
                    isModerationAllowed view/can_moderate;
                    isAuthenticatedReportAbuseEnabled view/authenticated_report_abuse_enabled;
-                   isAjaxReportAbuseEnabled view/ajax_report_abuse_enabled;
+                   VisualEffectsLevel view/visual_effects_level;
+                   isAjaxFormsEnabled python:VisualEffectsLevel==1;
                    isAnonymousReportAbuseEnabled view/anonymous_report_abuse_enabled;
                    isReportAbuseEnabled python:isAnonymousReportAbuseEnabled or not isAnon and isAuthenticatedReportAbuseEnabled;
                    props_sheet here/portal_properties/qPloneComments;
@@ -66,7 +67,7 @@
                            type="submit"
                            value="Reply"
                            tal:define="onclick string:javascript:render_edit_form(${comment_id},'reply')"
-                           tal:attributes="onclick python:isAjaxReportAbuseEnabled and onclick or ''"
+                           tal:attributes="onclick python:isAjaxFormsEnabled and onclick or ''"
                            i18n:attributes="value label_reply;"
                            />
                 </form>
@@ -80,7 +81,7 @@
                            type="submit"
                            value="Edit"
                            tal:define="onclick string:javascript:render_edit_form(${comment_id},'edit')"
-                           tal:attributes="onclick python:isAjaxReportAbuseEnabled and onclick or ''"
+                           tal:attributes="onclick python:isAjaxFormsEnabled and onclick or ''"
                            i18n:attributes="value label_edit;"
                            />
                 </form>
@@ -93,8 +94,6 @@
                     <input class="destructive"
                            type="submit"
                            value="Remove"
-                           tal:define="onclick string:javascript:render_delete_comment(${comment_id})"
-                           tal:attributes="onclick python:isAjaxReportAbuseEnabled and onclick or ''"
                            i18n:attributes="value label_remove;"
                            />
                 </form>
@@ -109,7 +108,7 @@
                         type="submit"
                         value="Report Abuse"
                         tal:define="onclick string:javascript:render_edit_form(${comment_id},'report_abuse')"
-                        tal:attributes="onclick python:isAjaxReportAbuseEnabled and onclick or ''"
+                        tal:attributes="onclick python:isAjaxFormsEnabled and onclick or ''"
                         i18n:attributes="value label_report_abuse;"
                         />
                 </form>
@@ -136,24 +135,7 @@
         </tal:getreplies>
 
         <!-- Start of Adding comment form-->
-        <form id="reply"
-              name="reply"
-              action=""
-              method="post"
-              tal:condition="python:isAjaxReportAbuseEnabled and userHasReplyPermission and isDiscussionAllowed"
-              tal:attributes="action string:${context/absolute_url}/discussion_reply_form">
-
-              <input class="standalone"
-                     style="margin-bottom: 1.25em;"
-                     type="button"
-                     value="Add Comment"
-                     tal:attributes="onclick string:javascript:render_comment_form()"
-                     i18n:attributes="value label_add_comment;"
-                     />
-        </form>
-
-        <tal:addcomment condition="python:not isAjaxReportAbuseEnabled"
-                        define="template_id string:discussion_reply_form;">
+        <tal:addcomment define="template_id string:discussion_reply_form;">
             <metal:block metal:use-macro="here/discussion_reply_form/macros/add-comment-form" />
         </tal:addcomment>
         <!-- End of Adding comment form -->

@@ -125,7 +125,7 @@
                 <textarea name="body_text"
                           id="body_text"
                           cols="40"
-                          rows="20"
+                          rows="8"
                           tabindex=""
                           tal:content="context/text|request/body_text|request/text_override | nothing"
                           tal:attributes="tabindex tabindex/next"

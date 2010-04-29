@@ -81,11 +81,11 @@ class CommentsViewlet(comments.CommentsViewlet):
         value = prop_sheet.getProperty('enable_anonymous_report_abuse', False)
         return value
 
-    def ajax_report_abuse_enabled(self):
+    def visual_effects_level(self):
         """ """
         portal_properties = getToolByName(self.context, 'portal_properties')
         prop_sheet = portal_properties['qPloneComments']
-        value = prop_sheet.getProperty('enable_ajax_report_abuse', False)
+        value = prop_sheet.getProperty('visual_effects', 0)
         return value
 
     def email_from_address(self):
