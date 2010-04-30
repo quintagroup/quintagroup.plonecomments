@@ -28,9 +28,10 @@
                 tal:attributes="style string:margin-left:${indent}em;">
 
                 <h3 tal:attributes="id reply/id">
-                    <span tal:replace="reply/pretty_title_or_id">Comment title</span>
-                    <a class="anchor" tal:attributes="href string:#${reply/id};
-                    title reply/pretty_title_or_id">#</a>
+                    <a class="anchor"
+                       tal:content="reply/pretty_title_or_id"
+                       tal:attributes="href string:#${reply/id};
+                                       title reply/pretty_title_or_id">Comment title</a>
                 </h3>
                 <div class="documentByLine"
                      tal:define="creator reply/Creator;

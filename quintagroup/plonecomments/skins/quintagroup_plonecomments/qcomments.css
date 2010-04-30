@@ -1,8 +1,7 @@
-* > .anchor:link, * > .anchor:visited {
- visibility: hidden;
-}
-h3:hover .anchor {
- visibility: visible;
+.discussion h3 .anchor {
+ color: Black !important;
+ text-decoration: none;
+ cursor: text;
 }
 .discussion textarea {
  width: 100%;
