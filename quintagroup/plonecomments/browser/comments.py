@@ -6,7 +6,6 @@ except ImportError:
 
 from Acquisition import aq_inner
 from AccessControl import getSecurityManager
-from Products.CMFPlone.utils import IndexIterator
 from Products.CMFPlone.utils import getToolByName
 from Products.CMFFormController.ControllerState import ControllerState
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -93,17 +92,3 @@ class CommentsViewlet(comments.CommentsViewlet):
         portal_url = getToolByName(self.context, 'portal_url')
         portal = portal_url.getPortalObject()
         return portal.email_from_address
-
-    def member(self):
-        """ """
-        pm = getToolByName(self.context, 'portal_membership')
-        return pm.getAuthenticatedMember()
-
-    def tabindex(self):
-        """ Needed for BBB, tabindex has been deprecated.
-        """
-        return IndexIterator()
-
-    def portal_url(self):
-        """ """
-        return getToolByName(self.context, 'portal_url')

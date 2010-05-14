@@ -8,8 +8,6 @@
 
 <div metal:fill-slot="prefs_configlet_main"
      tal:define="here_url context/@@plone_context_state/object_url;
-                 Iterator python:modules['Products.CMFPlone'].IndexIterator;
-                 tabindex python:Iterator(mainSlot=False);
                  errors python:request.get('controller_state', None).getErrors();">
 
     <div metal:define-macro="main">
@@ -67,11 +65,9 @@
                            class="noborder"
                            name="isEnabledModeration"
                            id="isEnabledModeration"
-                           tabindex =""
                            tal:attributes="name property_id;
                                            value isEnabledModeration;
-                                           checked python:test(isEnabledModeration, 'True', '');
-                                           tabindex tabindex/next;"/>
+                                           checked python:test(isEnabledModeration, 'True', '');" />
 
                     <label i18n:translate="label_enable_moderation" 
                            for="isEnabledModeration">Enable comment moderation</label>
@@ -87,11 +83,9 @@
                            class="noborder"
                            name="requireEmail"
                            id="requireEmail"
-                           tabindex =""
                            tal:attributes="name property_id;
                                            value requireEmail;
-                                           checked python:test(requireEmail, 'True', '');
-                                           tabindex tabindex/next;"/>
+                                           checked python:test(requireEmail, 'True', '');" />
 
                     <label i18n:translate="label_require_anonym_email" 
                            for="requireEmail">Require email from Anonymous commenters</label>
@@ -107,11 +101,9 @@
                            class="noborder"
                            name="isEnabledAnonymousCommenting"
                            id="isEnabledAnonymousCommenting"
-                           tabindex =""
                            tal:attributes="name property_id;
                                            value isEnabledAnonymousCommenting;
-                                           checked python:test(isEnabledAnonymousCommenting, 'True', '');
-                                           tabindex tabindex/next;"/>
+                                           checked python:test(isEnabledAnonymousCommenting, 'True', '');" />
 
                     <label i18n:translate="label_anonymous_commenting" 
                            for="isEnabledAnonymousCommenting">Allow comments from Anonymous users</label>
@@ -126,11 +118,9 @@
                            class="noborder"
                            name="isEnabledReportAbuse"
                            id="isEnabledReportAbuse"
-                           tabindex =""
                            tal:attributes="name property_id;
                                            value isEnabledReportAbuse;
-                                           checked python:test(isEnabledReportAbuse, 'True', '');
-                                           tabindex tabindex/next;"/>
+                                           checked python:test(isEnabledReportAbuse, 'True', '');" />
 
                     <label i18n:translate="label_enable_report_abuse"
                            for="isEnabledReportAbuse">Enable authenticated users to report abusive comments</label>
@@ -145,11 +135,9 @@
                            class="noborder"
                            name="isEnabledAnonymousReportAbuse"
                            id="isEnabledAnonymousReportAbuse"
-                           tabindex =""
                            tal:attributes="name property_id;
                                            value isEnabledAnonymousReportAbuse;
-                                           checked python:test(isEnabledAnonymousReportAbuse, 'True', '');
-                                           tabindex tabindex/next;"/>
+                                           checked python:test(isEnabledAnonymousReportAbuse, 'True', '');" />
 
                     <label i18n:translate="label_enable_anonymous_report_abuse"
                            for="isEnabledAnonymousReportAbuse">Enable anonymous users to report abusive comments</label>
@@ -191,10 +179,8 @@
                            class="noborder"
                            name="EnableManagerModeration"
                            id="EnableManagerModeration"
-                           tabindex =""
                            tal:attributes="value isEnabledManagerModeration;
-                                           checked python:test(isEnabledManagerModeration, 'True', '');
-                                           tabindex tabindex/next;"/>
+                                           checked python:test(isEnabledManagerModeration, 'True', '');" />
 
                     <label i18n:translate="enable_manager_moderation"
                            for="isEnableApproveNotification">Enable Manager moderation</label>
@@ -219,10 +205,8 @@
                     <input name="email_discussion-manager"
                            value=""
                            size="40"
-                           tabindex=""
                            tal:attributes="name property_id;
-                                           value email;
-                                           tabindex tabindex/next;" />
+                                           value email;" />
                 </div>
 
                 <div class="field"
@@ -240,10 +224,8 @@
                     <input name="organization_name"
                            value=""
                            size="40"
-                           tabindex=""
                            tal:attributes="name property_id;
-                                           value organization_name;
-                                           tabindex tabindex/next;" />
+                                           value organization_name;" />
                 </div>
 
             </fieldset>
@@ -263,11 +245,9 @@
                            class="noborder"
                            name="isEnabledPublishedNotification"
                            id="isEnabledPublishedNotification"
-                           tabindex =""
                            tal:attributes="name property_id;
                                            value isEnabledPublishedNotification;
-                                           checked python:test(isEnabledPublishedNotification, 'True', '');
-                                           tabindex tabindex/next;"/>
+                                           checked python:test(isEnabledPublishedNotification, 'True', '');" />
 
                     <label i18n:translate="label_enable_published_notification" 
                            for="isEnabledPublishedNotification">Notify Document Owner of new comments on their documents.</label>
@@ -282,11 +262,9 @@
                            class="noborder"
                            name="isEnableApproveNotification"
                            id="isEnableApproveNotification"
-                           tabindex =""
                            tal:attributes="name property_id;
                                            value isEnableApproveNotification;
-                                           checked python:test(isEnableApproveNotification, 'True', '');
-                                           tabindex tabindex/next;"/>
+                                           checked python:test(isEnableApproveNotification, 'True', '');" />
 
                     <label i18n:translate="label_enable_approve_notification"
                            for="isEnableApproveNotification">Notify Discussion Manager of new comments.</label>
@@ -301,11 +279,9 @@
                            class="noborder"
                            name="isEnableApproveUserNotification"
                            id="isEnableApproveUserNotification"
-                           tabindex =""
                            tal:attributes="name property_id;
                                            value isEnableApproveUserNotification;
-                                           checked python:test(isEnableApproveUserNotification, 'True', '');
-                                           tabindex tabindex/next;"/>
+                                           checked python:test(isEnableApproveUserNotification, 'True', '');" />
 
                     <label i18n:translate="label_enable_approve_user_notification"
                            for="isEnableApproveUserNotification">Notify Commenter when comment is published.</label>
@@ -320,11 +296,9 @@
                            class="noborder"
                            name="isRejectionNotificationEnabled"
                            id="isRejectionNotificationEnabled"
-                           tabindex =""
                            tal:attributes="name property_id;
                                            value isRejectionNotificationEnabled;
-                                           checked python:test(isRejectionNotificationEnabled, 'True', '');
-                                           tabindex tabindex/next;"/>
+                                           checked python:test(isRejectionNotificationEnabled, 'True', '');" />
 
                     <label i18n:translate="label_enable_reject_notification"
                            for="isRejectionNotificationEnabled">Enable Commentator notification on comment was rejected.</label>
@@ -340,11 +314,9 @@
                            class="noborder"
                            name="isReplyNotificationEnabled"
                            id="isReplyNotificationEnabled"
-                           tabindex =""
                            tal:attributes="name property_id;
                                            value isReplyNotificationEnabled;
-                                           checked python:test(isReplyNotificationEnabled, 'True', '');
-                                           tabindex tabindex/next;"/>
+                                           checked python:test(isReplyNotificationEnabled, 'True', '');" />
 
                     <label i18n:translate="label_enable_reply_notification"
                            for="isReplyNotificationEnabled">Notify Commenter when their comment receives a reply</label>
@@ -354,13 +326,11 @@
             <div class="formControls">
                 <input type="hidden" name="form.submitted" value="1" />
                 <input class="context"
-                       tabindex=""
                        type="submit"
                        name="form.button.form_submit"
                        value="Save"
                        i18n:domain="plone"
-                       i18n:attributes="value"
-                       tal:attributes="tabindex tabindex/next;"/>
+                       i18n:attributes="value" />
             </div>
         </form>
     </div>

@@ -8,8 +8,6 @@
 
 <div metal:fill-slot="prefs_configlet_main"
      tal:define="here_url context/@@plone_context_state/object_url;
-                 Iterator python:modules['Products.CMFPlone'].IndexIterator;
-                 tabindex python:Iterator(mainSlot=False);
                  errors python:request.get('controller_state', None).getErrors();">
 
     <div metal:define-macro="main">
@@ -117,21 +115,17 @@
                         <input type="hidden" name="form.submitted" value="1" />
 
                         <input class="context"
-                               tabindex=""
                                type="submit"
                                name="form.button.form_delete"
                                value="Delete"
                                i18n:attributes="value"
-                               tal:attributes="tabindex tabindex/next;"
                                />
 
                         <input class="context"
-                               tabindex=""
                                type="submit"
                                name="form.button.form_publish"
                                value="Publish"
                                i18n:attributes="value"
-                               tal:attributes="tabindex tabindex/next;"
                                />
 
 

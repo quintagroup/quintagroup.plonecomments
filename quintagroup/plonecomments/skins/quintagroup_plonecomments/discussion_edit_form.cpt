@@ -19,8 +19,6 @@
                  isAnon context/@@plone_portal_state/anonymous;
                  member context/@@plone_portal_state/member;
                  template_id template/getId;
-                 Iterator python:modules['Products.CMFPlone'].IndexIterator;
-                 tabindex python:Iterator(mainSlot=False);
                  thread python:putils.getDiscussionThread(here);
                  discussable python:thread[0];
                  replies python:thread[1:]">
@@ -64,9 +62,7 @@
                            id="username"
                            value="" alt="Username" title="Name"
                            size="40"
-                           tabindex=""
-                           i18n:attributes="title label_name; alt label_username;"
-                           tal:attributes="tabindex tabindex/next;" />
+                           i18n:attributes="title label_name; alt label_username;" />
 
                 </div>
 
@@ -77,11 +73,9 @@
                     <input type="password"
                            id="password"
                            name="password"
-                           tabindex=""
                            value="" alt="Password" title="Password"
                            size="40"
-                           i18n:attributes="title label_password; alt label_password;"
-                           tal:attributes="tabindex tabindex/next;" />
+                           i18n:attributes="title label_password; alt label_password;" />
 
                 </div>
 
@@ -104,9 +98,7 @@
                        id="subject"
                        value=""
                        size="40"
-                       tabindex=""
-                       tal:attributes="value context/title|request/subject|request/title_override|nothing;
-                                       tabindex tabindex/next" />
+                       tal:attributes="value context/title|request/subject|request/title_override|nothing;" />
 
             </div>
 
@@ -126,9 +118,7 @@
                           id="body_text"
                           cols="40"
                           rows="8"
-                          tabindex=""
                           tal:content="context/text|request/body_text|request/text_override | nothing"
-                          tal:attributes="tabindex tabindex/next"
                         ></textarea>
 
             </div>
@@ -136,19 +126,15 @@
             <div class="formControls">
 
                 <input class="context"
-                       tabindex=""
                        type="submit"
                        value="Save"
                        name="form.button.Save"
-                       i18n:attributes="value label_save;"
-                       tal:attributes="tabindex tabindex/next;" />
+                       i18n:attributes="value label_save;" />
                 <input class="standalone"
-                       tabindex=""
                        type="submit"
                        value="Cancel"
                        name="form.button.Cancel"
-                       i18n:attributes="value label_cancel;"
-                       tal:attributes="tabindex tabindex/next;" />
+                       i18n:attributes="value label_cancel;" />
 
             </div>
           <input type="hidden" name="form.submitted" value="1" />
