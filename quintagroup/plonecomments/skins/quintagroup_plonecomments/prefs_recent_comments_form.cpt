@@ -6,15 +6,15 @@
         <!--      metal:use-macro="here/main_template/macros/master" -->
 <body>
 
-<div metal:fill-slot="prefs_configlet_main"
+<div metal:fill-slot="prefs_configlet_content"
      tal:define="here_url context/@@plone_context_state/object_url;
                  errors python:request.get('controller_state', None).getErrors();">
 
     <div metal:define-macro="main">
-    <div class="configlet">
     <div class="documentEditable">
     <!-- simulating views on the configure/comments pages until we have real objects. -->
-    <ul class="contentViews">
+    <div id="edit-bar">
+      <ul id="content-views" class="contentViews">
         <li class="">
         <a href=""
         tal:attributes="href string:prefs_comments_setup_form"
@@ -27,14 +27,15 @@
         tal:attributes="href string:${template/id}"
         i18n:translate="label_comments">Recent comments moderation</a>
         </li>
-    </ul>
+      </ul>
      
     <div class="contentActions">
     &nbsp;
     </div>        
+    </div>        
     <!-- End of tabs -->
 
-    <div class="documentContent" metal:define-slot="prefs_content"
+    <div id="content" class="documentContent" metal:define-slot="prefs_content"
          tal:condition="python:checkPermission('Moderate Discussion', here)"
          tal:define ="results python:here.portal_catalog.searchResults(portal_type='Discussion Item',review_state='private',sort_on='created',sort_order='reverse');">
 
@@ -133,7 +134,6 @@
                 </fieldset>
             </form>
         </div>
-    </div>
     </div>
     </div>
     </div>
