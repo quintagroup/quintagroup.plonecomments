@@ -36,28 +36,41 @@ class CommentsViewlet(comments.CommentsViewlet):
     def getGravatar(self, reply):
         purl = getToolByName(self.context, 'portal_url')
         mtool = getToolByName(self.context, 'portal_membership')            
-        portrait_url = purl() + '/defaultUser.gif' 
+        default = purl() + '/defaultUser.gif' 
         email = ''
 
         creator = reply.Creator()
         if creator and not creator=='Anonymous User':
             mtool = getToolByName(self.context, "portal_membership")
             member = mtool.getMemberById(creator)
+            #portrait = mtool.getPersonalPortrait(member.getId())
+            #portrait_url =  portrait.absolute_url()
             email = member and member.getProperty('email','') or ''
-            portrait = mtool.getPersonalPortrait(memberId)
-            portrait_url =  portrait.absolute_url()
         else:
             email = reply.getProperty('email',d='')
-
         if not email:
-            return portrait_url
+            return default
 
-        size = 40
-        gravatar_url = "http://www.gravatar.com/avatar.php?"
-        # construct the url
-        gravatar_url += urllib.urlencode({'gravatar_id':md5.md5(email).hexdigest(),
-            'default':portrait_url, 'size':str(size)})
-        return gravatar_url
+	try:
+	    memberId = member.getId()
+	    portrait = mtool.getPersonalPortrait(member.getId())
+	    portrait_url =  portrait.absolute_url()
+	except:
+	    memberId = 'Anonimous User'
+	            
+
+        murl = '/portal_memberdata/portraits/'
+    	murl = purl() + murl + memberId
+	
+        if portrait_url == murl:
+            return portrait_url 	    
+	else: 
+            size = 40
+            gravatar_url = "http://www.gravatar.com/avatar.php?"
+            # construct the url
+            gravatar_url += urllib.urlencode({'gravatar_id':md5.md5(email).hexdigest(),
+                'default':default, 'size':str(size)})
+	    return gravatar_url
         
 
     def authenticated_report_abuse_enabled(self):
