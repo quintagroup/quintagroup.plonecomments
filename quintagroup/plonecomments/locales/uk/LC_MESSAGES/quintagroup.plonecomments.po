@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: qPloneComments\n"
-"POT-Creation-Date: 2010-02-11 16:40+0000\n"
+"POT-Creation-Date: 2010-04-08 15:31+0000\n"
 "PO-Revision-Date: 2008-09-22 10:55+0300\n"
 "Last-Translator: Olha <olha.pelishok@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -38,7 +38,7 @@ msgstr "Коментар(і) знищено."
 msgid "Comment(s) published."
 msgstr "Коментар(і) опубліковано."
 
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:228
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:235
 msgid "Could not send the email notification. Have you configured an email server for Plone?"
 msgstr "Не вдалося відправити повідомлення по електронній пошті. Ви налаштували сервер електронної пошти для Plone?"
 
@@ -86,12 +86,12 @@ msgid "Your abuse report has been sent."
 msgstr "Ваша скарга була надіслана."
 
 #. Default: "[${organization_name}] New comment awaits moderation"
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:186
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:193
 msgid "approve_notification_subject"
 msgstr "[${organization_name}] Новий коментар очікує на модерацію"
 
 #. Default: "Your comment on ${title} is now published"
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:114
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:121
 msgid "approve_user_notification_subject"
 msgstr "Ваш коментар на ${title} тепер опублікований"
 
@@ -99,6 +99,11 @@ msgstr "Ваш коментар на ${title} тепер опублікован�
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/approve_comment_template.pt:10
 msgid "approvemail_new_comment_link"
 msgstr "Будь-ласка, перегляньте новий коментар, доданий до сторінки ' ${title} ': ${here_url}"
+
+#. Default: "You can edit a comment by filling out the form below. Plain text formatting."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_edit_form.cpt:38
+msgid "description_edit_comment"
+msgstr "Ви можете редагувати коментар, заповнивши форму нижче."
 
 #. Default: "Enable Manager moderation"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:199
@@ -229,8 +234,13 @@ msgstr "Включити перевірку автентифікації кор�
 msgid "label_organization_name"
 msgstr "Префікс заголовка електронних листів (назва організації)"
 
+#. Default: "[pending]"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/browser/comments.pt:50
+msgid "label_pending_state"
+msgstr "[в очікуванні]"
+
 #. Default: "Report Abuse"
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/browser/comments.pt:100
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/browser/comments.pt:107
 msgid "label_report_abuse"
 msgstr "Надіслати скаргу"
 
@@ -238,6 +248,11 @@ msgstr "Надіслати скаргу"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:96
 msgid "label_require_anonym_email"
 msgstr "Вимагати електронну адресу від Анонімного користувача."
+
+#. Default: "Edit comment"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_edit_form.cpt:36
+msgid "legend_edit_comment"
+msgstr "Редагувати коментар"
 
 #. Default: "Email Notification Options"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:255
@@ -289,7 +304,7 @@ msgid "notifyreject_link"
 msgstr "Ваш коментар до ${url} відхилено. Усі питання стосовно цього надсилайте на ${mfrom}."
 
 #. Default: "[${organization_name}] New comment added"
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:171
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:178
 msgid "published_notification_subject"
 msgstr "[${organization_name}] Доданий новий коментар"
 
@@ -309,12 +324,12 @@ msgid "qPloneComments configuration changes saved."
 msgstr "Записано зміни конфігурації qPloneComments."
 
 #. Default: "Your comment on ${title} was not approved"
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:129
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:136
 msgid "rejected_user_notification_subject"
 msgstr "Ваш коментар на ${title} відхилений"
 
 #. Default: "Someone replied to your comment on ${title}"
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:145
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:152
 msgid "reply_user_notification_subject"
 msgstr "Хтось відповів на ваш коментар на ${title}"
 
@@ -324,7 +339,7 @@ msgid "replynotify_link"
 msgstr "Надійшла відповідь на ваш коментар до ${url}. Для перегляду - перейдіть на ${here_url}."
 
 #. Default: "[${organization_name}] A comment on ${title} has been reported for abuse."
-#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:211
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:218
 msgid "report_abuse_subject"
 msgstr "[${organization_name}] Коментар на ${title} повідомлений як образливий."
 
