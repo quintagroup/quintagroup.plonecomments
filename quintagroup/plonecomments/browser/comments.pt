@@ -47,7 +47,10 @@
                           tal:condition="anonymous_creator">Anonymous User</span>
                     <span i18n:translate="label_commented_at">at</span>
                     <span tal:replace="python:view.format_time(reply.ModificationDate())">8/23/2001 12:40:44 PM</span>
-                    <span tal:condition="python:ifModerate and not isPublished">[pending]</span>
+                    <span class="state-pending"
+                          i18n:domain="quintagroup.plonecomments"
+                          i18n:translate="label_pending_state"
+                          tal:condition="python:ifModerate and not isPublished">[pending]</span>
                 </div>
                 <div class="commentBody"
                      tal:content="structure reply/CookedBody">
