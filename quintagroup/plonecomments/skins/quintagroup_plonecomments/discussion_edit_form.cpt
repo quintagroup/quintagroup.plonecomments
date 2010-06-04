@@ -33,8 +33,10 @@
 
         <fieldset>
 
-            <legend i18n:translate="legend_edit_comment">Edit comment</legend>
-            <p i18n:translate="description_edit_comment">
+            <legend i18n:domain="quintagroup.plonecomments"
+                    i18n:translate="legend_edit_comment">Edit comment</legend>
+            <p i18n:domain="quintagroup.plonecomments"
+               i18n:translate="description_edit_comment">
                 You can edit a comment by filling out the form below. Plain text
                 formatting.
             </p>
