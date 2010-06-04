@@ -1,6 +1,5 @@
-* > .anchor:link, * > .anchor:visited {
- visibility: hidden;
-}
-h3:hover .anchor {
- visibility: visible;
+.discussion .comments {
+ color: Black !important;
+ text-decoration: none;
+ cursor: text;
 }
