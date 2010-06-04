@@ -1,31 +1,10 @@
-===========================
-Installation/Uninstallation
-===========================
-
 Installation
-------------
+============
 
-To install quintagroup.plonecomments into the global Python environment (or a workingenv),
-using a traditional Zope 2 instance, you can do this:
+Buildout
+--------
 
-* Copy ``quintagroup`` folder to the ``/path/to/instance/lib/python`` directory.
-
-* Creare a file called ``quintagroup.plonecomments-configure.zcml`` in the
-  */path/to/instance/etc/package-includes* directory. The file should
-  only contain this::
-
-    <include package="quintagroup.plonecomments" file="configure.zcml" />
-
-* Create a file called ``quintagroup.plonecomments-overrides.zcml`` into the   */path/to/instance/etc/package-includes* directory. The file should
-  only contain this::
-
-  <include package="quintagroup.plonecomments" file="overrides.zcml" />
-
-* Restart the Zope server, for example, with the following command in the terminal::
-
-   $ ./bin/zopectl restart
-
-Alternatively, if you are using zc.buildout and the plone.recipe.zope2instance
+If you are using zc.buildout and the plone.recipe.zope2instance
 recipe to manage your project, you can do this:
 
 * Add ``quintagroup.plonecomments`` to the list of eggs to install, e.g.::
@@ -63,9 +42,32 @@ recipe to manage your project, you can do this:
   greater than 1.4) in your Plone site. It shows up as **Local browser layer support**
   in the Plone Add-on Products Control Panel.
 
+Traditional Zope 2 Instance
+---------------------------
+
+To install quintagroup.plonecomments into the global Python environment (or a workingenv),
+using a traditional Zope 2 instance, you can do this:
+
+* Copy ``quintagroup`` folder to the ``/path/to/instance/lib/python`` directory.
+
+* Creare a file called ``quintagroup.plonecomments-configure.zcml`` in the
+  */path/to/instance/etc/package-includes* directory. The file should
+  only contain this::
+
+    <include package="quintagroup.plonecomments" file="configure.zcml" />
+
+* Create a file called ``quintagroup.plonecomments-overrides.zcml`` into the   */path/to/instance/etc/package-includes* directory. The file should
+  only contain this::
+
+  <include package="quintagroup.plonecomments" file="overrides.zcml" />
+
+* Restart the Zope server, for example, with the following command in the terminal::
+
+   $ ./bin/zopectl restart
+
 
 Uninstallation
---------------
+==============
 
 * To uninstall quintagroup.plonecomments - select ``quintagroup.plonecomments uninstall``
   profile from the list of available profiles and press *Import all steps*.

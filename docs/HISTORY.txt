@@ -4,45 +4,23 @@ Changelog
 4.1.3 (2010-06-04)
 ==================
 
-- Fixed issue #3 [kroman0]
+- Fixed issues #2 & #3 http://plone.org/products/plone-comments/issues [kroman0]
 
-- Fixed issue #2 'Disabling comments for anonymous also disables for Authenticated' [kroman0]
+- Added icon_expr for qPloneComments configlet and anchor for comments [kroman0]
 
-- Removed version.txt [kroman0]
-
-- Fixed configlet templates [kroman0]
-
-- Added anchor for comments [kroman0]
-
-- Fixed pending state styles and translation [kroman0]
-
-- Updated translation [kroman0]
-
-- Fixed translation for edit form and email subject [kroman0]
+- Fixed tests, validating email & validation scripts parameters, configlet & report_abuse_template templates [kroman0]
 
 - Fixed AjaxReportAbuse for anonymous [kroman0]
 
-- Fixed tests [kroman0]
-
-- Fixed email message charset in Plone4 [kroman0]
-
-- Fixed validating email [kroman0]
-
-- Fixed global variables in templates for Plone4, fixed some translation messages and preferences forms condition [kroman0]
-
-- Fixed report_abuse_template [kroman0]
-
-- Fixed target url for discussion_publish_comment [kroman0]
-
-- Fixed validation scripts parameters [kroman0]
-
-- Added icon_expr for qPloneComments configlet [kroman0]
-
-- Fixed MailHostb secureSend call [kroman0]
+- Fixed email message charset in Plone4 & global variables in templates for Plone4 [kroman0]
 
 - Fixed InitializeClass and md5 for Plone4(python2.6) [kroman0]
 
-- Fixed pt-br locale [kroman0]
+- Fixed target url for discussion_publish_comment [kroman0]
+
+- Fixed MailHostb secureSend call [kroman0]
+
+- Fixed translations and pt-br locale [kroman0]
 
 4.1.2 (2010-01-27)
 ==================
