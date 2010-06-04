@@ -4,6 +4,8 @@ Changelog
 4.1.3 (unreleased)
 ==================
 
+- Fixed issue #3 [kroman0]
+
 - Removed version.txt [kroman0]
 
 - Fixed configlet templates [kroman0]
