@@ -1,8 +1,16 @@
 Changelog
 =========
 
+4.1.4 (2010-06-29)
+------------------
+
+- Fixed MANIFEST.in [kroman0]
+
+- Error in Italian translation corrected [olha]
+
+
 4.1.3 (2010-06-04)
-==================
+------------------
 
 - Fixed issues #2 & #3 http://plone.org/products/plone-comments/issues [kroman0]
 
@@ -23,7 +31,7 @@ Changelog
 - Fixed translations and pt-br locale [kroman0]
 
 4.1.2 (2010-01-27)
-==================
+------------------
 
 - Fixed auto focus in commenting form [kroman0]
 
@@ -34,13 +42,13 @@ Changelog
 - Captcha removed from comment edit form [kroman0]
 
 4.1.1 (2009-11-09)
-==================
+------------------
 
 - Hide 'Recent comments' tab and 'Enable Manager moderation'
   checkbox for manager [crchemist]
 
 4.1.0 (2009-08-11)
-==================
+------------------
 
 - Added "report abuse" feature contributed by jcbrand.
   [liebster]
@@ -53,19 +61,19 @@ Changelog
   [mylan]
 
 4.0.1 (2009-06-05)
-==================
+------------------
 
 - Fixed links in the email messages. [liebster]
 
 
 4.0.0 (2009-04-06)
-==================
+------------------
 
 - Plone 3.* compatibility release [liebster]
 
 
 3.2.1 (unreleased)
-==================
+------------------
 
 - Added uninstall configlet and skins
 
@@ -73,7 +81,7 @@ Changelog
 
 
 3.1.2 (unreleased)
-==================
+------------------
 
 - Fixed to use the username as the comment creator. That's necessary whenever
   the user is authenticated. This fixes the problems where commenters weren't
@@ -82,13 +90,13 @@ Changelog
 
 
 3.1.1 (2008-09-19)
-==================
+------------------
 
 - Fixed bug in registration of product also as a package. [liebster]
 
 
 3.1.0 (2008-08-28)
-==================
+------------------
 
 - Added pt-br translation.
   [erico_andrei]
