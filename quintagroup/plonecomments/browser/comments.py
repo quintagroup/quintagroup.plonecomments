@@ -40,18 +40,16 @@ class CommentsViewlet(comments.CommentsViewlet):
         purl = getToolByName(self.context, 'portal_url')
         mtool = getToolByName(self.context, 'portal_membership')
         portrait_url = purl() + '/defaultUser.gif'
-        email = ''
+        email = reply.getProperty('email', d='')
 
         creator = reply.Creator()
-        if creator and not creator == 'Anonymous User':
+        if creator and not creator == 'Anonymous User' and not email:
             mtool = getToolByName(self.context, "portal_membership")
             member = mtool.getMemberById(creator)
             email = member and member.getProperty('email', '') or ''
             mem_id = getattr(member, 'getId', lambda: 'Anonymous User')()
             portrait = mtool.getPersonalPortrait(mem_id)
             portrait_url = portrait.absolute_url()
-        else:
-            email = reply.getProperty('email', d='')
 
         if not email or not 'defaultUser.gif' in portrait_url:
             return portrait_url
@@ -60,7 +58,7 @@ class CommentsViewlet(comments.CommentsViewlet):
         gravatar_url = "http://www.gravatar.com/avatar.php?"
         # construct the url
         gravatar_url += urllib.urlencode({
-            'gravatar_id': md5.md5(email).hexdigest(),
+            'gravatar_id': md5.md5(email.lower()).hexdigest(),
             'default': portrait_url,
             'size': str(size)})
         return gravatar_url
