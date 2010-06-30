@@ -147,7 +147,7 @@
 
                     <div tal:content="error">Validation error output</div>
 
-                    <input name="email" value="" size="40" />
+                    <input id="email" name="email" value="" size="40" />
 
                 </div>
 
