@@ -41,10 +41,6 @@
                                  mi python:not anonymous_creator and view.member_info(creator);
                                  fullname python: mi and mi['fullname'] or creator;
                                  gavatar_src python:view.getGravatar(reply)" >
-                    <div>
-                        <span tal:content="creator">creator</span> 
-                        <span tal:condition="python:reply.hasProperty('email')" tal:content="python:reply.getProperty('email')">email</span>
-                    </div>
                     <img alt="Avatar" class="avatar" height="40" width="40"
                          src="http://default.gavatar.gif"
                          tal:attributes="src gavatar_src" />
