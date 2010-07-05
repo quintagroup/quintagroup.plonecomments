@@ -18,8 +18,6 @@
                         toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                         here_url context/@@plone_context_state/object_url;
                         template_id template/getId;
-                        Iterator python:modules['Products.CMFPlone'].IndexIterator;
-                        tabindex python:Iterator(mainSlot=False);
                         isAnon context/@@plone_portal_state/anonymous;
                         member context/@@plone_portal_state/member;
                         thread python:putils.getDiscussionThread(here);
@@ -82,7 +80,6 @@
                             tal:define="isAjaxReportAbuseEnabled view/ajax_report_abuse_enabled|python:portal.portal_properties.qPloneComments.enable_ajax_report_abuse;
                                         visible show_form|request/show_form|nothing;
                                         portal_url portal_url|view/portal_url;
-                                        tabindex tabindex|request/tabindex|view/tabindex;
                                         member member|request/member|view/member;">
 
                         <span tal:define="email_from_address portal/email_from_address|view/email_from_address;

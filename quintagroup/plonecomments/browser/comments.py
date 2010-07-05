@@ -7,7 +7,6 @@ except ImportError:
 from Acquisition import aq_inner
 from AccessControl import getSecurityManager
 
-from Products.CMFPlone.utils import IndexIterator
 from Products.CMFPlone.utils import getToolByName
 from Products.CMFFormController.ControllerState import ControllerState
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -97,11 +96,6 @@ class CommentsViewlet(comments.CommentsViewlet):
         pm = getToolByName(self.context, 'portal_membership')
         return pm.getAuthenticatedMember()
 
-    def tabindex(self):
-        """ Needed for BBB, tabindex has been deprecated.
-        """
-        return IndexIterator()
-
     def portal_url(self):
         """ """
         return getToolByName(self.context, 'portal_url')
@@ -145,7 +139,6 @@ class CommentsKSS(PloneKSSView):
             html = self.macroContent('context/report_abuse_form/macros/form',
                                      errors=errors,
                                      show_form=True,
-                                     tabindex=IndexIterator(),
                                      member=member,
                                      **request.form)
             node = ksscore.getHtmlIdSelector('span-reply-form-holder-%s' % comment_id)
@@ -156,7 +149,6 @@ class CommentsKSS(PloneKSSView):
         manage_mails(context, self.context, 'report_abuse')
 
         html = self.macroContent('context/report_abuse_form/macros/form',
-                                 tabindex=IndexIterator(),
                                  member=member,
                                  **request.form)
         node = ksscore.getHtmlIdSelector('span-reply-form-holder-%s' % comment_id)
