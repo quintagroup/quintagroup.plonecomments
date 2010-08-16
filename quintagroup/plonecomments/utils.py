@@ -3,6 +3,7 @@ from zope.i18n import translate
 from zope.i18nmessageid import MessageFactory
 _ = MessageFactory("quintagroup.plonecomments")
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import safe_unicode
 from config import warning
 
 
@@ -134,7 +135,7 @@ def send_email(reply, context, state):
     if state == 'enable_approve_user_notification':
         subject = translate(_(u"approve_user_notification_subject",
             default=u"Your comment on ${title} is now published",
-            mapping={u"title": getParent(context).Title()}),
+            mapping={u"title": safe_unicode(getParent(context).title_or_id())}),
             context=context.REQUEST)
         if user_email:
             template = 'notify_comment_template'
@@ -149,7 +150,7 @@ def send_email(reply, context, state):
     elif state == 'enable_rejected_user_notification':
         subject = translate(_(u"rejected_user_notification_subject",
             default=u"Your comment on ${title} was not approved",
-            mapping={u"title": getParent(context).Title()}),
+            mapping={u"title": safe_unicode(getParent(context).title_or_id())}),
             context=context.REQUEST)
         if user_email:
             template = 'rejected_comment_template'
@@ -165,7 +166,7 @@ def send_email(reply, context, state):
         template = 'reply_notify_template'
         subject = translate(_(u"reply_user_notification_subject",
             default=u"Someone replied to your comment on ${title}",
-            mapping={u"title": getParent(context).Title()}),
+            mapping={u"title": safe_unicode(getParent(context).title_or_id())}),
             context=context.REQUEST)
         di_parrent = getDIParent(reply)
         if di_parrent:
@@ -235,7 +236,8 @@ def send_email(reply, context, state):
                 default=u"[${organization_name}] A comment on ${title} has "
                         u"been reported for abuse.",
                 mapping={u"organization_name": organization_name,
-                         u"title": getParent(context).Title()}),
+                         u"title":
+                             safe_unicode(getParent(context).title_or_id())}),
                 context=context.REQUEST)
         else:
             args = {}
