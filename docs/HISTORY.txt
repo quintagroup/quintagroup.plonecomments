@@ -1,6 +1,14 @@
 Changelog
 =========
 
+4.1.5 (2010-08-20)
+------------------
+
+- Fixed issue #7 [kroman0]
+
+- Removed tabindex support [kroman0]
+
+
 4.1.4 (2010-06-29)
 ------------------
 
