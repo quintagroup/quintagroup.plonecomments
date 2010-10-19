@@ -135,7 +135,8 @@ def send_email(reply, context, state):
     if state == 'enable_approve_user_notification':
         subject = translate(_(u"approve_user_notification_subject",
             default=u"Your comment on ${title} is now published",
-            mapping={u"title": safe_unicode(getParent(context).title_or_id())}),
+            mapping={u"title":
+                safe_unicode(getParent(context).title_or_id())}),
             context=context.REQUEST)
         if user_email:
             template = 'notify_comment_template'
@@ -150,7 +151,8 @@ def send_email(reply, context, state):
     elif state == 'enable_rejected_user_notification':
         subject = translate(_(u"rejected_user_notification_subject",
             default=u"Your comment on ${title} was not approved",
-            mapping={u"title": safe_unicode(getParent(context).title_or_id())}),
+            mapping={u"title":
+                safe_unicode(getParent(context).title_or_id())}),
             context=context.REQUEST)
         if user_email:
             template = 'rejected_comment_template'
@@ -166,7 +168,8 @@ def send_email(reply, context, state):
         template = 'reply_notify_template'
         subject = translate(_(u"reply_user_notification_subject",
             default=u"Someone replied to your comment on ${title}",
-            mapping={u"title": safe_unicode(getParent(context).title_or_id())}),
+            mapping={u"title":
+                safe_unicode(getParent(context).title_or_id())}),
             context=context.REQUEST)
         di_parrent = getDIParent(reply)
         if di_parrent:
