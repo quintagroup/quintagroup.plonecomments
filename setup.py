@@ -26,6 +26,7 @@ setup(name='quintagroup.plonecomments',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'plone.browserlayer',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
