@@ -5,7 +5,7 @@
 from Products.CMFCore.permissions import ReplyToItem
 from AccessControl.SecurityManagement import noSecurityManager
 from base import getToolByName, FunctionalTestCase
-from config import *
+from config import USERS, PROPERTY_SHEET, DM_USERS_IDS, COMMON_USERS_IDS
 
 
 def addUsers(self):

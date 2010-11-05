@@ -5,7 +5,7 @@
 import re
 from common import *
 from base import getToolByName, FunctionalTestCase
-from config import *
+from config import USERS, PROPERTY_SHEET, DM_USERS_IDS, COMMON_USERS_IDS
 
 
 class TestModeration(FunctionalTestCase):
