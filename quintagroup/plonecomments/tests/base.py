@@ -32,8 +32,10 @@ def setup_product():
     # We need to tell the testing framework that these products
     # should be available. This can't happen until after we have loaded
     # the ZCML.
-
+    if not ptc.PLONE31:
+        ztc.installPackage("plone.browserlayer")
     ztc.installPackage(PRODUCT)
+    
 
 # The order here is important: We first call the deferred function and then
 # let PloneTestCase install it during Plone site setup
