@@ -36,7 +36,7 @@ def setup_product():
         ztc.installPackage("plone.browserlayer")
     ztc.installPackage(PRODUCT)
     transaction.commit()
-    
+
 
 # The order here is important: We first call the deferred function and then
 # let PloneTestCase install it during Plone site setup
