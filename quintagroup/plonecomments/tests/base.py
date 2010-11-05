@@ -35,13 +35,17 @@ def setup_product():
     if not ptc.PLONE31:
         ztc.installPackage("plone.browserlayer")
     ztc.installPackage(PRODUCT)
+    transaction.commit()
     
 
 # The order here is important: We first call the deferred function and then
 # let PloneTestCase install it during Plone site setup
 
 setup_product()
-ptc.setupPloneSite(products=[PRODUCT])
+if not ptc.PLONE31:
+    ptc.setupPloneSite(products=["plone.browserlayer", PRODUCT])
+else:
+    ptc.setupPloneSite(products=[PRODUCT])
 
 
 class TestCase(ptc.PloneTestCase):

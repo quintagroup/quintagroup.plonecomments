@@ -13,8 +13,8 @@ class TestUninstallation(TestErase):
     def afterSetUp(self):
         self.loginAsPortalOwner()
         self.qi = self.portal.portal_quickinstaller
-        self.qi.installProduct(PRODUCT)
-        self.qi.uninstallProducts([PRODUCT])
+        #self.qi.installProduct(PRODUCT)
+        #self.qi.uninstallProducts([PRODUCT])
 
     def test_package_uninstall(self):
         self.failIf(self.qi.isProductInstalled(PRODUCT),
