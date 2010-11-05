@@ -8,6 +8,7 @@ from base import getToolByName, TestErase
 from config import PRODUCT, PRODUCT_SKIN_NAME, CONFIGLET_ID, PROPERTY_SHEET
 from zExceptions import BadRequest
 
+
 class TestUninstallation(TestErase):
 
     def afterSetUp(self):
