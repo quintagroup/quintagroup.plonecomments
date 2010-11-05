@@ -5,7 +5,7 @@
 from Products.CMFDefault.DiscussionItem import DiscussionItemContainer
 
 from base import getToolByName, TestCase
-from config import *
+from config import PERM_NAME
 
 
 class TestPermission(TestCase):

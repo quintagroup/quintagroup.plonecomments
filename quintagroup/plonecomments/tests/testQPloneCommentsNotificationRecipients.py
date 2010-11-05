@@ -12,7 +12,7 @@ from email import message_from_string
 from email.Header import Header
 from base import getToolByName, FunctionalTestCase
 from common import *
-from config import *
+from config import PROPERTY_SHEET
 
 from Products.CMFPlone.tests.utils import MockMailHost
 

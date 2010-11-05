@@ -6,6 +6,7 @@ import unittest
 
 from base import getToolByName, TestErase
 from config import PRODUCT, PRODUCT_SKIN_NAME, CONFIGLET_ID, PROPERTY_SHEET
+from zExceptions import BadRequest
 
 
 class TestUninstallation(TestErase):
@@ -14,7 +15,10 @@ class TestUninstallation(TestErase):
         self.loginAsPortalOwner()
         self.qi = self.portal.portal_quickinstaller
         self.qi.installProduct(PRODUCT)
-        self.qi.uninstallProducts([PRODUCT])
+        try:
+            self.qi.uninstallProducts([PRODUCT])
+        except BadRequest:
+            pass
 
     def test_package_uninstall(self):
         self.failIf(self.qi.isProductInstalled(PRODUCT),
