@@ -95,3 +95,10 @@ Contributors
  
 * Gerry Kirk: product translations improvement and proofreading
 * Dorneles Tremea: code cleanup and generic setup porting
+* Andreas Stocker: German translation
+* Héctor Velarde: Spanish translation
+* Benjamin Klups: French translation
+* Kees Hink: Dutch translation
+* Erico Andrei: Portuguese translation
+* Olha Pelishok: Ukraininan translation
+
