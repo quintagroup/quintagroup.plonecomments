@@ -1,11 +1,11 @@
-# Érico Andrei <erico@simplesconsultoria.com.br>, 2008.
+# Andre Nogueira <andre@simplesconsultoria.com.br>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: qPloneComments\n"
 "POT-Creation-Date: 2010-04-08 15:31+0000\n"
-"PO-Revision-Date: 2008-07-18 03:51-0300\n"
-"Last-Translator: Érico Andrei <erico@simplesconsultoria.com.br>\n"
-"Language-Team: Simples Consultoria\n"
+"PO-Revision-Date: 2011-04-08 09:42-0300\n"
+"Last-Translator: Andre Nogueira <andre@simplesconsultoria.com.br>\n"
+"Language-Team: Amcham Brasil and Simples Consultoria\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,7 +22,7 @@ msgstr "Comentário publicado"
 
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_edit.cpy:48
 msgid "Comment updated."
-msgstr ""
+msgstr "Comentário atualizado"
 
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_delete.cpy:34
 msgid "Comment(s) deleted."
@@ -34,7 +34,7 @@ msgstr "Comentário(s) publicado(s)"
 
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:235
 msgid "Could not send the email notification. Have you configured an email server for Plone?"
-msgstr ""
+msgstr "O email de notificação não pode ser enviado. Você ja configurou um servidor de e-mail o Plone?"
 
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_reply.cpy:96
 msgid "Currently, all comments require approval before being published. Please check back later."
@@ -43,7 +43,7 @@ msgstr "Os comentários necessitam de aprovação prévia a sua publicação. Po
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:59
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:58
 msgid "Please correct the indicated errors."
-msgstr ""
+msgstr "Por favor corrija os erros indicados."
 
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:48
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:47
@@ -73,21 +73,21 @@ msgstr "Responder ainda não é permitido porque a resposta é para um comentár
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:53
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:52
 msgid "You must correctly enter the word."
-msgstr ""
+msgstr "Você precisa digitar uma palavra."
 
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse.cpy:72
 msgid "Your abuse report has been sent."
-msgstr ""
+msgstr "Sua mensagem de abuso foi enviada."
 
 #. Default: "[${organization_name}] New comment awaits moderation"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:193
 msgid "approve_notification_subject"
-msgstr ""
+msgstr "[${organization_name}] Novo comentário aguardando moderação"
 
 #. Default: "Your comment on ${title} is now published"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:121
 msgid "approve_user_notification_subject"
-msgstr ""
+msgstr "Seu comentário: ${title}, está publicado"
 
 #. Default: "Please review new comment added to the following page ' ${title} ': ${here_url}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/approve_comment_template.pt:10
@@ -97,7 +97,7 @@ msgstr "Por favor avalie o novo comentário adicionado à página ' ${title} ': 
 #. Default: "You can edit a comment by filling out the form below. Plain text formatting."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_edit_form.cpt:38
 msgid "description_edit_comment"
-msgstr ""
+msgstr "Você pode editar um comentário preenchendo o formulário abaixo. Formatação de texto simples."
 
 #. Default: "Enable Manager moderation"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:199
@@ -117,7 +117,7 @@ msgstr "Configurações do qPloneComments"
 #. Default: "Report Abuse"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse_form.cpt:111
 msgid "heading_report_abuse_form"
-msgstr ""
+msgstr "Reportar abuso"
 
 #. Default: "The email address where comment notifications will be sent"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:212
@@ -128,22 +128,22 @@ msgstr "Endereço de e-mail que receberá as notificações sobre novos comentá
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_reply_form.cpt:143
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse_form.cpt:146
 msgid "help_email"
-msgstr ""
+msgstr "Por favor entre com seu endereço de e-mail"
 
 #. Default: "This setting will only take effect if abuse reports are enabled."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:181
 msgid "help_enable_ajax_report_abuse"
-msgstr ""
+msgstr "Esta configuração só tera efeito se o reportar abuso estiver habilitado."
 
 #. Default: "This setting will allow ALL users, including non logged in users to report abusive comments."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:157
 msgid "help_enable_anonymous_report_abuse"
-msgstr ""
+msgstr "Esta configuração permitirá que TODOS usuários, incluindo usuários não logados para reportar comentários de abuso."
 
 #. Default: "Please state your reasons why you would like to report this comment as abusive. Our administrator will be notified with your message."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse_form.cpt:176
 msgid "help_message"
-msgstr ""
+msgstr "Por favor diga a razão porque gostaria de reportar como comentário abusivo. Nosso administrador será notificado com esta mensagem."
 
 #. Default: "Please enter your name."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_reply_form.cpt:113
@@ -181,12 +181,12 @@ msgstr "Enviar a notificação de novos comentários para:"
 #. Default: "Enable AJAX powered abuse reports"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:178
 msgid "label_enable_ajax_report_abuse"
-msgstr ""
+msgstr "Habilitar AJAX para reportar abusos."
 
 #. Default: "Enable anonymous users to report abusive comments"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:154
 msgid "label_enable_anonymous_report_abuse"
-msgstr ""
+msgstr "Permitir que usuários anônimos possam reportar comentários abusivos."
 
 #. Default: "Notify Discussion Manager of new comments."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:291
@@ -221,7 +221,7 @@ msgstr "Avisar ao usuário que seu comentário recebeu uma resposta."
 #. Default: "Enable authenticated users to report abusive comments"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:135
 msgid "label_enable_report_abuse"
-msgstr ""
+msgstr "Permitir que usuarios autenticados possam reportar comentários abusivos"
 
 #. Default: "Email subject prefix (organization name)"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:233
@@ -231,12 +231,12 @@ msgstr "Prefixo do assunto do e-mail (nome do site)"
 #. Default: "[pending]"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/browser/comments.pt:50
 msgid "label_pending_state"
-msgstr ""
+msgstr "[pendente]"
 
 #. Default: "Report Abuse"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/browser/comments.pt:107
 msgid "label_report_abuse"
-msgstr ""
+msgstr "Reportar Abuso"
 
 #. Default: "Require email from Anonymous commenters"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:96
@@ -246,7 +246,7 @@ msgstr "Requerer e-mail de usuários anônimos."
 #. Default: "Edit comment"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_edit_form.cpt:36
 msgid "legend_edit_comment"
-msgstr ""
+msgstr "Editar comentário"
 
 #. Default: "Email Notification Options"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:255
@@ -271,7 +271,7 @@ msgstr "Comentário"
 #. Default: "A comment '${url}' has been reported as abusive. The comment: ------------ ${comment_desc} ${comment_text} The abuse report: ----------------- ${report}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse_template.pt:28
 msgid "notifyabuse_link"
-msgstr ""
+msgstr "O comentario '${url}' foi reportado como abuso. O comentario: ------------ ${comment_desc} ${comment_text} O motivo de abuso: ----------------- ${report}"
 
 #. Default: "Your comment on ${url} has been published. To see your comment, go to ${here_url}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/notify_comment_template.pt:12
@@ -286,7 +286,7 @@ msgstr "Seu comentário em ${url} não foi aceito. Por favor direcione suas dúv
 #. Default: "[${organization_name}] New comment added"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:178
 msgid "published_notification_subject"
-msgstr ""
+msgstr "[${organization_name}] Novo comentário adicionado"
 
 #. Default: "View new comment added to the following page ' ${title} ': ${here_url}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/published_comment_template.pt:8
@@ -297,7 +297,7 @@ msgstr "Visualizar comentários adicionados à página ' ${title} ': ${here_url}
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/profiles/default/actionicons.xml
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/profiles/default/controlpanel.xml
 msgid "qPloneComments"
-msgstr ""
+msgstr "qPloneComments"
 
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup.cpy:53
 msgid "qPloneComments configuration changes saved."
@@ -306,12 +306,12 @@ msgstr "Configurações do qPloneComments foram salvas."
 #. Default: "Your comment on ${title} was not approved"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:136
 msgid "rejected_user_notification_subject"
-msgstr ""
+msgstr "Seu comentário: ${title}, não foi aprovado"
 
 #. Default: "Someone replied to your comment on ${title}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:152
 msgid "reply_user_notification_subject"
-msgstr ""
+msgstr "Alguém respondeu ao seu comentário: ${title}"
 
 #. Default: "Someone replied to your comment on ${url}. To read the response, go to ${here_url}."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/reply_notify_template.pt:10
@@ -321,7 +321,7 @@ msgstr "Alguém respondeu ao seu comentário em ${here_url}. Para ler esta respo
 #. Default: "[${organization_name}] A comment on ${title} has been reported for abuse."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:218
 msgid "report_abuse_subject"
-msgstr ""
+msgstr "[${organization_name}] O comentário: ${title} foi reportado como abuso."
 
 #. Default: "${organization_name} Support Team"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/approve_comment_template.pt:15
@@ -339,7 +339,7 @@ msgstr "O comentário deve ser aprovado antes de poder receber respostas."
 #. Default: "This site doesn't have a valid email setup, so you cannot use the report abuse form."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse_form.cpt:94
 msgid "text_no_email_setup"
-msgstr ""
+msgstr "Este site não possui um e-mail válido configurado, então você não pode user o formulário para reportar abusos."
 
 #. Default: "No new comments."
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_form.cpt:53
