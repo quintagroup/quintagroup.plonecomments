@@ -59,26 +59,5 @@ class FunctionalTestCase(ptc.FunctionalTestCase):
 
 
 class TestErase(TestCase):
-    # we use here nested layer for not to make an impact on
-    # the rest test cases, this test case check uninstall procedure
-    # thus it has to uninstall package which will be required to
-    # be installed for other test cases
-    class layer(PloneSiteLayer):
-        @classmethod
-        def setUp(cls):
-            app = ztc.app()
-            portal = app.plone
-
-            # elevate permissions
-            user = portal.getWrappedOwner()
-            newSecurityManager(None, user)
-
-            tool = getToolByName(portal, 'portal_quickinstaller')
-            if tool.isProductInstalled(PRODUCT):
-                tool.uninstallProducts([PRODUCT, ])
-
-            # drop elevated perms
-            noSecurityManager()
-
-            transaction.commit()
-            ztc.close(app)
+    """Test case class used for uninstalling tests
+    """

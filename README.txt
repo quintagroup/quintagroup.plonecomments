@@ -1,12 +1,9 @@
 Introduction
 ============
 
-Copyright (c) "Quintagroup": http://quintagroup.com, 2004-2009
-
 Plone Comments (quintagroup.plonecomments) is a Plone product developed 
 to improve the site managers and editors experience with standard 
 commenting mechanism in Plone.
-
 
 Features
 --------
@@ -33,7 +30,6 @@ Plone Comments Configlet allows:
 
 Plone Comments can be integrated with Plone Captchas (requires quintagroup.plonecaptchas to be installed)
 
-
 Notes
 -----
 
@@ -48,7 +44,6 @@ names provided when posting Anonymously are in plain text.
 
 Notification subject control allows to enter custom prefix to distinct
 notifications coming from different sites.
-
 
 Usage
 -----
@@ -69,9 +64,9 @@ Links
 
 * Get latest development version from "SVN": http://svn.quintagroup.com/products/quintagroup.plonecomments/trunk
 
-* Watch Plone Comments Screencast (http://quintagroup.com/cms/screencasts/plone-comments) to learn how to install and set up Plone Comments on your buildout-based Plone instance for Plone 3.2 or above. You will also find one of the possible use cases of using Plone Comments Plone add-on included.
+* Watch Plone Comments Screencast http://quintagroup.com/cms/screencasts/plone-comments to learn how to install and set up Plone Comments on your buildout-based Plone instance for Plone 3.2 or above. You will also find one of the possible use cases of using Plone Comments Plone add-on included.
 
-* Watch Plone Comments Use Cases Screencast (http://quintagroup.com/cms/screencasts/plone-comments/use-cases) to learn about integration of Plone Comments with Plone Captchas, see 2 examples of possible use cases: anonymous and registered users commenting. 
+* Watch Plone Comments Use Cases Screencast http://quintagroup.com/cms/screencasts/plone-comments/use-cases to learn about integration of Plone Comments with Plone Captchas, see 2 examples of possible use cases: anonymous and registered users commenting. 
 
 Requirements
 ------------
@@ -79,12 +74,10 @@ Requirements
 * Plone 3.x
 * plone.browserlayer is required for Plone 3.0.x
 
-
 License
 -------
 
 Please find license in *LICENSE.GPL*.
-
 
 Authors
 -------
@@ -95,9 +88,17 @@ The product is developed and maintained by http://quintagroup.com team.
 * Andriy Mylenkyy
 * Mykola Kharechko
 * Vitaliy Stepanov
+* Roman Kozlovskyi
 
 Contributors
 ------------
  
 * Gerry Kirk: product translations improvement and proofreading
 * Dorneles Tremea: code cleanup and generic setup porting
+* Andreas Stocker: German translation
+* Héctor Velarde: Spanish translation
+* Benjamin Klups: French translation
+* Kees Hink: Dutch translation
+* Erico Andrei: Portuguese translation
+* Olha Pelishok: Ukraininan translation
+
