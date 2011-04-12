@@ -17,7 +17,7 @@ def createReply(self, title, text, Creator=None, email=''):
     container = self._container
 
     id = int(DateTime().timeTime())
-    while self._container.get(str(id), None) is not None:
+    while container.get(str(id), None) is not None:
         id += 1
     id = str(id)
 
@@ -29,7 +29,7 @@ def createReply(self, title, text, Creator=None, email=''):
         else:
             item.creator = Creator
 
-    self._container[id] = item
+    container[id] = item
     item = item.__of__(self)
 
     item.setFormat('structured-text')
