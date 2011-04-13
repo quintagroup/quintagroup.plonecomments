@@ -90,3 +90,43 @@ class CommentsViewlet(comments.CommentsViewlet):
         portal_url = getToolByName(self.context, 'portal_url')
         portal = portal_url.getPortalObject()
         return portal.email_from_address
+
+
+from zope.interface import Interface
+from Products.Five.browser import BrowserView
+
+
+class IQCommentsView(Interface):
+    """
+    """
+
+    def js3():
+        """
+        """
+
+    def js4():
+        """
+        """
+
+
+class QCommentsView(BrowserView):
+    """
+    """
+
+    def js3(self):
+        """
+        """
+        portal_properties = getToolByName(self.context, 'portal_properties')
+        prop_sheet = portal_properties['qPloneComments']
+        value = prop_sheet.getProperty('visual_effects', -1)
+        return value == 1
+
+    def js4(self):
+        """
+        """
+        portal_properties = getToolByName(self.context, 'portal_properties')
+        prop_sheet = portal_properties['qPloneComments']
+        value = prop_sheet.getProperty('visual_effects', -1)
+        jstool = aq_inner(self.context).portal_javascripts
+        popupenabled = jstool.getResource('popupforms.js').getEnabled()
+        return value == 0 and popupenabled or value == 2

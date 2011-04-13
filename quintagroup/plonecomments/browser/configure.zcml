@@ -4,4 +4,12 @@
     xmlns:kss="http://namespaces.zope.org/kss"
     i18n_domain="quintagroup.plonecomments">
 
+    <browser:page
+        for="*"
+        name="qcomments"
+        class=".comments.QCommentsView"
+        allowed_interface=".comments.IQCommentsView"
+        permission="zope.Public"
+        />
+
 </configure>
