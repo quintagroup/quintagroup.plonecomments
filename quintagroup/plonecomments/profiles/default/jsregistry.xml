@@ -2,10 +2,10 @@
 <object name="portal_javascripts" meta_type="JavaScripts Registry">
     <javascript cacheable="true" compression="safe" cookable="true"
         enabled="true" id="qcomments.js" inline="false"
-        expression="python:here.portal_properties.qPloneComments.visual_effects==1"
+        expression="here/@@qcomments/js3"
         />
     <javascript cacheable="true" compression="safe" cookable="true"
         enabled="true" id="qcomments4.js" inline="false"
-        expression="python:here.portal_properties.qPloneComments.visual_effects==0 and portal.portal_javascripts.getResource('popupforms.js').getEnabled() or here.portal_properties.qPloneComments.visual_effects==2"
+        expression="here/@@qcomments/js4"
         />
 </object>
