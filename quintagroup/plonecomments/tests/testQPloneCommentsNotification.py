@@ -7,8 +7,7 @@ import re
 from helperNotify import setProperties, testMailExistance
 from quintagroup.plonecomments.utils import getMsg
 from base import FunctionalTestCase
-from config import *
-
+from config import PROPERTY_SHEET
 from Products.CMFPlone.tests.utils import MockMailHost
 
 REXP_TO = re.compile("To:\s*(.*?)$", re.M)
