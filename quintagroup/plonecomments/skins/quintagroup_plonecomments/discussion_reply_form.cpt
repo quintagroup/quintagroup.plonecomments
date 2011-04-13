@@ -49,12 +49,14 @@
                </h3>
                <div class="documentByLine"
                     tal:define="anonymous_creator python:reply.Creator()=='Anonymous User'">
-                   <span i18n:translate="label_comment_by">Posted by</span>
+                   <span i18n:domain="quintagroup.plonecomments"
+                         i18n:translate="label_comment_by">Posted by</span>
                    <span tal:content="reply/Creator"
                          tal:condition="not:anonymous_creator">Poster Name</span>
                    <span i18n:translate="label_anonymous_user"
                          tal:condition="anonymous_creator">Anonymous User</span>
-                   <span i18n:translate="label_commented_at">at</span>
+                   <span i18n:domain="quintagroup.plonecomments"
+                         i18n:translate="label_commented_at">at</span>
                    <span tal:replace="python:toLocalizedTime(reply.ModificationDate(),
                                       long_format=1)">8/23/2001 12:40:44 PM</span>
                </div>
@@ -80,9 +82,11 @@
 
         <fieldset>
 
-            <legend i18n:translate="legend_add_comment">Add comment</legend>
+            <legend i18n:domain="quintagroup.plonecomments"
+                    i18n:translate="legend_add_comment">Add comment</legend>
 
-            <p i18n:translate="description_add_comment">
+            <p i18n:domain="quintagroup.plonecomments"
+               i18n:translate="description_add_comment">
                 You can add a comment by filling out the form below. Plain text
                 formatting.
             </p>
@@ -101,7 +105,8 @@
                  <div class="field"
                      tal:condition="isAnon"
                      tal:define="error errors/Creator|nothing;"
-                     tal:attributes="class python:test(error, 'field error', 'field');">
+                     tal:attributes="class python:test(error, 'field error', 'field');"
+                     i18n:domain="plone">
 
                     <label for="username" i18n:translate="label_name">Name</label>
 
@@ -122,7 +127,7 @@
                                id="username"
                                value="" alt="Submitter" title="Name"
                                size="40"
-                               i18n:attributes="alt; title"
+                               i18n:attributes="alt; title label_name"
                                tal:attributes="value request/Creator | nothing" />
                     </div>
 
@@ -153,7 +158,8 @@
 
             </div>
 
-            <div tal:condition="python:(not isForAnonymous) and isAnon">
+            <div tal:condition="python:(not isForAnonymous) and isAnon"
+                 i18n:domain="plone">
                 <dl class="portalMessage warning">
                     <dt i18n:translate="">
                         Info

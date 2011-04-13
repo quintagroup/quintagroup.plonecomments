@@ -6,3 +6,6 @@
 .discussion textarea {
  width: 100%;
 }
+.discussion fieldset {
+ clear: both;
+}

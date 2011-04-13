@@ -5,6 +5,7 @@ title=Discussioin edit form
 View=1:Manager
 
 [validators]
+validators= 
 validators..Cancel=
 
 [actions]

@@ -25,7 +25,8 @@
                             reply python:reply_dict['object'];
                             comment_id python:reply_dict['object'].id;
                             isPublished python:reply.review_state=='published';"
-                tal:attributes="style string:margin-left:${indent}em;">
+                tal:attributes="style string:margin-left:${indent}em;"
+                i18n:domain="plone">
 
                 <h3 tal:attributes="id reply/id">
                     <a class="comments"
@@ -44,7 +45,8 @@
                     <img alt="Avatar" class="avatar" height="40" width="40"
                          src="http://default.gavatar.gif"
                          tal:attributes="src gavatar_src" />
-                    <span i18n:translate="label_comment_by">Posted by</span>
+                    <span i18n:domain="quintagroup.plonecomments"
+                          i18n:translate="label_comment_by">Posted by</span>
                     <span tal:content="fullname"
                           tal:condition="not:anonymous_creator">Poster Name</span>
                     <span i18n:translate="label_anonymous_user"
@@ -53,7 +55,8 @@
                         <tal:creator tal:content="creator">User</tal:creator>
                         <tal:isemail tal:condition="creator_email">(<tal:email tal:replace="creator_email">email</tal:email>)</tal:isemail>
                     </span>
-                    <span i18n:translate="label_commented_at">at</span>
+                    <span i18n:domain="quintagroup.plonecomments"
+                          i18n:translate="label_commented_at">at</span>
                     <span tal:replace="python:view.format_time(reply.ModificationDate())">8/23/2001 12:40:44 PM</span>
                     <span class="state-pending"
                           i18n:domain="quintagroup.plonecomments"
