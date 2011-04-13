@@ -2,9 +2,8 @@
 # Test product's uninstallation
 #
 
-import unittest
-
-from base import getToolByName, TestErase
+from Products.CMFCore.utils import getToolByName
+from base import TestErase
 from config import PRODUCT, PRODUCT_SKIN_NAME, CONFIGLET_ID, PROPERTY_SHEET
 from zExceptions import BadRequest
 

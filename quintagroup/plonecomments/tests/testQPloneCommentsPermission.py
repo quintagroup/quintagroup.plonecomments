@@ -2,9 +2,7 @@
 # Test 'Moderate Discussion' permission
 #
 
-from Products.CMFDefault.DiscussionItem import DiscussionItemContainer
-
-from base import getToolByName, TestCase
+from base import TestCase
 from config import PERM_NAME
 
 

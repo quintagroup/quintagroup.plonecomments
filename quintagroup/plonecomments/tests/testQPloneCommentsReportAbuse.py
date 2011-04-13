@@ -1,6 +1,4 @@
-from base import getToolByName, TestCase
 from testQPloneCommentsCommenting import TestCommBase
-from zExceptions import Unauthorized
 
 
 class TestReportAbuse(TestCommBase):

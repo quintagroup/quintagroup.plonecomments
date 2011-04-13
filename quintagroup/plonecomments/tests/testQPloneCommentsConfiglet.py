@@ -3,8 +3,9 @@
 #
 
 from Products.CMFCore.permissions import ReplyToItem
+from Products.CMFCore.utils import getToolByName
 from AccessControl.SecurityManagement import noSecurityManager
-from base import getToolByName, FunctionalTestCase
+from base import FunctionalTestCase
 from config import USERS, PROPERTY_SHEET, DM_USERS_IDS, COMMON_USERS_IDS
 
 
@@ -19,7 +20,7 @@ def addUsers(self):
     # Add users to Discussion Manager group
     portal_groups = getToolByName(self.portal, 'portal_groups')
     dm_group = portal_groups.getGroupById('DiscussionManager')
-    dm_users = [dm_group.addMember(u) for u in DM_USERS_IDS]
+    [dm_group.addMember(u) for u in DM_USERS_IDS]
 
 
 class TestConfiglet(FunctionalTestCase):
@@ -66,7 +67,7 @@ class TestConfiglet(FunctionalTestCase):
         #    :: '+str(member.getRoles())+' :: '+member.getProperty('email'))
 
         # Add testing document to portal
-        my_doc = self.portal.invokeFactory('Document', id='my_doc')
+        self.portal.invokeFactory('Document', id='my_doc')
         self.my_doc = self.portal['my_doc']
         self.my_doc.edit(text_format='plain', text='hello world')
 

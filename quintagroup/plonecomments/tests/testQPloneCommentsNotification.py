@@ -1,15 +1,12 @@
 #
 # Test configuration form working
 #
-import re
-from helperNotify import *
-from email.Header import Header
 
-from Products.CMFCore.permissions import ManagePortal, ReplyToItem
-import base64
-from email import message_from_string
+from Products.CMFCore.utils import getToolByName
+import re
+from helperNotify import setProperties, testMailExistance
 from quintagroup.plonecomments.utils import getMsg
-from base import getToolByName, FunctionalTestCase
+from base import FunctionalTestCase
 from config import *
 
 from Products.CMFPlone.tests.utils import MockMailHost
@@ -32,7 +29,7 @@ class TestNotification(FunctionalTestCase):
 
     def afterSetUp(self):
         self.portal._original_MailHost = self.portal.MailHost
-        self.portal.MailHost = mailhost = MockMailHost('MailHost')
+        self.portal.MailHost = MockMailHost('MailHost')
 
         self.loginAsPortalOwner()
 
@@ -71,8 +68,7 @@ class TestNotification(FunctionalTestCase):
         member.setMemberProperties({'email': 'creator@test.com'})
 
         # Add testing document to portal
-        my_doc = self.portal.invokeFactory('Document', id='my_doc',
-                                           title='Doc')
+        self.portal.invokeFactory('Document', id='my_doc', title='Doc')
         self.my_doc = self.portal['my_doc']
         self.my_doc.edit(text_format='plain', text='hello world')
         # Create talkback for document and Prepare REQUEST
@@ -149,7 +145,6 @@ class TestNotification(FunctionalTestCase):
         reply = self.getDiscussionReplies(self.my_doc)[0]
         reply.discussion_reply('A Reply for comment',
                                'text of reply for comment')
-        reply_for_comment = self.getDiscussionReplies(self.my_doc)[0]
         self.failUnless(testMailExistance(self),
             'Mail was not sended when enable_reply_user_notification.')
 

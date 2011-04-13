@@ -2,8 +2,14 @@
 # Test product's installation
 #
 
-from base import getToolByName, TestCase
-from config import *
+from Products.CMFCore.utils import getToolByName
+from base import TestCase
+from config import PRODUCT, CONFIGLET_ID, PRODUCT_SKIN_NAME, PROPERTY_SHEET
+from config import EMAIL_PID, EMAIL_SUBJECT_PID, REQUIRE_EMAIL_PID, PERM_NAME
+from config import APPROVE_NOTIFICATION_PID, PUBLISHED_NOTIFICATION_PID
+from config import APPROVE_USER_NOTIFICATION_PID, REPLY_USER_NOTIFICATION_PID
+from config import MODERATION_PID, REJECTED_NOTIFICATION_PID
+from config import ANONYMOUS_COMMENTING_PID
 
 
 class TestInstallation(TestCase):

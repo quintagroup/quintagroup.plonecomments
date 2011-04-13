@@ -3,12 +3,9 @@ import transaction
 from Products.Five import zcml, fiveconfigure
 
 from Testing import ZopeTestCase as ztc
-from AccessControl.SecurityManagement import newSecurityManager, \
-    noSecurityManager
 
 from Products.PloneTestCase import PloneTestCase as ptc
-from Products.PloneTestCase.layer import onsetup, PloneSiteLayer
-from Products.CMFCore.utils import getToolByName
+from Products.PloneTestCase.layer import onsetup
 
 from config import PRODUCT
 

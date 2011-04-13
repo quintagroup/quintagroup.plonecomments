@@ -2,8 +2,9 @@
 # Test adding comments possibility on switching on/off moderation
 #
 
+from Products.CMFCore.utils import getToolByName
 from zExceptions import Unauthorized
-from base import getToolByName, FunctionalTestCase
+from base import FunctionalTestCase
 from config import USERS, PROPERTY_SHEET, DM_USERS_IDS, COMMON_USERS_IDS
 
 
@@ -25,7 +26,7 @@ class TestCommBase(FunctionalTestCase):
         # Add users to Discussion Manager group
         portal_groups = getToolByName(self.portal, 'portal_groups')
         dm_group = portal_groups.getGroupById('DiscussionManager')
-        dm_users = [dm_group.addMember(u) for u in DM_USERS_IDS]
+        [dm_group.addMember(u) for u in DM_USERS_IDS]
 
         # Allow discussion for Document
         portal_types = getToolByName(self.portal, 'portal_types', None)

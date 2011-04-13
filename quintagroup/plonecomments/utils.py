@@ -1,10 +1,8 @@
 import smtplib
-from zope.i18n import translate
 from zope.i18nmessageid import MessageFactory
 _ = MessageFactory("quintagroup.plonecomments")
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import safe_unicode
-from config import warning
 
 
 # Get apropriate property from (propery_sheeet) configlet

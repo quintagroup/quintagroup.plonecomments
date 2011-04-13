@@ -2,16 +2,11 @@
 # Test configuration form working
 #
 
-from Products.CMFCore.permissions import ManagePortal, ReplyToItem
-
-from quintagroup.plonecomments.utils import getMsg
-
+from Products.CMFCore.utils import getToolByName
 import re
-from helperNotify import *
-from email import message_from_string
-from email.Header import Header
-from base import getToolByName, FunctionalTestCase
-from common import *
+from helperNotify import setProperties
+from base import FunctionalTestCase
+from common import addMembers, add2Group
 from config import PROPERTY_SHEET
 
 from Products.CMFPlone.tests.utils import MockMailHost
@@ -46,7 +41,7 @@ class TestNotificationRecipients(FunctionalTestCase):
 
     def afterSetUp(self):
         self.portal._original_MailHost = self.portal.MailHost
-        self.portal.MailHost = mailhost = MockMailHost('MailHost')
+        self.portal.MailHost = MockMailHost('MailHost')
 
         self.loginAsPortalOwner()
 

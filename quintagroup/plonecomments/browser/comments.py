@@ -1,15 +1,14 @@
 import urllib
 try:
     import hashlib as md5
+    md5.md5
 except ImportError:
     import md5
 
 from Acquisition import aq_inner
 from AccessControl import getSecurityManager
 from Products.CMFPlone.utils import getToolByName
-from Products.CMFFormController.ControllerState import ControllerState
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from quintagroup.plonecomments.utils import manage_mails
 from plone.app.layout.viewlets import comments
 
 
