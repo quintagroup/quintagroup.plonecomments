@@ -4,8 +4,9 @@
 
 from Products.CMFCore.utils import getToolByName
 from zExceptions import Unauthorized
-from base import FunctionalTestCase
-from config import USERS, PROPERTY_SHEET, DM_USERS_IDS, COMMON_USERS_IDS
+from quintagroup.plonecomments.tests.base import FunctionalTestCase
+from quintagroup.plonecomments.tests.config import USERS, PROPERTY_SHEET, \
+    DM_USERS_IDS, COMMON_USERS_IDS
 
 
 class TestCommBase(FunctionalTestCase):

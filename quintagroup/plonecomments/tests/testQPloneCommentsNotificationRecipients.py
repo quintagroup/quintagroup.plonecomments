@@ -4,10 +4,10 @@
 
 from Products.CMFCore.utils import getToolByName
 import re
-from helperNotify import setProperties
-from base import FunctionalTestCase
-from common import addMembers, add2Group
-from config import PROPERTY_SHEET
+from quintagroup.plonecomments.tests.helperNotify import setProperties
+from quintagroup.plonecomments.tests.base import FunctionalTestCase
+from quintagroup.plonecomments.tests.common import addMembers, add2Group
+from quintagroup.plonecomments.tests.config import PROPERTY_SHEET
 
 from Products.CMFPlone.tests.utils import MockMailHost
 

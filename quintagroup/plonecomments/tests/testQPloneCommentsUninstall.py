@@ -3,8 +3,9 @@
 #
 
 from Products.CMFCore.utils import getToolByName
-from base import TestErase
-from config import PRODUCT, PRODUCT_SKIN_NAME, CONFIGLET_ID, PROPERTY_SHEET
+from quintagroup.plonecomments.tests.base import TestErase
+from quintagroup.plonecomments.tests.config import PRODUCT, \
+    PRODUCT_SKIN_NAME, CONFIGLET_ID, PROPERTY_SHEET
 from zExceptions import BadRequest
 
 

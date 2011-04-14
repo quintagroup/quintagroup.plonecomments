@@ -129,4 +129,3 @@ class QCommentsView(BrowserView):
         jstool = aq_inner(self.context).portal_javascripts
         popupenabled = jstool.getResource('popupforms.js').getEnabled()
         return value == 0 and popupenabled or value == 2
-

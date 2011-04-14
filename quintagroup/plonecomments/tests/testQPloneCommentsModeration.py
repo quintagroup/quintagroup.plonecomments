@@ -4,9 +4,10 @@
 
 import re
 from Products.CMFCore.utils import getToolByName
-from common import addMembers, add2Group
-from base import FunctionalTestCase
-from config import USERS, DM_USERS_IDS, COMMON_USERS_IDS
+from quintagroup.plonecomments.tests.common import addMembers, add2Group
+from quintagroup.plonecomments.tests.base import FunctionalTestCase
+from quintagroup.plonecomments.tests.config import USERS, DM_USERS_IDS, \
+    COMMON_USERS_IDS
 
 
 class TestModeration(FunctionalTestCase):
