@@ -63,7 +63,7 @@ class CommentsViewlet(comments.CommentsViewlet):
         return gravatar_url
 
     def authenticated_report_abuse_enabled(self):
-        """ """
+        """ authenticated_report_abuse_enabled """
         portal_properties = getToolByName(self.context, 'portal_properties')
         prop_sheet = portal_properties['qPloneComments']
         value = prop_sheet.getProperty('enable_authenticated_report_abuse',
@@ -71,21 +71,21 @@ class CommentsViewlet(comments.CommentsViewlet):
         return value
 
     def anonymous_report_abuse_enabled(self):
-        """ """
+        """ anonymous_report_abuse_enabled """
         portal_properties = getToolByName(self.context, 'portal_properties')
         prop_sheet = portal_properties['qPloneComments']
         value = prop_sheet.getProperty('enable_anonymous_report_abuse', False)
         return value
 
     def visual_effects_level(self):
-        """ """
+        """ visual_effects_level """
         portal_properties = getToolByName(self.context, 'portal_properties')
         prop_sheet = portal_properties['qPloneComments']
         value = prop_sheet.getProperty('visual_effects', 0)
         return value
 
     def email_from_address(self):
-        """ """
+        """ email_from_address """
         portal_url = getToolByName(self.context, 'portal_url')
         portal = portal_url.getPortalObject()
         return portal.email_from_address
@@ -96,24 +96,24 @@ from Products.Five.browser import BrowserView
 
 
 class IQCommentsView(Interface):
-    """
+    """ QComments View Interface
     """
 
     def js3():
-        """
+        """ visual_effects = 1
         """
 
     def js4():
-        """
+        """ visual_effects = 0 and popupenabled or visual_effects == 2
         """
 
 
 class QCommentsView(BrowserView):
-    """
+    """ QComments View
     """
 
     def js3(self):
-        """
+        """ visual_effects = 1
         """
         portal_properties = getToolByName(self.context, 'portal_properties')
         prop_sheet = portal_properties['qPloneComments']
@@ -121,7 +121,7 @@ class QCommentsView(BrowserView):
         return value == 1
 
     def js4(self):
-        """
+        """ visual_effects = 0 and popupenabled or visual_effects == 2
         """
         portal_properties = getToolByName(self.context, 'portal_properties')
         prop_sheet = portal_properties['qPloneComments']
@@ -129,3 +129,4 @@ class QCommentsView(BrowserView):
         jstool = aq_inner(self.context).portal_javascripts
         popupenabled = jstool.getResource('popupforms.js').getEnabled()
         return value == 0 and popupenabled or value == 2
+
