@@ -15,7 +15,7 @@ def addUsers(self):
     # Add all users
     self.membership = getToolByName(self.portal, 'portal_membership', None)
     for user_id in USERS.keys():
-        self.membership.addMember(user_id, USERS[user_id]['passw'] , USERS[user_id]['roles'], [])
+        self.membership.addMember(user_id, USERS[user_id]['passw'], USERS[user_id]['roles'], [])
 
     # Add users to Discussion Manager group
     portal_groups = getToolByName(self.portal, 'portal_groups')

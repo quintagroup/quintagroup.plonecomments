@@ -58,6 +58,7 @@ def createReply(self, title, text, Creator=None, email=''):
 
     return id
 
+
 def getReplies(self):
     """Return a sequence of the DiscussionResponse objects which are
        associated with this Discussable.
@@ -74,6 +75,7 @@ def getReplies(self):
         except Unauthorized:
             pass
     return objects
+
 
 perms = DiscussionItemContainer.__ac_permissions__
 new_perms = []

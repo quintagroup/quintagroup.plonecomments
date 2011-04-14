@@ -22,7 +22,6 @@ class TestReportAbuse(TestCommBase):
         except:
             raise "Anonymous user CAN'T report abuse in turned ON *Anonymous report abuse mode*."
 
-
     def testAuthenticatedReportAbuse(self):
         not_anonym_users = [u for u in self.all_users_id if not u=='anonym']
         failed_users = []

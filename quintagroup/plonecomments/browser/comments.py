@@ -27,15 +27,17 @@ class CommentsViewlet(comments.CommentsViewlet):
         """
         portal_properties = getToolByName(self.context, 'portal_properties')
         try:
-            return portal_properties.qPloneComments.getProperty('enable_moderation', None)
+            return portal_properties.qPloneComments.getProperty(
+                'enable_moderation', None)
         except AttributeError:
             return False
 
     def can_moderate(self):
-        """ Returns a boolean indicating whether the user has the 'Moderate Discussion'
-            permission
+        """ Returns a boolean indicating whether the user has
+            the 'Moderate Discussion' permission
         """
-        return getSecurityManager().checkPermission('Moderate Discussion', aq_inner(self.context))
+        return getSecurityManager().checkPermission('Moderate Discussion',
+                                                    aq_inner(self.context))
 
     def getGravatar(self, reply):
         purl = getToolByName(self.context, 'portal_url')
@@ -44,15 +46,15 @@ class CommentsViewlet(comments.CommentsViewlet):
         email = ''
 
         creator = reply.Creator()
-        if creator and not creator=='Anonymous User':
+        if creator and not creator == 'Anonymous User':
             mtool = getToolByName(self.context, "portal_membership")
             member = mtool.getMemberById(creator)
-            email = member and member.getProperty('email','') or ''
-            mem_id = getattr(member,'getId',lambda:'Anonymous User')()
+            email = member and member.getProperty('email', '') or ''
+            mem_id = getattr(member, 'getId', lambda: 'Anonymous User')()
             portrait = mtool.getPersonalPortrait(mem_id)
             portrait_url = portrait.absolute_url()
         else:
-            email = reply.getProperty('email',d='')
+            email = reply.getProperty('email', d='')
 
         if not email or not 'defaultUser.gif' in portrait_url:
             return portrait_url
@@ -60,15 +62,18 @@ class CommentsViewlet(comments.CommentsViewlet):
         size = 40
         gravatar_url = "http://www.gravatar.com/avatar.php?"
         # construct the url
-        gravatar_url += urllib.urlencode({'gravatar_id':md5.md5(email).hexdigest(),
-            'default':portrait_url, 'size':str(size)})
+        gravatar_url += urllib.urlencode({
+            'gravatar_id': md5.md5(email).hexdigest(),
+            'default': portrait_url,
+            'size': str(size)})
         return gravatar_url
 
     def authenticated_report_abuse_enabled(self):
         """ """
         portal_properties = getToolByName(self.context, 'portal_properties')
         prop_sheet = portal_properties['qPloneComments']
-        value = prop_sheet.getProperty('enable_authenticated_report_abuse', False)
+        value = prop_sheet.getProperty('enable_authenticated_report_abuse',
+                                       False)
         return value
 
     def anonymous_report_abuse_enabled(self):
@@ -106,7 +111,8 @@ class CommentsKSS(PloneKSSView):
     """
 
     def submit_abuse_report(self):
-        """ Send an email with the abuse report message and hide abuse report form.
+        """ Send an email with the abuse report message and
+            hide abuse report form.
         """
         errors = {}
         context = aq_inner(self.context)
@@ -122,8 +128,10 @@ class CommentsKSS(PloneKSSView):
                                             next_action=None,)
             # get the form controller
             controller = portal.portal_form_controller
-            # send the validate script to the form controller with the dummy state object
-            controller_state = controller.validate(dummy_controller_state, request, ['captcha_validator',])
+            # send the validate script to the form controller
+            # with the dummy state object
+            controller_state = controller.validate(dummy_controller_state,
+                                   request, ['captcha_validator', ])
             errors.update(controller_state.errors)
 
         message = request.get('message')
@@ -140,7 +148,8 @@ class CommentsKSS(PloneKSSView):
                                      show_form=True,
                                      member=member,
                                      **request.form)
-            node = ksscore.getHtmlIdSelector('span-reply-form-holder-%s' % comment_id)
+            node = ksscore.getHtmlIdSelector('span-reply-form-holder-%s' % \
+                                             comment_id)
             ksscore.replaceInnerHTML(node,  html)
             return self.render()
 
@@ -150,8 +159,10 @@ class CommentsKSS(PloneKSSView):
         html = self.macroContent('context/report_abuse_form/macros/form',
                                  member=member,
                                  **request.form)
-        node = ksscore.getHtmlIdSelector('span-reply-form-holder-%s' % comment_id)
-        html = '<br/><span style="color:red">You have reported this comment for abuse.</span>'
+        node = ksscore.getHtmlIdSelector('span-reply-form-holder-%s' % \
+                                         comment_id)
+        html = '<br/><span style="color:red">' \
+            'You have reported this comment for abuse.</span>'
         self.commands.addCommand('remove_abuse_report_form', 
                                  node, 
                                  comment_id=comment_id, 
