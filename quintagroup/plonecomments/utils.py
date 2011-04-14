@@ -82,7 +82,8 @@ def send_email(reply, context, state):
     def getEmail(obj, context):
         email = obj.getProperty('email', None)
         if email is None:
-            creators = hasattr(obj, 'listCreators') and obj.listCreators() or [obj.Creator(),]
+            creators = hasattr(obj, 'listCreators') and obj.listCreators() or \
+                [obj.Creator(), ]
             userid = creators and creators[0] or ""
             creator = getToolByName(context, 'portal_membership').getMemberById(userid)
             if creator and allowEmail(context, reply, state, creator):
@@ -125,11 +126,11 @@ def send_email(reply, context, state):
             context=context.REQUEST)
         if user_email:
             template = 'notify_comment_template'
-            args={'mto': user_email,
-                  'mfrom': admin_email,
-                  'obj': reply_parent,
-                  'organization_name': organization_name,
-                  'name': creator_name}
+            args = {'mto': user_email,
+                    'mfrom': admin_email,
+                    'obj': reply_parent,
+                    'organization_name': organization_name,
+                    'name': creator_name}
         else:
             args = {}
 
@@ -140,11 +141,11 @@ def send_email(reply, context, state):
             context=context.REQUEST)
         if user_email:
             template = 'rejected_comment_template'
-            args={'mto': user_email,
-                  'mfrom': admin_email,
-                  'obj': reply_parent,
-                  'organization_name': organization_name,
-                  'name': creator_name}
+            args = {'mto': user_email,
+                    'mfrom': admin_email,
+                    'obj': reply_parent,
+                    'organization_name': organization_name,
+                    'name': creator_name}
         else:
             args = {}
 
@@ -158,11 +159,11 @@ def send_email(reply, context, state):
         if di_parrent:
             user_email = getEmail(di_parrent, context)
             if user_email:
-                args={'mto': user_email,
-                      'mfrom': admin_email,
-                      'obj': reply_parent,
-                      'organization_name': organization_name,
-                      'name': di_parrent.getOwnerTuple()[1]}
+                args = {'mto': user_email,
+                        'mfrom': admin_email,
+                        'obj': reply_parent,
+                        'organization_name': organization_name,
+                        'name': di_parrent.getOwnerTuple()[1]}
             else:
                 args = {}
         else:
@@ -172,10 +173,10 @@ def send_email(reply, context, state):
         template = 'published_comment_template'
         user_email = getParentOwnerEmail(reply, context)
         if user_email:
-            args={'mto':user_email,
-                  'mfrom':admin_email,
-                  'obj':reply_parent,
-                  'organization_name':organization_name}
+            args = {'mto': user_email,
+                    'mfrom': admin_email,
+                    'obj': reply_parent,
+                    'organization_name': organization_name}
             subject = translate(_(u"published_notification_subject",
                 default=u"[${organization_name}] New comment added",
                 mapping={u"organization_name": organization_name}),
@@ -187,10 +188,10 @@ def send_email(reply, context, state):
         template = 'approve_comment_template'
         user_email = getProp(context, "email_discussion_manager", None)
         if user_email:
-            args={'mto':user_email,
-                  'mfrom':admin_email,
-                  'obj':reply_parent,
-                  'organization_name':organization_name}
+            args = {'mto': user_email,
+                    'mfrom': admin_email,
+                    'obj': reply_parent,
+                    'organization_name': organization_name}
             subject = translate(_(u"approve_notification_subject",
                 default=u"[${organization_name}] New comment awaits moderation",
                 mapping={u"organization_name": organization_name}),

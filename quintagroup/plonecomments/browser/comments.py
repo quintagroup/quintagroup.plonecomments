@@ -103,7 +103,7 @@ class CommentsViewlet(comments.CommentsViewlet):
 
 class CommentsKSS(PloneKSSView):
     """ Operations on the report abuse form using KSS.
-    """   
+    """
 
     def submit_abuse_report(self):
         """ Send an email with the abuse report message and hide abuse report form.

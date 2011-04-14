@@ -21,7 +21,8 @@ def install(context):
     existing = gtool.listGroupIds()
     if not 'DiscussionManager' in existing:
         gtool.addGroup('DiscussionManager', roles=['DiscussionManager'])
-        logger.info('Added DiscussionManager group to portal_groups with DiscussionManager role.')
+        logger.info('Added DiscussionManager group to portal_groups with '
+                    'DiscussionManager role.')
 
     # Remove workflow-chain for Discussion Item
     wf_tool = getToolByName(portal, 'portal_workflow')

@@ -10,12 +10,12 @@ from quintagroup.plonecomments.tests.base import FunctionalTestCase
 from quintagroup.plonecomments.tests.common import addMembers, add2Group
 from quintagroup.plonecomments.tests.config import PROPERTY_SHEET
 
-USERS = {# Common Members
+USERS = {   # Common Members
          'admin':{'passw': 'secret_admin', 'roles': ['Manager']},
          'owner':{'passw': 'secret_creator', 'roles': ['Member']},
          'replier1':{'passw': 'secret_member', 'roles': ['Member']},
          'replier2':{'passw': 'secret_member', 'roles': ['Member']},
-         # Members for discussion manager group
+            # Members for discussion manager group
          'dm_admin':{'passw': 'secret_dm_admin', 'roles': ['Manager']},
         }
 DM_USERS_IDS = [u for u in USERS.keys() if u.startswith('dm_')]
@@ -91,10 +91,8 @@ class TestNotificationRecipients(FunctionalTestCase):
 
     def test_Reply(self):
         self.portal.MailHost.reset()
-        
         self.prepareRequest4Reply('replier1')
         self.my_doc.discussion_reply('A Reply for my_doc' ,'text of reply for my_doc')
-
         mails = self.portal.MailHost.messages
         self.assertEqual(len(mails), 1)
         self.checkToANDSubj(mails, to="discussion.manager@test.com",
@@ -106,8 +104,6 @@ class TestNotificationRecipients(FunctionalTestCase):
         self.login('dm_admin')
         reply = self.discussion.getDiscussionFor(self.my_doc).getReplies()[0]
         self.portal.MailHost.reset()
-        
-
         reply.discussion_publish_comment()
         mails = self.portal.MailHost.messages
         self.assertEqual(len(mails), 2)
@@ -125,8 +121,6 @@ class TestNotificationRecipients(FunctionalTestCase):
         self.login('dm_admin')
         reply2 = self.discussion.getDiscussionFor(reply).getReplies()[0]
         self.portal.MailHost.reset()
-        
-
         reply2.discussion_publish_comment()
         mails = self.portal.MailHost.messages
         self.assertEqual(len(mails), 3)
@@ -140,8 +134,6 @@ class TestNotificationRecipients(FunctionalTestCase):
         self.login('dm_admin')
         reply = self.discussion.getDiscussionFor(self.my_doc).getReplies()[0]
         self.portal.MailHost.reset()
-        
-
         reply.deleteDiscussion()
         mails = self.portal.MailHost.messages
         self.assertEqual(len(mails), 1)

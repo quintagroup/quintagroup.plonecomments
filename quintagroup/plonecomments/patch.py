@@ -9,8 +9,8 @@ from AccessControl import getSecurityManager
 from Products.CMFCore.utils import getToolByName
 from Products.CMFDefault.DiscussionItem import DiscussionItem
 from Products.CMFDefault.DiscussionItem import DiscussionItemContainer
-
 from quintagroup.plonecomments.utils import getProp
+
 
 def createReply(self, title, text, Creator=None, email=''):
     """Create a reply in the proper place.

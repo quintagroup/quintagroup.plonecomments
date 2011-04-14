@@ -72,7 +72,6 @@ class TestMixinAnonymOn:
         self.failUnless(replies_after-replies_before,
             "Anonymous user CAN'T really add comment in terned ON *Anonymous commenting mode*.")
 
-
     def testAddCommentToDocNotAnonymUsers(self):
 
         # All users CAN ADD COMMENTS
@@ -104,7 +103,6 @@ class TestMixinAnonymOff:
         self.not_like_anonym = ['admin', 'member', 'dm_admin', 'dm_member']
         self.like_anonym = [u for u in all_users_id if u not in self.not_like_anonym]
 
-
     def testAddCommentToDocLikeAnonymUsers(self):
 
         # ADDING COMMENTS MUST REFUSED for anonymous users
@@ -128,7 +126,6 @@ class TestMixinAnonymOff:
         self.failIf(failed_users,
             "%s user(s) CAN really add comment in terned OFF "
             "*Anonymous commenting mode*." % failed_users)
-
 
     def testAddCommentToDocNotLikeAnonymUsers(self):
 
@@ -305,7 +302,6 @@ class TestMixinModerationOff:
         doc_obj.discussion_reply("A Reply to '%s'" % self.doc_moder_off_id,
             "text of reply to '%s'" % self.doc_moder_off_id)
 
-
     def testAddCommentToReplyAllowableUsers(self):
 
         # Users CAN ADD COMMENTS
@@ -328,10 +324,9 @@ class TestMixinModerationOff:
             disparity = len(replies_after) - len(replies_before)
             if not disparity:
                 failed_users.append(u)
-        self.failIf(failed_users ,
+        self.failIf(failed_users,
             "%s - member(s) CAN'T really ADD comment in terned off"
             " comments Moderation mode." % failed_users)
-
 
     def testAddCommentToReplyIllegalUsers(self):
 
