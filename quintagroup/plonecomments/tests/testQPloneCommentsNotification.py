@@ -48,7 +48,7 @@ class TestNotification(FunctionalTestCase):
         self.prefs = portal_properties[PROPERTY_SHEET]
 
         # Add Manager user - 'dm' and add him to Discussion Manager group
-        self.portal.portal_membership.addMember('dm', 'secret' , ['Manager'], [])
+        self.portal.portal_membership.addMember('dm', 'secret', ['Manager'], [])
         portal_groups = getToolByName(self.portal, 'portal_groups')
         dm_group = portal_groups.getGroupById('DiscussionManager')
         dm_group.addMember('dm')

@@ -4,13 +4,15 @@ from StringIO import StringIO
 def install(self):
     out = StringIO()
     setup_tool = getToolByName(self, 'portal_setup')
-    setup_tool.runAllImportStepsFromProfile('profile-quintagroup.plonecomments:default')
+    profile = 'profile-quintagroup.plonecomments:default'
+    setup_tool.runAllImportStepsFromProfile(profile)
     print >> out, "Imported install profile."
     return out.getvalue()
 
 def uninstall(self):
     out = StringIO()
     setup_tool = getToolByName(self, 'portal_setup')
-    setup_tool.runAllImportStepsFromProfile('profile-quintagroup.plonecomments:uninstall')
+    profile = 'profile-quintagroup.plonecomments:uninstall'
+    setup_tool.runAllImportStepsFromProfile(profile)
     print >> out, "Imported uninstall profile."
     return out.getvalue()

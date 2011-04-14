@@ -4,6 +4,7 @@ _ = MessageFactory("quintagroup.plonecomments")
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import safe_unicode
 
+
 # Get apropriate property from (propery_sheeet) configlet
 def getProp(self, prop_name, marker=None):
     result = marker
@@ -13,12 +14,14 @@ def getProp(self, prop_name, marker=None):
         result = getattr(config_ps, prop_name, marker)
     return result
 
+
 def publishDiscussion(self):
     roles = ['Anonymous']
     self.review_state = "published"
     self.manage_permission('View', roles, acquire=1)
     self._p_changed = 1
     self.reindexObject()
+
 
 def setAnonymCommenting(context, allow=False):
     portal = getToolByName(context, 'portal_url').getPortalObject()
@@ -33,6 +36,7 @@ def setAnonymCommenting(context, allow=False):
         if 'Anonymous' in roles:
             roles.remove('Anonymous')
             portal.manage_permission('Reply to item', roles, 1)
+
 
 def manage_mails(reply, context, action):
     def sendMails(props, actions, key):
@@ -70,14 +74,17 @@ def manage_mails(reply, context, action):
         else:
             sendMails(props, actions, 'onAuthenticatedReportAbuse')
 
+
 def getMsg(context, template, args):
     return getattr(context, template)(**args)
+
 
 def allowEmail(context, reply, state, creator):
     condition = getattr(context, 'emailCommentNotification', True)
     if callable(condition):
         condition = condition(reply=reply, state=state, creator=creator)
     return condition
+
 
 def send_email(reply, context, state):
     def getEmail(obj, context):
@@ -249,6 +256,7 @@ def send_email(reply, context, state):
             setStatusMsg(None, context,
                 _('Could not send the email notification. '
                   'Have you configured an email server for Plone?'))
+
 
 def setStatusMsg(state, context, msg):
     context.plone_utils.addPortalMessage(msg)

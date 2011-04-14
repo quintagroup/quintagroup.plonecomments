@@ -69,7 +69,7 @@ class TestMixinAnonymOn:
         doc_obj.discussion_reply("Anonym reply", "text of 'anonym' reply")
         self.login('dm_admin')
         replies_after = len(self.discussion.getDiscussionFor(doc_obj).getReplies())
-        self.failUnless(replies_after-replies_before,
+        self.failUnless(replies_after - replies_before,
             "Anonymous user CAN'T really add comment in terned ON *Anonymous commenting mode*.")
 
     def testAddCommentToDocNotAnonymUsers(self):

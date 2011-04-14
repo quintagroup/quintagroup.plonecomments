@@ -13,6 +13,6 @@ def setProperties(prop_sheet, *props):
 
 def testMailExistance(sel):
     mailhost = sel.portal.MailHost
-    if mailhost.messages: 
+    if mailhost.messages:
         return True
     return False

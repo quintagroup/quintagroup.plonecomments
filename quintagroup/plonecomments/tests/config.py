@@ -16,15 +16,15 @@ ANONYMOUS_COMMENTING_PID = "enable_anonymous_commenting"
 
 PERM_NAME = 'Moderate Discussion'
 USERS = {  # Common Members
-         'admin':{'passw': 'secret_admin', 'roles': ['Manager']},
-         'owner':{'passw': 'secret_owner', 'roles': ['Owner']},
-         'member':{'passw': 'secret_member', 'roles': ['Member']},
-         'reviewer':{'passw': 'secret_reviewer', 'roles': ['Reviewer']},
+         'admin': {'passw': 'secret_admin', 'roles': ['Manager']},
+         'owner': {'passw': 'secret_owner', 'roles': ['Owner']},
+         'member': {'passw': 'secret_member', 'roles': ['Member']},
+         'reviewer': {'passw': 'secret_reviewer', 'roles': ['Reviewer']},
            # Members for discussion manager group
-         'dm_admin':{'passw': 'secret_dm_admin', 'roles': ['Manager']},
-         'dm_owner':{'passw': 'secret_dm_owner', 'roles': ['Owner']},
-         'dm_member':{'passw': 'secret_dm_member', 'roles': ['Member']},
-         'dm_reviewer':{'passw': 'secret_dm_reviewer', 'roles': ['Reviewer']},
+         'dm_admin': {'passw': 'secret_dm_admin', 'roles': ['Manager']},
+         'dm_owner': {'passw': 'secret_dm_owner', 'roles': ['Owner']},
+         'dm_member': {'passw': 'secret_dm_member', 'roles': ['Member']},
+         'dm_reviewer': {'passw': 'secret_dm_reviewer', 'roles': ['Reviewer']},
         }
 COMMON_USERS_IDS = [u for u in USERS.keys() if not u.startswith('dm_')]
 COMMON_USERS_IDS.append('anonym')
