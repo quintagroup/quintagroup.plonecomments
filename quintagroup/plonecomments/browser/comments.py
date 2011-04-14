@@ -40,7 +40,7 @@ class CommentsViewlet(comments.CommentsViewlet):
     def getGravatar(self, reply):
         purl = getToolByName(self.context, 'portal_url')
         mtool = getToolByName(self.context, 'portal_membership')
-        portrait_url = purl() + '/defaultUser.gif' 
+        portrait_url = purl() + '/defaultUser.gif'
         email = ''
 
         creator = reply.Creator()
@@ -50,7 +50,7 @@ class CommentsViewlet(comments.CommentsViewlet):
             email = member and member.getProperty('email','') or ''
             mem_id = getattr(member,'getId',lambda:'Anonymous User')()
             portrait = mtool.getPersonalPortrait(mem_id)
-            portrait_url =  portrait.absolute_url()
+            portrait_url = portrait.absolute_url()
         else:
             email = reply.getProperty('email',d='')
 
@@ -68,21 +68,21 @@ class CommentsViewlet(comments.CommentsViewlet):
         """ """
         portal_properties = getToolByName(self.context, 'portal_properties')
         prop_sheet = portal_properties['qPloneComments']
-        value =  prop_sheet.getProperty('enable_authenticated_report_abuse', False)
+        value = prop_sheet.getProperty('enable_authenticated_report_abuse', False)
         return value
 
     def anonymous_report_abuse_enabled(self):
         """ """
         portal_properties = getToolByName(self.context, 'portal_properties')
         prop_sheet = portal_properties['qPloneComments']
-        value =  prop_sheet.getProperty('enable_anonymous_report_abuse', False)
+        value = prop_sheet.getProperty('enable_anonymous_report_abuse', False)
         return value
 
     def ajax_report_abuse_enabled(self):
         """ """
         portal_properties = getToolByName(self.context, 'portal_properties')
         prop_sheet = portal_properties['qPloneComments']
-        value =  prop_sheet.getProperty('enable_ajax_report_abuse', False)
+        value = prop_sheet.getProperty('enable_ajax_report_abuse', False)
         return value
 
     def email_from_address(self):
@@ -99,7 +99,6 @@ class CommentsViewlet(comments.CommentsViewlet):
     def portal_url(self):
         """ """
         return getToolByName(self.context, 'portal_url')
-
 
 
 class CommentsKSS(PloneKSSView):

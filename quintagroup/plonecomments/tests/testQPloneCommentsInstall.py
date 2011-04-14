@@ -32,10 +32,10 @@ class TestInstallation(TestCase):
         self.failUnless(PRODUCT_SKIN_NAME in skinstool.objectIds(),
                 'There is no %s folder in portal_skins.' % PRODUCT_SKIN_NAME)
         for skin in skinstool.getSkinSelections():
-	    path = skinstool.getSkinPath(skin)
+            path = skinstool.getSkinPath(skin)
             layers = map(str.strip, path.split(','))
             self.failUnless(PRODUCT_SKIN_NAME in layers,
- 	        '%s layer is not registered for %s.' % (PRODUCT_SKIN_NAME, skin))
+                '%s layer is not registered for %s.' % (PRODUCT_SKIN_NAME, skin))
 
     def test_layer_install(self):
         from plone.browserlayer.utils import registered_layers

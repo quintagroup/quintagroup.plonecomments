@@ -72,6 +72,7 @@ class TestMixinAnonymOn:
         self.failUnless(replies_after-replies_before,
             "Anonymous user CAN'T really add comment in terned ON *Anonymous commenting mode*.")
 
+
     def testAddCommentToDocNotAnonymUsers(self):
 
         # All users CAN ADD COMMENTS
@@ -175,7 +176,6 @@ class TestMixinModerationOn:
             self.illegal_dm_users = [u for u in DM_USERS_IDS if not u in self.allowable_dm_users]
             self.illegal_common_users = [u for u in COMMON_USERS_IDS if not u in self.allowable_common_users]
 
-    
     def testAddCommentToNotPublishedReplyDMUsers(self):
 
         # DiscussionManager's group's members with Manager or Member roles CAN ADD COMMENTS

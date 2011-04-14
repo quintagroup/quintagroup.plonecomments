@@ -77,8 +77,8 @@ class TestConfiglet(FunctionalTestCase):
             "'Reply to Item' permission set for %s. 'Anonymous' "
             "role NOT added" %  actual_reply_permission)
         # Simulate switching OFF Anonymous Commenting
-        if self.request.form.has_key('enable_anonymous_commenting'):
-           del self.request.form['enable_anonymous_commenting']
+        if 'enable_anonymous_commenting' in self.request.form:
+            del self.request.form['enable_anonymous_commenting']
         self.portal.prefs_comments_setup()
         actual_reply_permission = getReplyRoles()
         self.failIf('Anonymous' in actual_reply_permission, \
