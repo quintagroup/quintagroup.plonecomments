@@ -1,7 +1,5 @@
-from Products.CMFCore.utils import getToolByName
 from quintagroup.plonecomments.tests.testQPloneCommentsCommenting import \
     TestCommBase
-from zExceptions import Unauthorized
 
 
 class TestReportAbuse(TestCommBase):

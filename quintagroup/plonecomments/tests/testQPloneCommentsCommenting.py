@@ -15,19 +15,19 @@ class TestCommBase(FunctionalTestCase):
         self.loginAsPortalOwner()
         self.request = self.app.REQUEST
 
-	# VERY IMPORTANT to guarantee product skin's content visibility
+        # VERY IMPORTANT to guarantee product skin's content visibility
         self._refreshSkinData()
 
         # Add all users
         self.membership = getToolByName(self.portal, 'portal_membership', None)
         for user_id in USERS.keys():
             self.membership.addMember(user_id, USERS[user_id]['passw'],
-	        USERS[user_id]['roles'], [])
+                USERS[user_id]['roles'], [])
 
         # Add users to Discussion Manager group
         portal_groups = getToolByName(self.portal, 'portal_groups')
         dm_group = portal_groups.getGroupById('DiscussionManager')
-        dm_users = [dm_group.addMember(u) for u in DM_USERS_IDS]
+        [dm_group.addMember(u) for u in DM_USERS_IDS]
 
         # Allow discussion for Document
         portal_types = getToolByName(self.portal, 'portal_types', None)
@@ -70,7 +70,7 @@ class TestMixinAnonymOn:
         self.login('dm_admin')
         replies_after = len(self.discussion.getDiscussionFor(doc_obj).getReplies())
         self.failUnless(replies_after-replies_before,
-	    "Anonymous user CAN'T really add comment in terned ON *Anonymous commenting mode*.")
+            "Anonymous user CAN'T really add comment in terned ON *Anonymous commenting mode*.")
 
     def testAddCommentToDocNotAnonymUsers(self):
 
@@ -118,15 +118,15 @@ class TestMixinAnonymOff:
             if not u=='anonym':
                 self.login(u)
             self.assertRaises(Unauthorized, doc_obj.discussion_reply,
-	        "%s's reply" % u, "text of '%s' reply" % u)
+                "%s's reply" % u, "text of '%s' reply" % u)
             self.login('dm_admin')
             replies_after = self.discussion.getDiscussionFor(doc_obj).getReplies()
             disparity = len(replies_after) - len(replies_before)
             if disparity:
                 failed_users.append(u)
         self.failIf(failed_users,
-	    "%s user(s) CAN really add comment in terned OFF "
-	    "*Anonymous commenting mode*." % failed_users)
+            "%s user(s) CAN really add comment in terned OFF "
+            "*Anonymous commenting mode*." % failed_users)
 
 
     def testAddCommentToDocNotLikeAnonymUsers(self):
@@ -150,8 +150,8 @@ class TestMixinAnonymOff:
             if not disparity:
                 failed_users.append(u)
         self.failIf(failed_users,
-	    "%s - user(s) can not really add commentin terned OFF "
-	    "*Anonymous commenting mode*." % failed_users)
+            "%s - user(s) can not really add commentin terned OFF "
+            "*Anonymous commenting mode*." % failed_users)
 
 
 class TestMixinModerationOn:
@@ -193,7 +193,7 @@ class TestMixinModerationOn:
             if not replies_to_reply:
                 failed_users.append(u)
         self.failIf(failed_users,
-	    "%s - member(s) of DiscussionManager group CAN'T really ADD comment" % failed_users)
+            "%s - member(s) of DiscussionManager group CAN'T really ADD comment" % failed_users)
 
         # This is actual only in terned OFF *Anonymous commenting mode*
         failed_users = []
@@ -209,8 +209,8 @@ class TestMixinModerationOn:
             if replies_to_reply:
                 failed_users.append(u)
         self.failIf(failed_users,
-	    "%s user(s) CAN really add comment in terned OFF "
-	    "*Anonymous commenting mode*." % failed_users)
+            "%s user(s) CAN really add comment in terned OFF "
+            "*Anonymous commenting mode*." % failed_users)
 
     """
     def testAddCommentToNotPublishedReplyNotDMUsers(self):
@@ -262,7 +262,7 @@ class TestMixinModerationOn:
             if not reply_to_reply:
                 failed_users.append(u)
         self.failIf(failed_users,
-	    "%s - user(s) can not really add comment to PUBLISHED reply." % failed_users)
+            "%s - user(s) can not really add comment to PUBLISHED reply." % failed_users)
 
         # 3.Check adding reply to reply for illegal users
         for u in illegal_users:
@@ -273,7 +273,7 @@ class TestMixinModerationOn:
             # On adding reply to not published reply MUST generte Unauthorized exception
             self.discussion.getDiscussionFor(reply)
             self.assertRaises(Unauthorized, reply.discussion_reply,
-	        "Reply %s" % u, "text of %s reply" % u)
+                "Reply %s" % u, "text of %s reply" % u)
 
 
 class TestMixinModerationOff:
@@ -303,7 +303,7 @@ class TestMixinModerationOff:
         # Create talkback for document and Add comment to 'doc_moderatio_off'
         self.discussion.getDiscussionFor(doc_obj)
         doc_obj.discussion_reply("A Reply to '%s'" % self.doc_moder_off_id,
-	    "text of reply to '%s'" % self.doc_moder_off_id)
+            "text of reply to '%s'" % self.doc_moder_off_id)
 
 
     def testAddCommentToReplyAllowableUsers(self):
@@ -329,8 +329,8 @@ class TestMixinModerationOff:
             if not disparity:
                 failed_users.append(u)
         self.failIf(failed_users ,
-	    "%s - member(s) CAN'T really ADD comment in terned off"
-	    " comments Moderation mode." % failed_users)
+            "%s - member(s) CAN'T really ADD comment in terned off"
+            " comments Moderation mode." % failed_users)
 
 
     def testAddCommentToReplyIllegalUsers(self):
@@ -349,7 +349,7 @@ class TestMixinModerationOff:
             # Create talkback for reply and Add comment
             self.discussion.getDiscussionFor(reply_to_doc)
             self.assertRaises(Unauthorized, reply_to_doc.discussion_reply,
-	    "%s's reply" % u, "text of '%s' reply" % u)
+            "%s's reply" % u, "text of '%s' reply" % u)
 
 
 class TestModerationAnonymComm(TestCommBase, TestMixinAnonymOn, TestMixinModerationOn):

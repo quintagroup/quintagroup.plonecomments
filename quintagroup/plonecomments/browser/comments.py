@@ -1,6 +1,7 @@
 import urllib
 try:
     import hashlib as md5
+    md5.md5
 except ImportError:
     import md5
 
@@ -38,7 +39,7 @@ class CommentsViewlet(comments.CommentsViewlet):
 
     def getGravatar(self, reply):
         purl = getToolByName(self.context, 'portal_url')
-        mtool = getToolByName(self.context, 'portal_membership')            
+        mtool = getToolByName(self.context, 'portal_membership')
         portrait_url = purl() + '/defaultUser.gif' 
         email = ''
 
@@ -62,7 +63,6 @@ class CommentsViewlet(comments.CommentsViewlet):
         gravatar_url += urllib.urlencode({'gravatar_id':md5.md5(email).hexdigest(),
             'default':portrait_url, 'size':str(size)})
         return gravatar_url
-        
 
     def authenticated_report_abuse_enabled(self):
         """ """

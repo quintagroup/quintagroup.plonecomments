@@ -1,10 +1,8 @@
 import smtplib
-from zope.i18n import translate
 from zope.i18nmessageid import MessageFactory
 _ = MessageFactory("quintagroup.plonecomments")
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import safe_unicode
-from config import warning
 
 # Get apropriate property from (propery_sheeet) configlet
 def getProp(self, prop_name, marker=None):
@@ -12,7 +10,7 @@ def getProp(self, prop_name, marker=None):
     pp = getToolByName(self, 'portal_properties')
     config_ps = getattr(pp, 'qPloneComments', None)
     if config_ps:
-        result =  getattr(config_ps, prop_name, marker)
+        result = getattr(config_ps, prop_name, marker)
     return result
 
 def publishDiscussion(self):
@@ -178,7 +176,7 @@ def send_email(reply, context, state):
                   'organization_name':organization_name}
             subject = translate(_(u"published_notification_subject",
                 default=u"[${organization_name}] New comment added",
-                mapping={u"organization_name" : organization_name}),
+                mapping={u"organization_name": organization_name}),
                 context=context.REQUEST)
         else:
             args = {}
@@ -193,7 +191,7 @@ def send_email(reply, context, state):
                   'organization_name':organization_name}
             subject = translate(_(u"approve_notification_subject",
                 default=u"[${organization_name}] New comment awaits moderation",
-                mapping={u"organization_name" : organization_name}),
+                mapping={u"organization_name": organization_name}),
                 context=context.REQUEST)
         else:
             args = {}
@@ -210,12 +208,12 @@ def send_email(reply, context, state):
             args = {'mto': user_email,
                     'mfrom': admin_email,
                     'obj': reply_parent,
-                    'message':message,
+                    'message': message,
                     'organization_name': organization_name,
                     'name': creator_name,
-                    'comment_id':comment_id,
-                    'comment_desc':comment.description,
-                    'comment_text':comment.text}
+                    'comment_id': comment_id,
+                    'comment_desc': comment.description,
+                    'comment_text': comment.text}
             subject = translate(_(u"report_abuse_subject",
                 default=u"[${organization_name}] A comment on ${title} has "
                         u"been reported for abuse.",
@@ -232,8 +230,8 @@ def send_email(reply, context, state):
         msg = msg.encode(charset)
         host = context.plone_utils.getMailHost()
         try:
-            host.secureSend(msg, user_email, admin_email, subject = subject,
-                            subtype = 'plain', debug = False, charset = charset)
+            host.secureSend(msg, user_email, admin_email, subject=subject,
+                            subtype='plain', debug=False, charset=charset)
         except (smtplib.SMTPRecipientsRefused,smtplib.SMTPServerDisconnected):
             setStatusMsg(None, context,
                 _('Could not send the email notification. Have you configured an email server for Plone?'))

@@ -1,6 +1,7 @@
 from DateTime import DateTime
 try:
     from App.class_init import InitializeClass
+    InitializeClass
 except ImportError:
     from Globals import InitializeClass
 from AccessControl import Unauthorized
@@ -17,7 +18,7 @@ def createReply(self, title, text, Creator=None, email=''):
     container = self._container
 
     id = int(DateTime().timeTime())
-    while self._container.get(str(id), None) is not None:
+    while container.get(str(id), None) is not None:
         id += 1
     id = str(id)
 
@@ -29,7 +30,7 @@ def createReply(self, title, text, Creator=None, email=''):
         else:
             item.creator = Creator
 
-    self._container[id] = item
+    container[id] = item
     item = item.__of__(self)
 
     item.setFormat('structured-text')
@@ -44,7 +45,7 @@ def createReply(self, title, text, Creator=None, email=''):
     # Control of performing moderation
     if getProp(self, 'enable_moderation', marker=False):
         roles = [role['name'] for role in self.acl_users.rolesOfPermission('Moderate Discussion')
-                 if role['selected']== 'SELECTED']
+                 if role['selected'] == 'SELECTED']
         roles.append('DiscussionManager')
         item.manage_permission('Delete objects', roles, acquire=1)
         item.manage_permission('View', roles, acquire=0)
@@ -56,7 +57,7 @@ def createReply(self, title, text, Creator=None, email=''):
 
     return id
 
-def getReplies( self ):
+def getReplies(self):
     """Return a sequence of the DiscussionResponse objects which are
        associated with this Discussable.
     """

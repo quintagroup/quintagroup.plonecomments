@@ -203,7 +203,6 @@ class TestModeration(FunctionalTestCase):
         # Check for really deleting
         for u in managers:
             self.login(u)
-            auth = '%s:%s' % (u,USERS[u]['passw'])
             doc_id = "doc_%s" % u
             doc_obj = getattr(self.portal, doc_id)
             getReplies = self.discussion.getDiscussionFor(doc_obj).getReplies

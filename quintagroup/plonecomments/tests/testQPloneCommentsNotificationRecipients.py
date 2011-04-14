@@ -39,7 +39,7 @@ class TestNotificationRecipients(FunctionalTestCase):
 
     def afterSetUp(self):
         self.portal._original_MailHost = self.portal.MailHost
-        self.portal.MailHost = mailhost = MockMailHost('MailHost')
+        self.portal.MailHost = MockMailHost('MailHost')
 
         self.loginAsPortalOwner()
 

@@ -43,6 +43,6 @@ def uninstall(context):
     portal = context.getSite()
     logger = context.getLogger(LOGGER)
 
-    portal_conf=getToolByName(context.getSite(),'portal_controlpanel')
+    portal_conf=getToolByName(portal, 'portal_controlpanel')
     portal_conf.unregisterConfiglet('prefs_comments_setup_form')
     logger.info('Unregister configlet prefs_comments_setup_form. ')

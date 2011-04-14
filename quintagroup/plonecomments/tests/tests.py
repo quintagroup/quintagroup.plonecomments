@@ -1,10 +1,9 @@
 import unittest
 
-from zope.testing import doctestunit
-from zope.component import testing
-from Testing import ZopeTestCase as ztc
-
-from base import getToolByName, TestCase
+#from zope.testing import doctestunit
+#from zope.component import testing
+#from Testing import ZopeTestCase as ztc
+#from base import TestCase
 
 def test_suite():
     return unittest.TestSuite([

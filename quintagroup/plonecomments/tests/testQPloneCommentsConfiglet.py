@@ -20,7 +20,7 @@ def addUsers(self):
     # Add users to Discussion Manager group
     portal_groups = getToolByName(self.portal, 'portal_groups')
     dm_group = portal_groups.getGroupById('DiscussionManager')
-    dm_users = [dm_group.addMember(u) for u in DM_USERS_IDS]
+    [dm_group.addMember(u) for u in DM_USERS_IDS]
 
 
 class TestConfiglet(FunctionalTestCase):
@@ -60,14 +60,15 @@ class TestConfiglet(FunctionalTestCase):
         #    :: '+str(member.getRoles())+' :: '+member.getProperty('email'))
 
         # Add testing document to portal
-        my_doc = self.portal.invokeFactory('Document', id='my_doc')
+        self.portal.invokeFactory('Document', id='my_doc')
         self.my_doc = self.portal['my_doc']
         self.my_doc.edit(text_format='plain', text='hello world')
 
     def testAnonymousCommenting(self):
-        getPortalReplyPerm = self.portal.rolesOfPermission
         def getReplyRoles():
-            return [r['name'] for r in getPortalReplyPerm(ReplyToItem) if r['selected']=='SELECTED']
+            return [r['name']
+                    for r in self.portal.rolesOfPermission(ReplyToItem)
+                    if r['selected'] == 'SELECTED']
         # Simulate switching ON Anonymous Commenting
         self.request.form['enable_anonymous_commenting'] = 'True'
         self.portal.prefs_comments_setup()
