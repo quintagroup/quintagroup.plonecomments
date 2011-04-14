@@ -163,9 +163,9 @@ class CommentsKSS(PloneKSSView):
                                          comment_id)
         html = '<br/><span style="color:red">' \
             'You have reported this comment for abuse.</span>'
-        self.commands.addCommand('remove_abuse_report_form', 
-                                 node, 
-                                 comment_id=comment_id, 
+        self.commands.addCommand('remove_abuse_report_form',
+                                 node,
+                                 comment_id=comment_id,
                                  html=html)
 
         node = ksscore.getHtmlIdSelector('div-captcha-%s' % comment_id)

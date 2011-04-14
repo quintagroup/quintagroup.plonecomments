@@ -71,7 +71,7 @@ class TestInstallation(TestCase):
 
     def test_permission_added(self):
         roles = [item['name'] for item in self.portal.rolesOfPermission(PERM_NAME)]
-        self.failIf( roles == [], '%s not installed.' % PERM_NAME)
+        self.failIf(roles == [], '%s not installed.' % PERM_NAME)
 
 
 def test_suite():

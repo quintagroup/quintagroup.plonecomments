@@ -1,6 +1,7 @@
 from Products.CMFCore.utils import getToolByName
 from quintagroup.plonecomments.config import LOGGER
 
+
 def install(context):
 
     # Ordinarily, GenericSetup handlers check for the existence of XML files.
@@ -28,6 +29,7 @@ def install(context):
     wf_tool = getToolByName(portal, 'portal_workflow')
     wf_tool.setChainForPortalTypes(('Discussion Item',), [])
     logger.info('Removed workflow chain for Discussion Item type.')
+
 
 def uninstall(context):
 

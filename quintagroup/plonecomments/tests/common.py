@@ -10,7 +10,7 @@ def addMembers(portal, users_map):
     for user_id in users_map.keys():
         membership.addMember(user_id, users_map[user_id]['passw'],
                              users_map[user_id]['roles'], [],
-                             {'email': '%s@test.com' % user_id,})
+                             {'email': '%s@test.com' % user_id, })
 
 
 def add2Group(portal, group, group_members):

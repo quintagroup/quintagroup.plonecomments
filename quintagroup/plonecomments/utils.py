@@ -200,7 +200,8 @@ def send_email(reply, context, state):
                     'obj': reply_parent,
                     'organization_name': organization_name}
             subject = translate(_(u"approve_notification_subject",
-                default=u"[${organization_name}] New comment awaits moderation",
+                default=u"[${organization_name}] New comment awaits "
+                        u"moderation",
                 mapping={u"organization_name": organization_name}),
                 context=context.REQUEST)
         else:
@@ -246,7 +247,8 @@ def send_email(reply, context, state):
                             subtype='plain', debug=False, charset=charset)
         except (smtplib.SMTPRecipientsRefused, smtplib.SMTPServerDisconnected):
             setStatusMsg(None, context,
-                _('Could not send the email notification. Have you configured an email server for Plone?'))
+                _('Could not send the email notification. '
+                  'Have you configured an email server for Plone?'))
 
 def setStatusMsg(state, context, msg):
     context.plone_utils.addPortalMessage(msg)

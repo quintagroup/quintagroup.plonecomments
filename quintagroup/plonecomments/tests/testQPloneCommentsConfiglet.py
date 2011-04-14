@@ -46,7 +46,7 @@ class TestConfiglet(FunctionalTestCase):
         self.request = self.app.REQUEST
 
         # Add Manager user - 'dm' and add him to Discussion Manager group
-        self.portal.portal_membership.addMember('dm', 'secret' , ['Manager'], [])
+        self.portal.portal_membership.addMember('dm', 'secret', ['Manager'], [])
         portal_groups = getToolByName(self.portal, 'portal_groups')
         dm_group = portal_groups.getGroupById('DiscussionManager')
         dm_group.addMember('dm')
@@ -55,7 +55,7 @@ class TestConfiglet(FunctionalTestCase):
         # For prepare mail sending - enter an e-mail adress
         self.prefs._updateProperty('email_discussion_manager', 'discussion.manager@test.com')
         member = self.portal.portal_membership.getAuthenticatedMember()
-        member.setMemberProperties({'email':'creator@test.com'})
+        member.setMemberProperties({'email': 'creator@test.com'})
         #self.fail(member.getMemberId()+' :: '+member.getUserName()+' \
         #    :: '+str(member.getRoles())+' :: '+member.getProperty('email'))
 

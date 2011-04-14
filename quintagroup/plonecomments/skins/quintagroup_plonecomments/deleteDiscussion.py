@@ -12,7 +12,7 @@ from quintagroup.plonecomments.utils import manage_mails
 from Products.CMFPlone import PloneMessageFactory
 
 if obj is None:
-    obj=context
+    obj = context
 
 parent = obj.inReplyTo()
 if parent is not None:
@@ -31,4 +31,4 @@ view = redirect_target.getTypeInfo().immediate_view
 context.plone_utils.addPortalMessage(PloneMessageFactory(u'Reply deleted.'))
 
 context.REQUEST['RESPONSE'].redirect(redirect_target.absolute_url() + \
-                                     '/%s' % view )
+                                     '/%s' % view)
