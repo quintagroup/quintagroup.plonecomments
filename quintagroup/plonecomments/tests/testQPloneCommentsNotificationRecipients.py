@@ -2,13 +2,13 @@
 # Test configuration form working
 #
 
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.tests.utils import MockMailHost
 import re
 from quintagroup.plonecomments.tests.helperNotify import setProperties
 from quintagroup.plonecomments.tests.base import FunctionalTestCase
 from quintagroup.plonecomments.tests.common import addMembers, add2Group
 from quintagroup.plonecomments.tests.config import PROPERTY_SHEET
-
-from Products.CMFPlone.tests.utils import MockMailHost
 
 USERS = {# Common Members
          'admin':{'passw': 'secret_admin', 'roles': ['Manager']},

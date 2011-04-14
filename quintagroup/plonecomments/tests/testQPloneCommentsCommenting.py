@@ -2,6 +2,7 @@
 # Test adding comments possibility on switching on/off moderation
 #
 
+from Products.CMFCore.utils import getToolByName
 from zExceptions import Unauthorized
 from quintagroup.plonecomments.tests.base import FunctionalTestCase
 from quintagroup.plonecomments.tests.config import USERS, PROPERTY_SHEET, \

@@ -2,12 +2,14 @@
 # Test configuration form working
 #
 import re
+
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.tests.utils import MockMailHost
 from quintagroup.plonecomments.tests.helperNotify import setProperties, \
     testMailExistance
 from quintagroup.plonecomments.utils import getMsg
 from quintagroup.plonecomments.tests.base import FunctionalTestCase
 from quintagroup.plonecomments.tests.config import PROPERTY_SHEET
-from Products.CMFPlone.tests.utils import MockMailHost
 
 REXP_TO = re.compile("To:\s*(.*?)$",re.M)
 REXP_SUBJ = re.compile("Subject:\s*(.*?)$",re.M)
