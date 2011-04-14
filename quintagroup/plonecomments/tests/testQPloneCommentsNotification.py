@@ -4,7 +4,8 @@
 
 from Products.CMFCore.utils import getToolByName
 import re
-from helperNotify import setProperties, testMailExistance
+from quintagroup.plonecomments.tests.helperNotify import setProperties, \
+    testMailExistance
 from quintagroup.plonecomments.utils import getMsg
 from quintagroup.plonecomments.tests.base import FunctionalTestCase
 from quintagroup.plonecomments.tests.config import PROPERTY_SHEET

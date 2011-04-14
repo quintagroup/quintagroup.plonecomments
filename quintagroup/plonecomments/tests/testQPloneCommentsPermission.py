@@ -2,8 +2,8 @@
 # Test 'Moderate Discussion' permission
 #
 
-from base import TestCase
-from config import PERM_NAME
+from quintagroup.plonecomments.tests.base import TestCase
+from quintagroup.plonecomments.tests.config import PERM_NAME
 
 
 class TestPermission(TestCase):

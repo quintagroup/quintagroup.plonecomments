@@ -78,14 +78,14 @@ def getReplies(self):
 
 perms = DiscussionItemContainer.__ac_permissions__
 new_perms = []
-for item in perms:
-    perm_name = item[0]
-    funcs = item[1]
+for perm in perms:
+    perm_name = perm[0]
+    funcs = perm[1]
     if 'deleteReply' in funcs:
         new_perms.append((perm_name, [f for f in funcs if f != 'deleteReply']))
         new_perms.append(('Moderate Discussion', ('deleteReply',)))
     else:
-        new_perms.append(item)
+        new_perms.append(perm)
 
 DiscussionItemContainer.__ac_permissions__ = new_perms
 InitializeClass(DiscussionItemContainer)

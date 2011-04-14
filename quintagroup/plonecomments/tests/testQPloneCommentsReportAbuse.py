@@ -1,4 +1,5 @@
-from testQPloneCommentsCommenting import TestCommBase
+from quintagroup.plonecomments.tests.testQPloneCommentsCommenting import \
+    TestCommBase
 
 
 class TestReportAbuse(TestCommBase):
