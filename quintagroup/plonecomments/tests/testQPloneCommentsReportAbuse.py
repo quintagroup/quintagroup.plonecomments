@@ -18,7 +18,7 @@ class TestReportAbuse(TestCommBase):
         # Add abuse report on document.
         doc_obj.REQUEST.set('comment_id', comment.id)
         try:
-            doc_obj.report_abuse("Anonymous Report Abuse") 
+            doc_obj.report_abuse("Anonymous Report Abuse")
         except:
             raise "Anonymous user CAN'T report abuse in turned ON *Anonymous report abuse mode*."
 
@@ -34,7 +34,7 @@ class TestReportAbuse(TestCommBase):
             doc_obj.REQUEST.set('comment_id', comment.id)
             self.login(u)
             try:
-                doc_obj.report_abuse("Anonymous Report Abuse") 
+                doc_obj.report_abuse("Anonymous Report Abuse")
             except:
                 failed_users.append(u)
 

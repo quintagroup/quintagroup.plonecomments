@@ -1,6 +1,7 @@
 from Products.CMFCore.utils import getToolByName
 from StringIO import StringIO
 
+
 def install(self):
     out = StringIO()
     setup_tool = getToolByName(self, 'portal_setup')
@@ -8,6 +9,7 @@ def install(self):
     setup_tool.runAllImportStepsFromProfile(profile)
     print >> out, "Imported install profile."
     return out.getvalue()
+
 
 def uninstall(self):
     out = StringIO()

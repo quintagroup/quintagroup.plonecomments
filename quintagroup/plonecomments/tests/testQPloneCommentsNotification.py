@@ -75,7 +75,7 @@ class TestNotification(FunctionalTestCase):
 
     def test_bug_parent_reply(self):
         setProperties(self.prefs, 'enable_reply_user_notification')
-        self.my_doc.discussion_reply('A Reply for my_doc' ,'text of reply for my_doc')
+        self.my_doc.discussion_reply('A Reply for my_doc', 'text of reply for my_doc')
         parent_reply = self.discussion.getDiscussionFor(self.my_doc).getReplies()[0]
         parent_reply.discussion_reply('reply', 'text')
 

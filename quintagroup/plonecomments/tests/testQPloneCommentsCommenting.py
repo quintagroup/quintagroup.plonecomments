@@ -75,7 +75,7 @@ class TestMixinAnonymOn:
     def testAddCommentToDocNotAnonymUsers(self):
 
         # All users CAN ADD COMMENTS
-        not_anonym_users = [u for u in self.all_users_id if not u=='anonym']
+        not_anonym_users = [u for u in self.all_users_id if not u == 'anonym']
         failed_users = []
         for u in not_anonym_users:
             self.login('dm_admin')

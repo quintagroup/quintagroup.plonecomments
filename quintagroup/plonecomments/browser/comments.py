@@ -22,8 +22,8 @@ class CommentsViewlet(comments.CommentsViewlet):
     render = ViewPageTemplateFile('comments.pt')
 
     def is_moderation_enabled(self):
-        """ Returns a boolean indicating whether the user has enabled moderation
-            in the qPloneComments configlet
+        """ Returns a boolean indicating whether the user has enabled
+            moderation in the qPloneComments configlet
         """
         portal_properties = getToolByName(self.context, 'portal_properties')
         try:
