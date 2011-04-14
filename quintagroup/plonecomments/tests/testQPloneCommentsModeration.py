@@ -3,10 +3,12 @@
 #
 
 import re
+from Products.CMFCore.utils import getToolByName
+from quintagroup.plonecomments.tests.common import addMembers, add2Group
+from quintagroup.plonecomments.tests.base import FunctionalTestCase
+from quintagroup.plonecomments.tests.config import USERS, DM_USERS_IDS, \
+    COMMON_USERS_IDS
 
-from common import *
-from base import getToolByName, FunctionalTestCase
-from config import USERS, PROPERTY_SHEET, DM_USERS_IDS, COMMON_USERS_IDS
 
 class TestModeration(FunctionalTestCase):
 

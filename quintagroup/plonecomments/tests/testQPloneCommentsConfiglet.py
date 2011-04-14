@@ -4,8 +4,9 @@
 
 from Products.CMFCore.permissions import ReplyToItem
 from AccessControl.SecurityManagement import noSecurityManager
-from base import getToolByName, FunctionalTestCase
-from config import USERS, PROPERTY_SHEET, DM_USERS_IDS, COMMON_USERS_IDS
+from quintagroup.plonecomments.tests.base import FunctionalTestCase
+from quintagroup.plonecomments.tests.config import USERS, PROPERTY_SHEET, \
+    DM_USERS_IDS, COMMON_USERS_IDS
 
 def addUsers(self):
     self.loginAsPortalOwner()

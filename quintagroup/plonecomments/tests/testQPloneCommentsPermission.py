@@ -2,10 +2,8 @@
 # Test 'Moderate Discussion' permission
 #
 
-from Products.CMFDefault.DiscussionItem import DiscussionItemContainer
-
-from base import getToolByName, TestCase
-from config import PERM_NAME
+from quintagroup.plonecomments.tests.base import TestCase
+from quintagroup.plonecomments.tests.config import PERM_NAME
 
 
 class TestPermission(TestCase):

@@ -2,10 +2,10 @@
 # Test product's uninstallation
 #
 
-import unittest
-
-from base import getToolByName, TestErase
-from config import PRODUCT, PRODUCT_SKIN_NAME, CONFIGLET_ID, PROPERTY_SHEET
+from Products.CMFCore.utils import getToolByName
+from quintagroup.plonecomments.tests.base import TestErase
+from quintagroup.plonecomments.tests.config import PRODUCT, \
+    PRODUCT_SKIN_NAME, CONFIGLET_ID, PROPERTY_SHEET
 from zExceptions import BadRequest
 
 

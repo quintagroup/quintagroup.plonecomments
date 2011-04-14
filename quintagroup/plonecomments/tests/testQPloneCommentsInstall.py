@@ -2,8 +2,14 @@
 # Test product's installation
 #
 
-from base import getToolByName, TestCase
-from config import *
+from Products.CMFCore.utils import getToolByName
+from quintagroup.plonecomments.tests.base import TestCase
+from quintagroup.plonecomments.tests.config import PRODUCT, CONFIGLET_ID, \
+    PRODUCT_SKIN_NAME, PROPERTY_SHEET, EMAIL_PID, EMAIL_SUBJECT_PID, \
+    REQUIRE_EMAIL_PID, PERM_NAME, APPROVE_NOTIFICATION_PID, \
+    PUBLISHED_NOTIFICATION_PID, APPROVE_USER_NOTIFICATION_PID, \
+    REPLY_USER_NOTIFICATION_PID, MODERATION_PID, REJECTED_NOTIFICATION_PID, \
+    ANONYMOUS_COMMENTING_PID
 
 
 class TestInstallation(TestCase):

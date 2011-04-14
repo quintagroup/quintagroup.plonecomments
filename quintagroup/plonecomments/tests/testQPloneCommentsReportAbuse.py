@@ -1,5 +1,5 @@
-from base import getToolByName, TestCase
-from testQPloneCommentsCommenting import TestCommBase
+from quintagroup.plonecomments.tests.testQPloneCommentsCommenting import \
+    TestCommBase
 from zExceptions import Unauthorized
 
 

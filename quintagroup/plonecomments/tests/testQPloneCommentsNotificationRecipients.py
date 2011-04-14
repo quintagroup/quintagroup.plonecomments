@@ -2,17 +2,11 @@
 # Test configuration form working
 #
 
-from Products.CMFCore.permissions import ManagePortal, ReplyToItem
-
-from quintagroup.plonecomments.utils import getMsg
-
 import re
-from helperNotify import *
-from email import message_from_string
-from email.Header import Header
-from base import getToolByName, FunctionalTestCase
-from common import *
-from config import PROPERTY_SHEET
+from quintagroup.plonecomments.tests.helperNotify import setProperties
+from quintagroup.plonecomments.tests.base import FunctionalTestCase
+from quintagroup.plonecomments.tests.common import addMembers, add2Group
+from quintagroup.plonecomments.tests.config import PROPERTY_SHEET
 
 from Products.CMFPlone.tests.utils import MockMailHost
 

@@ -1,5 +1,5 @@
 from Products.CMFCore.utils import getToolByName
-from config import LOGGER
+from quintagroup.plonecomments.config import LOGGER
 
 def install(context):
 
