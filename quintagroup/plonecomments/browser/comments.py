@@ -16,6 +16,7 @@ from quintagroup.plonecomments.utils import manage_mails
 from plone.app.layout.viewlets import comments
 from plone.app.kss.plonekssview import PloneKSSView
 
+
 class CommentsViewlet(comments.CommentsViewlet):
     """A custom version of the comments viewlet
     """

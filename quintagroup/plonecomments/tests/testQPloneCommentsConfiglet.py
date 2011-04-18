@@ -15,7 +15,8 @@ def addUsers(self):
     # Add all users
     self.membership = getToolByName(self.portal, 'portal_membership', None)
     for user_id in USERS.keys():
-        self.membership.addMember(user_id, USERS[user_id]['passw'], USERS[user_id]['roles'], [])
+        self.membership.addMember(user_id, USERS[user_id]['passw'],
+                                  USERS[user_id]['roles'], [])
 
     # Add users to Discussion Manager group
     portal_groups = getToolByName(self.portal, 'portal_groups')
@@ -39,21 +40,25 @@ class TestConfiglet(FunctionalTestCase):
 
         # Make sure Documents are visible by default
         # XXX only do this for plone 3
-        self.portal.portal_workflow.setChainForPortalTypes(('Document',), 'plone_workflow')
+        self.portal.portal_workflow.setChainForPortalTypes(('Document',),
+                                                           'plone_workflow')
 
-        portal_properties = getToolByName(self.portal, 'portal_properties', None)
+        portal_properties = getToolByName(self.portal, 'portal_properties',
+                                          None)
         self.prefs = portal_properties[PROPERTY_SHEET]
         self.request = self.app.REQUEST
 
         # Add Manager user - 'dm' and add him to Discussion Manager group
-        self.portal.portal_membership.addMember('dm', 'secret', ['Manager'], [])
+        self.portal.portal_membership.addMember('dm', 'secret', ['Manager'],
+                                                [])
         portal_groups = getToolByName(self.portal, 'portal_groups')
         dm_group = portal_groups.getGroupById('DiscussionManager')
         dm_group.addMember('dm')
         #self.logout()
         self.login('dm')
         # For prepare mail sending - enter an e-mail adress
-        self.prefs._updateProperty('email_discussion_manager', 'discussion.manager@test.com')
+        self.prefs._updateProperty('email_discussion_manager',
+                                   'discussion.manager@test.com')
         member = self.portal.portal_membership.getAuthenticatedMember()
         member.setMemberProperties({'email': 'creator@test.com'})
         #self.fail(member.getMemberId()+' :: '+member.getUserName()+' \
@@ -93,7 +98,7 @@ class TestConfiglet(FunctionalTestCase):
         self.portal.prefs_comments_setup()
         # Create talkback for document and Add comment to my_doc
         self.discussion.getDiscussionFor(self.my_doc)
-        self.my_doc.discussion_reply('Reply 1','text of reply')
+        self.my_doc.discussion_reply('Reply 1', 'text of reply')
         # Check moderating discussion
         # MUST ALLOW for: members of 'DiscussionMnagers' group
         # MUST REFUSE for: NOT members of 'DiscussionMnagers' group
@@ -101,14 +106,15 @@ class TestConfiglet(FunctionalTestCase):
         for u in DM_USERS_IDS:
             self.logout()
             self.login(u)
-            self.failUnless(getReplies(),
-                "None discussion item added or discussion forbiden for %s user" % u)
+            self.failUnless(getReplies(), "None discussion item added or "
+                            "discussion forbiden for %s user" % u)
         for u in COMMON_USERS_IDS:
             self.logout()
-            if not u=='anonym':
+            if not u == 'anonym':
                 self.login(u)
             noSecurityManager()
-            self.failIf(getReplies(), "Viewing discussion item allow for Anonymous user")
+            self.failIf(getReplies(), "Viewing discussion item allow for "
+                                      "Anonymous user")
 
     def testSwitchOFFModeration(self):
         addUsers(self)
@@ -117,47 +123,51 @@ class TestConfiglet(FunctionalTestCase):
         self.portal.prefs_comments_setup()
         # Create talkback for document and Add comment to my_doc
         self.discussion.getDiscussionFor(self.my_doc)
-        self.request.form['Creator'] = self.portal.portal_membership.getAuthenticatedMember().getUserName()
+        creator = self.portal.portal_membership.getAuthenticatedMember()
+        self.request.form['Creator'] = creator.getUserName()
         self.request.form['subject'] = "Reply 1"
         self.request.form['body_text'] = "text of reply"
-        self.my_doc.discussion_reply('Reply 1','text of reply')
+        self.my_doc.discussion_reply('Reply 1', 'text of reply')
         # Check moderating discussion
         # MUST ALLOW for: user with any role or Anonym
         all_users_ids = DM_USERS_IDS + COMMON_USERS_IDS
         for u in all_users_ids:
             self.logout()
-            if not u=='anonym':
+            if not u == 'anonym':
                 self.login(u)
-            replies = self.discussion.getDiscussionFor(self.my_doc).getReplies()
-            self.failUnless(replies,
-                "No discussion item added or discussion forbidden for %s user" % u)
+            discussion_for = self.discussion.getDiscussionFor(self.doc_obj)
+            replies = discussion_for.getReplies()
+            self.failUnless(replies, "No discussion item added or discussion "
+                                     "forbidden for %s user" % u)
 
     def testApproveNotification(self):
         # Check ON Notification Anonymous Commenting
         self.request.form['enable_approve_notification'] = 'True'
         self.portal.prefs_comments_setup()
-        self.failUnless(self.prefs.getProperty('enable_approve_notification')==1,
+        getProperty = self.prefs.getProperty
+        self.failUnless(getProperty('enable_approve_notification') == 1,
             "Approve Notification not terned ON")
 
         # Check OFF Notification Anonymous Commenting
         if 'enable_approve_notification' in self.request.form:
             del self.request.form['enable_approve_notification']
         self.portal.prefs_comments_setup()
-        self.failUnless(self.prefs.getProperty('enable_approve_notification')==0,
+        self.failUnless(getProperty('enable_approve_notification') == 0,
             "Approve Notification not terned OFF")
 
     def testPublishedNotification(self):
         # Check ON Notification Anonymous Commenting
         self.request.form['enable_published_notification'] = 'True'
         self.portal.prefs_comments_setup()
-        self.failUnless(self.prefs.getProperty('enable_published_notification')==1,
+        getProperty = self.prefs.getProperty
+        self.failUnless(getProperty('enable_published_notification') == 1,
             "Published Notification not terned ON")
 
         # Check OFF Notification Anonymous Commenting
         if 'enable_published_notification' in self.request.form:
             del self.request.form['enable_published_notification']
         self.portal.prefs_comments_setup()
-        self.failUnless(self.prefs.getProperty('enable_published_notification')==0,
+        self.failUnless(getProperty('enable_published_notification') == 0,
             "Published Notification not terned OFF")
 
 

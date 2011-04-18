@@ -20,10 +20,11 @@ class TestReportAbuse(TestCommBase):
         try:
             doc_obj.report_abuse("Anonymous Report Abuse")
         except:
-            raise "Anonymous user CAN'T report abuse in turned ON *Anonymous report abuse mode*."
+            raise "Anonymous user CAN'T report abuse in turned ON *Anonymous"\
+                  " report abuse mode*."
 
     def testAuthenticatedReportAbuse(self):
-        not_anonym_users = [u for u in self.all_users_id if not u=='anonym']
+        not_anonym_users = [u for u in self.all_users_id if not u == 'anonym']
         failed_users = []
         for u in not_anonym_users:
             self.login('dm_admin')
@@ -38,7 +39,8 @@ class TestReportAbuse(TestCommBase):
             except:
                 failed_users.append(u)
 
-        self.assert_(not failed_users, "%s - user(s) can not report abuse" % failed_users)
+        self.assert_(not failed_users,
+                     "%s - user(s) can not report abuse" % failed_users)
 
 
 def test_suite():
