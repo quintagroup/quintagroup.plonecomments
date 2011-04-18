@@ -221,7 +221,6 @@ class TestNotification(FunctionalTestCase):
         reply.deleteDiscussion()
         mails = [str(m) for m in self.portal.MailHost.messages]
         subject = 'Your comment on Doc was not approved'
-        subjects = REXP_SUBJ.search(m).group(1)
         self.failUnless([1
                          for m in mails
                          if REXP_SUBJ.search(m) and \

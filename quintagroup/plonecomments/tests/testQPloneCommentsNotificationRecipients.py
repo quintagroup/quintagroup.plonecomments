@@ -31,8 +31,8 @@ class TestNotificationRecipients(FunctionalTestCase):
         self.login(member_id)
         self.request = self.app.REQUEST
         creator = self.membership.getAuthenticatedMember()
-        subject = "Reply of '%s'" % self.request.form['Creator']
         self.request.form['Creator'] = creator.getUserName()
+        subject = "Reply of '%s'" % self.request.form['Creator']
         self.request.form['subject'] = subject
         self.request.form['body_text'] = "text of reply"
 

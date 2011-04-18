@@ -135,7 +135,7 @@ class TestConfiglet(FunctionalTestCase):
             self.logout()
             if not u == 'anonym':
                 self.login(u)
-            discussion_for = self.discussion.getDiscussionFor(self.doc_obj)
+            discussion_for = self.discussion.getDiscussionFor(self.my_doc)
             replies = discussion_for.getReplies()
             self.failUnless(replies, "No discussion item added or discussion "
                                      "forbidden for %s user" % u)
