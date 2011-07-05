@@ -1,7 +1,7 @@
 Changelog
 =========
 
-4.1.7 (unreleased)
+4.1.7 (2011-06-05)
 ------------------
 - fix problem with no "login_action" in plone 4 [enkidu]
 
