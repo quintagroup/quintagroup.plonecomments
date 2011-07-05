@@ -22,6 +22,13 @@ class CommentsViewlet(comments.CommentsViewlet):
     """
     render = ViewPageTemplateFile('comments.pt')
 
+    def __init__(self, *args):
+        super(CommentsViewlet, self).__init__(*args)
+        if hasattr(self,'login_url') and not hasattr(self,'login_action'):
+            # In plone 4.0 in plone.app.layout.viewlets.comments function login_ action
+            # was renamed to login_url
+            self.login_action = self.login_url
+
     def is_moderation_enabled(self):
         """ Returns a boolean indicating whether the user has enabled
             moderation in the qPloneComments configlet
