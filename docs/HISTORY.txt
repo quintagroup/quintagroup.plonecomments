@@ -3,6 +3,9 @@ Changelog
 
 4.1.7 (2011-06-05)
 ------------------
+
+- Update pt_br translations [cleberjsantos,agnogueira]
+
 - fix problem with no "login_action" in plone 4 [enkidu]
 
 
