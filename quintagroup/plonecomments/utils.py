@@ -49,13 +49,13 @@ def manage_mails(reply, context, action):
                    prop_sheet.propertyIds())
 
     actions = {
-        'onPublish':                    ('enable_approve_user_notification',
-                                         'enable_reply_user_notification',
-                                         'enable_published_notification',),
-        'onDelete':                     ('enable_rejected_user_notification',),
-        'onApprove':                    ('enable_approve_notification',),
-        'onAnonymousReportAbuse':       ('enable_anonymous_report_abuse',),
-        'onAuthenticatedReportAbuse':   ('enable_authenticated_report_abuse',),
+        'onPublish': ('enable_approve_user_notification',
+                      'enable_reply_user_notification',
+                      'enable_published_notification',),
+        'onDelete': ('enable_rejected_user_notification',),
+        'onApprove': ('enable_approve_notification',),
+        'onAnonymousReportAbuse': ('enable_anonymous_report_abuse',),
+        'onAuthenticatedReportAbuse': ('enable_authenticated_report_abuse',),
         }
 
     if action == 'publishing':
