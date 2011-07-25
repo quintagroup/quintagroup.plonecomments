@@ -24,9 +24,9 @@ class CommentsViewlet(comments.CommentsViewlet):
 
     def __init__(self, *args):
         super(CommentsViewlet, self).__init__(*args)
-        if hasattr(self,'login_url') and not hasattr(self,'login_action'):
-            # In plone 4.0 in plone.app.layout.viewlets.comments function login_ action
-            # was renamed to login_url
+        if hasattr(self, 'login_url') and not hasattr(self, 'login_action'):
+            # In plone 4.0 in plone.app.layout.viewlets.comments function
+            # login_ action was renamed to login_url
             self.login_action = self.login_url
 
     def is_moderation_enabled(self):
@@ -48,6 +48,7 @@ class CommentsViewlet(comments.CommentsViewlet):
                                                     aq_inner(self.context))
 
     def getGravatar(self, reply):
+        """ """
         purl = getToolByName(self.context, 'portal_url')
         mtool = getToolByName(self.context, 'portal_membership')
         portrait_url = purl() + '/defaultUser.gif'
@@ -158,7 +159,7 @@ class CommentsKSS(PloneKSSView):
                                      **request.form)
             node = ksscore.getHtmlIdSelector('span-reply-form-holder-%s' % \
                                              comment_id)
-            ksscore.replaceInnerHTML(node,  html)
+            ksscore.replaceInnerHTML(node, html)
             return self.render()
 
         # report_abuse(context, context, message, comment)
@@ -179,5 +180,5 @@ class CommentsKSS(PloneKSSView):
         node = ksscore.getHtmlIdSelector('div-captcha-%s' % comment_id)
         html = self.macroContent('context/report_abuse_form/macros/captcha',
                                  **request.form)
-        ksscore.replaceInnerHTML(node,  html)
+        ksscore.replaceInnerHTML(node, html)
         return self.render()
