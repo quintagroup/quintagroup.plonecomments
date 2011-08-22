@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="quintagroup.plonecomments">
 
@@ -18,5 +19,28 @@
         id="moderate.discussion"
         title="Moderate Discussion"
         />
+
+    <genericsetup:importStep
+          name="quintagroup.plonecomments.install"
+          title="quintagroup.plonecomments: miscellaneous import steps for install package"
+          description=""
+          handler="quintagroup.plonecomments.setuphandlers.install">
+       <depends name="skins"/>
+       <depends name="rolemap"/>
+    </genericsetup:importStep>
+
+    <genericsetup:importStep
+          name="quintagroup.plonecomments.uninstall"
+          title="quintagroup.plonecomments: miscellaneous import steps for uninstall package"
+          description=""
+          handler="quintagroup.plonecomments.setuphandlers.uninstall">
+    </genericsetup:importStep>
+
+    <genericsetup:upgradeStep
+          title="updrade to 4.1.8"
+          description=""
+          destination="4.1.8"
+          handler="quintagroup.plonecomments.upgrades.cleanup_old_importsteps"        
+          profile="quintagroup.plonecomments:default" /> 
 
 </configure>
