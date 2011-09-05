@@ -1,6 +1,13 @@
 Changelog
 =========
 
+4.1.8
+------------------
+
+- Fixed registration import steps,
+  http://plone.org/products/plone-comments/issues/9 [vmaksymiv]
+
+
 4.1.7 (2011-06-05)
 ------------------
 
