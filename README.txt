@@ -71,13 +71,8 @@ Links
 Requirements
 ------------
 
+* Plone 4
 * Plone 3.x
-* plone.browserlayer is required for Plone 3.0.x
-
-License
--------
-
-Please find license in *LICENSE.GPL*.
 
 Authors
 -------

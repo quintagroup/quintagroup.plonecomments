@@ -1,7 +1,7 @@
 Changelog
 =========
 
-4.1.8
+4.1.8 (2011-10-28)
 ------------------
 
 - Fixed registration import steps,
@@ -25,7 +25,7 @@ Changelog
 
 - Updated Italian translation #10 [micecchi,kroman0]
 
-- Added svn:ignore *.mo files [kroman0]
+- Added svn:ignore .mo files [kroman0]
 
 - Merged last fixes from branches/jquery [kroman0]
 
