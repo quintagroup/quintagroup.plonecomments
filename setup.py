@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '4.1.8'
+version = '4.1.9'
 
 setup(name='quintagroup.plonecomments',
       version=version,
