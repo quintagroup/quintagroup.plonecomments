@@ -1,6 +1,12 @@
 Changelog
 =========
 
+4.1.9 (unreleased)
+------------------
+
+- Added Romanian translation [ichimdav]
+
+
 4.1.8 (2011-10-28)
 ------------------
 

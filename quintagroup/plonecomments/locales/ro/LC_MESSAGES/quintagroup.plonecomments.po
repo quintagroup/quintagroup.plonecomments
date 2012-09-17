@@ -1,0 +1,352 @@
+# 
+# David Ichim
+# ichim.david@gmail.com
+msgid ""
+msgstr ""
+"Project-Id-Version: qPloneComments\n"
+"POT-Creation-Date: 2012-04-08 15:31+0000\n"
+"PO-Revision-Date: 2012-09-10 11:38+0300\n"
+"Last-Translator: ichimdav <ichim.david@gmail.com>\n"
+"Language-Team: Romanian <plone-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Language-Code: ro\n"
+"Language-Name: Romanian\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: quintagroup.plonecomments\n"
+"X-Poedit-Language: Romanian\n"
+"X-Poedit-Country: ROMANIA\n"
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_publish_comment.py:48
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_reply.cpy:94
+msgid "Comment published."
+msgstr "Comentariu publicat."
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_edit.cpy:48
+msgid "Comment updated."
+msgstr "Comentariu updatat."
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_delete.cpy:34
+msgid "Comment(s) deleted."
+msgstr "Commentariile șterse"
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_publish.cpy:25
+msgid "Comment(s) published."
+msgstr "Commentariul publicat."
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:235
+msgid "Could not send the email notification. Have you configured an email server for Plone?"
+msgstr "Nu am putut trimite notificarea prin email. Ai configurat un server de email pentru Plone?"
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_reply.cpy:96
+msgid "Currently, all comments require approval before being published. Please check back later."
+msgstr "Momentan, toate comentariile necesită aprobare înainte de a fi publicate. Te rugăm să revii mai tarziu."
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:59
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:58
+msgid "Please correct the indicated errors."
+msgstr "Te rugăm să corectezi erorile indicate."
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:48
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:47
+msgid "Please enter your name."
+msgstr "Te rugăm să iți introduci numele."
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_delete.cpy:34
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_publish.cpy:25
+msgid "Please select items to be processed."
+msgstr "Te rugăm să selectezi obiectele pentru a fi procesate."
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:36
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_setup.vpy:23
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:34
+msgid "Please submit a valid e-mail address."
+msgstr "Te rugăm să introduci o adresă de email validă."
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:34
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:32
+msgid "Please submit an email address."
+msgstr "Te rugăm să introduci o adresă de email."
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_reply.vpy:14
+msgid "Reply not allowed because the response is to a comment waiting to be approved. Please wait for the comment to be approved before replying."
+msgstr "Răspunsul nu este permis pentru că comentariul așteaptă să fie moderat. Te rugăm să aștepți pentru ca comentariul să fie aprobat înainte de a raspunde la el."
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_report_abuse.vpy:53
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/validate_talkback.vpy:52
+msgid "You must correctly enter the word."
+msgstr "Trebuie să introduci cuvântul corect."
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse.cpy:72
+msgid "Your abuse report has been sent."
+msgstr "Raportul tău de abuz a fost trimis."
+
+#. Default: "[${organization_name}] New comment awaits moderation"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:193
+msgid "approve_notification_subject"
+msgstr "[${organization_name}] Noul comentariu așteaptă să fie moderat"
+
+#. Default: "Your comment on ${title} is now published"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:121
+msgid "approve_user_notification_subject"
+msgstr "Comentariul tău la articolul ${title} a fost publicat" 
+
+#. Default: "Please review new comment added to the following page ' ${title} ': ${here_url}"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/approve_comment_template.pt:10
+msgid "approvemail_new_comment_link"
+msgstr "Te rugăm să verifici comentariile noi adăugate la următoarea pagină ' ${title} ': ${here_url}"
+
+#. Default: "You can edit a comment by filling out the form below. Plain text formatting."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_edit_form.cpt:38
+msgid "description_edit_comment"
+msgstr "Poți edita comentariul prin completarea formularului de mai jos. Format de text simplu doar."
+
+#. Default: "Enable Manager moderation"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:199
+msgid "enable_manager_moderation"
+msgstr "Activează moderarea comentariilor de catre Manager"
+
+#. Default: "Recent comments"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_form.cpt:43
+msgid "heading_comments"
+msgstr "Comentarii recente"
+
+#. Default: "Plone Comments Setup"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:40
+msgid "heading_comments_setup"
+msgstr "Setari Plone Comentarii"
+
+#. Default: "Report Abuse"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse_form.cpt:111
+msgid "heading_report_abuse_form"
+msgstr "Raportează un abuz"
+
+#. Default: "The email address where comment notifications will be sent"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:212
+msgid "help_discussion-manager_email"
+msgstr "Adresa de email unde notificarea de comentariu va fi trimisă"
+
+#. Default: "Please enter your e-mail address."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_reply_form.cpt:143
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse_form.cpt:146
+msgid "help_email"
+msgstr "Te rugăm să introduci adresa ta de email."
+
+#. Default: "This setting will only take effect if abuse reports are enabled."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:181
+msgid "help_enable_ajax_report_abuse"
+msgstr "Acestă opțiune va lua effect doar daca raportarea de abuzuri este activată."
+
+#. Default: "This setting will allow ALL users, including non logged in users to report abusive comments."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:157
+msgid "help_enable_anonymous_report_abuse"
+msgstr "Această setare va permite tuturor utilizatorilor, inclusiv celor ne-loghinați să raporteze comentariile abuzive."
+
+#. Default: "Please state your reasons why you would like to report this comment as abusive. Our administrator will be notified with your message."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse_form.cpt:176
+msgid "help_message"
+msgstr "Te rugăm să precizezi motivele tale pentru care ai dori să raportezi acest comentariu ca abuziv. Administratorul site-ului va fi notificat cu mesajul tău."
+
+#. Default: "Please enter your name."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_reply_form.cpt:113
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse_form.cpt:125
+msgid "help_name"
+msgstr "Te rugăm să introduci numele tău."
+
+#. Default: "You can change notification message templates by customizing 'approve_comment_template' and 'published_comment_template' in the qplonecomments skin."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:235
+msgid "help_organization_name"
+msgstr "Poți schimba mesajele de notificare prin customizarea șabloanelor 'approve_comment_template' și 'published_comment_template' în skinul qplonecomments."
+
+#. Default: "Allow comments from Anonymous users"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:116
+msgid "label_anonymous_commenting"
+msgstr "Permite comentariile utilizatorilor Anonimi"
+
+#. Default: "Recent comments moderation"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:29
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_form.cpt:28
+msgid "label_comments"
+msgstr "Moderarea comentariilor recente"
+
+#. Default: "Configure qPloneComments"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:22
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_form.cpt:21
+msgid "label_configure"
+msgstr "Configură qPloneComments"
+
+#. Default: "Send comments notification emails to:"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:210
+msgid "label_discussion-manager_email"
+msgstr "Trimite notificările de la comentarii catre adresa:"
+
+#. Default: "Enable AJAX powered abuse reports"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:178
+msgid "label_enable_ajax_report_abuse"
+msgstr "Activează raportul de abuzuri prin AJAX"
+
+#. Default: "Enable anonymous users to report abusive comments"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:154
+msgid "label_enable_anonymous_report_abuse"
+msgstr "Permite utilizatorilor anonimi să raporteze commentariile abuzive"
+
+#. Default: "Notify Discussion Manager of new comments."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:291
+msgid "label_enable_approve_notification"
+msgstr "Anunță Managerul de Discuții de prezența a noi comentarii."
+
+#. Default: "Notify Commenter when comment is published."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:310
+msgid "label_enable_approve_user_notification"
+msgstr "Anunță Comentatorul când comentariul a fost publicat."
+
+#. Default: "Enable comment moderation"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:76
+msgid "label_enable_moderation"
+msgstr "Activează moderarea comentariilor"
+
+#. Default: "Notify Document Owner of new comments on their documents."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:272
+msgid "label_enable_published_notification"
+msgstr "Anunță Proprietarul Documentului de noile comentarii asupra documentelor sale."
+
+#. Default: "Enable Commentator notification on comment was rejected."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:329
+msgid "label_enable_reject_notification"
+msgstr "Activează notificarea Comentatorului când comentariul a fost respins."
+
+#. Default: "Notify Commenter when their comment receives a reply"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:349
+msgid "label_enable_reply_notification"
+msgstr "Anunță Comentatorul când comentariul său a primit un răspuns."
+
+#. Default: "Enable authenticated users to report abusive comments"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:135
+msgid "label_enable_report_abuse"
+msgstr "Permite utilizatorilor autentificați să raporteze comentarii abuzive"
+
+#. Default: "Email subject prefix (organization name)"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:233
+msgid "label_organization_name"
+msgstr "Prefixul subiectului al emailului (numele organizației)"
+
+#. Default: "[pending]"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/browser/comments.pt:50
+msgid "label_pending_state"
+msgstr "[in revizie]"
+
+#. Default: "Report Abuse"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/browser/comments.pt:107
+msgid "label_report_abuse"
+msgstr "Raportează un abuz"
+
+#. Default: "Require email from Anonymous commenters"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:96
+msgid "label_require_anonym_email"
+msgstr "Obligatoriu emailul din partea comentatorilor anonimi"
+
+#. Default: "Edit comment"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/discussion_edit_form.cpt:36
+msgid "legend_edit_comment"
+msgstr "Editează comentariul"
+
+#. Default: "Email Notification Options"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:255
+msgid "legend_qpc_notification_legend"
+msgstr "Opțiunile Notificarilor Email"
+
+#. Default: "List of recent comments"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_form.cpt:66
+msgid "legend_recent_comments"
+msgstr "Lista comentariilor recente"
+
+#. Default: "qPloneComments setup options"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup_form.cpt:59
+msgid "legend_setup_options"
+msgstr "Opțiunile de setat pentru qPloneComments"
+
+#. Default: "Comment"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_form.cpt:84
+msgid "listingheader_comment"
+msgstr "Comentariu"
+
+#. Default: "A comment '${url}' has been reported as abusive. The comment: ------------ ${comment_desc} ${comment_text} The abuse report: ----------------- ${report}"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse_template.pt:28
+msgid "notifyabuse_link"
+msgstr "Un comentariu '${url}' a fost reportat ca fiind abuziv. Comentariul: ------------ ${comment_desc} ${comment_text} Raportul: ----------------- ${report}"
+
+#. Default: "Your comment on ${url} has been published. To see your comment, go to ${here_url}"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/notify_comment_template.pt:12
+msgid "notifycomment_link"
+msgstr "Comentariul de la ${url} a fost publicat. Pentru a vedea comentariul tău, dute la ${here_url}"
+
+#. Default: "Your comment on ${url} did not receive approval. Please direct any questions or concerns to ${mfrom}."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/rejected_comment_template.pt:12
+msgid "notifyreject_link"
+msgstr "Comentariul de la ${url} nu a primit aprobare. Te rugăm să îți direcționezi întrebările sau nelămuririle către ${mfrom}."
+
+#. Default: "[${organization_name}] New comment added"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:178
+msgid "published_notification_subject"
+msgstr "[${organization_name}] Comentariu nou adăugat"
+
+#. Default: "View new comment added to the following page ' ${title} ': ${here_url}"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/published_comment_template.pt:8
+msgid "publishedmail_new_comment_link"
+msgstr "Vezi comentariul nou adăugat la următoarea pagină ' ${title} ': ${here_url}"
+
+#. Default: "qPloneComments"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/profiles/default/actionicons.xml
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/profiles/default/controlpanel.xml
+msgid "qPloneComments"
+msgstr "qPloneComments"
+
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_comments_setup.cpy:53
+msgid "qPloneComments configuration changes saved."
+msgstr "Schimbările configurației pentru qPloneComment au fost salvate."
+
+#. Default: "Your comment on ${title} was not approved"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:136
+msgid "rejected_user_notification_subject"
+msgstr "Comentariul tău la ${title} nu a fost aprobat"
+
+#. Default: "Someone replied to your comment on ${title}"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:152
+msgid "reply_user_notification_subject"
+msgstr "Cineva a raspuns comentariului tău la ${title}"
+
+#. Default: "Someone replied to your comment on ${url}. To read the response, go to ${here_url}."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/reply_notify_template.pt:10
+msgid "replynotify_link"
+msgstr "Cineva a raspuns comentariului tău la ${url}. Pentru a citi raspunsul, dute la ${here_url}."
+
+#. Default: "[${organization_name}] A comment on ${title} has been reported for abuse."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/utils.py:218
+msgid "report_abuse_subject"
+msgstr "[${organization_name}] Un comentariu la ${title} a fost raportat ca și abuziv."
+
+#. Default: "${organization_name} Support Team"
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/approve_comment_template.pt:15
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/notify_comment_template.pt:17
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/published_comment_template.pt:13
+msgid "${organization_name} Support Team"
+msgstr "Echipa de suport ${organization_name}"
+
+#. Default: "Comment must be approved before replies to comment accepted."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/browser/comments.pt:129
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/viewThreadsAtBottom.pt:113
+msgid "text_no_add_reply"
+msgstr "Comentariul trebuie să fie aprobat înainte ca raspunsurile să fie acceptate."
+
+#. Default: "This site doesn't have a valid email setup, so you cannot use the report abuse form."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/report_abuse_form.cpt:94
+msgid "text_no_email_setup"
+msgstr "Acest site nu are o adresă de email valida, prin urmare nu poți folosi formularul de raportare a abuzurilor."
+
+#. Default: "No new comments."
+#: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/prefs_recent_comments_form.cpt:53
+msgid "text_no_new_comments"
+msgstr "Nici un comentariu nou."
+
