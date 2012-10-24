@@ -55,8 +55,8 @@ class TestModeration(FunctionalTestCase):
             self.login(u)
             replies = self.discussion.getDiscussionFor(doc).getReplies()
             self.failUnless(replies,
-                "Viewing discussion item forbiden for %s - "
-                "member of DiscussionManager group" % u)
+                            "Viewing discussion item forbiden for %s - "
+                            "member of DiscussionManager group" % u)
 
     def testViewRepliesNotPublishedNotDMUsers(self):
         # All common users SHOULD NOT VIEW NOT PUBLISHED comments
@@ -68,16 +68,16 @@ class TestModeration(FunctionalTestCase):
                             for user in COMMON_USERS_IDS
                             if user != 'anonym']
         users_without_md_perm = [u
-            for u in authorized_users
-            if filter(lambda x: x not in roles, USERS[u]['roles'])]
+                                 for u in authorized_users
+                                 if filter(lambda x: x not in roles, USERS[u]['roles'])]
         for u in users_without_md_perm:
             self.logout()
             if not u == 'anonym':
                 self.login(u)
             replies = self.discussion.getDiscussionFor(doc).getReplies()
             self.failIf(replies,
-                "Viewing of NOT published discussion item allow %s - "
-                "user without 'Moderate Discussion' permission" % u)
+                        "Viewing of NOT published discussion item allow %s - "
+                        "user without 'Moderate Discussion' permission" % u)
 
     def testViewRepliesPublishedAllUsers(self):
         # All users MUST VIEW PUBLISHED comments
@@ -94,7 +94,7 @@ class TestModeration(FunctionalTestCase):
                 self.login(u)
             replies = self.discussion.getDiscussionFor(doc).getReplies()
             self.failUnless(replies,
-                "Viewing PUBLISHED discussion item forbiden for %s user" % u)
+                            "Viewing PUBLISHED discussion item forbiden for %s user" % u)
 
     ## TEST PUBLISHING
 
@@ -109,8 +109,8 @@ class TestModeration(FunctionalTestCase):
                             for user in COMMON_USERS_IDS
                             if user != 'anonym']
         users_without_md_perm = [u
-            for u in authorized_users
-            if filter(lambda x: x not in roles, USERS[u]['roles'])]
+                                 for u in authorized_users
+                                 if filter(lambda x: x not in roles, USERS[u]['roles'])]
         for u in users_without_md_perm:
             self.logout()
             auth = "%s:" % u
@@ -169,7 +169,7 @@ class TestModeration(FunctionalTestCase):
             # Check whether Anonym view published reply
             self.logout()
             self.failUnless(getReplies(),
-                "%s - member of DiscussionManager group NOT PUBLISH reply" % u)
+                            "%s - member of DiscussionManager group NOT PUBLISH reply" % u)
 
     ## TEST DELETING
 

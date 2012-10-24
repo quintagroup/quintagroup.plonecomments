@@ -44,9 +44,10 @@ def createReply(self, title, text, Creator=None, email=''):
 
     # Control of performing moderation
     if getProp(self, 'enable_moderation', marker=False):
+        md_roles = self.acl_users.rolesOfPermission('Moderate Discussion')
         roles = [role['name']
-            for role in self.acl_users.rolesOfPermission('Moderate Discussion')
-            if role['selected'] == 'SELECTED']
+                 for role in md_roles
+                 if role['selected'] == 'SELECTED']
         roles.append('DiscussionManager')
         item.manage_permission('Delete objects', roles, acquire=1)
         item.manage_permission('View', roles, acquire=0)

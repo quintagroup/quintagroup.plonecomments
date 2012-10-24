@@ -78,17 +78,17 @@ class TestConfiglet(FunctionalTestCase):
         self.request.form['enable_anonymous_commenting'] = 'True'
         self.portal.prefs_comments_setup()
         actual_reply_permission = getReplyRoles()
-        self.failUnless('Anonymous' in actual_reply_permission, \
-            "'Reply to Item' permission set for %s. 'Anonymous' "
-            "role NOT added" % actual_reply_permission)
+        self.failUnless('Anonymous' in actual_reply_permission,
+                        "'Reply to Item' permission set for %s. 'Anonymous' "
+                        "role NOT added" % actual_reply_permission)
         # Simulate switching OFF Anonymous Commenting
         if 'enable_anonymous_commenting' in self.request.form:
             del self.request.form['enable_anonymous_commenting']
         self.portal.prefs_comments_setup()
         actual_reply_permission = getReplyRoles()
-        self.failIf('Anonymous' in actual_reply_permission, \
-            "'Reply to Item' permission set for %s. 'Anonymous' role "
-            "NOT erased" % actual_reply_permission)
+        self.failIf('Anonymous' in actual_reply_permission,
+                    "'Reply to Item' permission set for %s. 'Anonymous' role "
+                    "NOT erased" % actual_reply_permission)
 
     def testSwitchONModeration(self):
         addUsers(self)
@@ -146,14 +146,14 @@ class TestConfiglet(FunctionalTestCase):
         self.portal.prefs_comments_setup()
         getProperty = self.prefs.getProperty
         self.failUnless(getProperty('enable_approve_notification') == 1,
-            "Approve Notification not terned ON")
+                        "Approve Notification not terned ON")
 
         # Check OFF Notification Anonymous Commenting
         if 'enable_approve_notification' in self.request.form:
             del self.request.form['enable_approve_notification']
         self.portal.prefs_comments_setup()
         self.failUnless(getProperty('enable_approve_notification') == 0,
-            "Approve Notification not terned OFF")
+                        "Approve Notification not terned OFF")
 
     def testPublishedNotification(self):
         # Check ON Notification Anonymous Commenting
@@ -161,14 +161,14 @@ class TestConfiglet(FunctionalTestCase):
         self.portal.prefs_comments_setup()
         getProperty = self.prefs.getProperty
         self.failUnless(getProperty('enable_published_notification') == 1,
-            "Published Notification not terned ON")
+                        "Published Notification not terned ON")
 
         # Check OFF Notification Anonymous Commenting
         if 'enable_published_notification' in self.request.form:
             del self.request.form['enable_published_notification']
         self.portal.prefs_comments_setup()
         self.failUnless(getProperty('enable_published_notification') == 0,
-            "Published Notification not terned OFF")
+                        "Published Notification not terned OFF")
 
 
 def test_suite():

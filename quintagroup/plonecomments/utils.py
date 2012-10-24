@@ -45,7 +45,7 @@ def manage_mails(reply, context, action):
                 send_email(reply, context, p)
 
     prop_sheet = context.portal_properties['qPloneComments']
-    props = filter(lambda x: prop_sheet.getProperty(x), \
+    props = filter(lambda x: prop_sheet.getProperty(x),
                    prop_sheet.propertyIds())
 
     actions = {
@@ -56,7 +56,7 @@ def manage_mails(reply, context, action):
         'onApprove': ('enable_approve_notification',),
         'onAnonymousReportAbuse': ('enable_anonymous_report_abuse',),
         'onAuthenticatedReportAbuse': ('enable_authenticated_report_abuse',),
-        }
+    }
 
     if action == 'publishing':
         sendMails(props, actions, 'onPublish')
@@ -132,10 +132,11 @@ def send_email(reply, context, state):
     subject = ''
     if state == 'enable_approve_user_notification':
         subject = translate(_(u"approve_user_notification_subject",
-            default=u"Your comment on ${title} is now published",
-            mapping={u"title":
-                safe_unicode(getParent(context).title_or_id())}),
-            context=context.REQUEST)
+                              default=u"Your comment on ${title} is now published",
+                              mapping={u"title":
+                                       safe_unicode(
+                                           getParent(context).title_or_id())}),
+                            context=context.REQUEST)
         if user_email:
             template = 'notify_comment_template'
             args = {'mto': user_email,
@@ -148,10 +149,11 @@ def send_email(reply, context, state):
 
     elif state == 'enable_rejected_user_notification':
         subject = translate(_(u"rejected_user_notification_subject",
-            default=u"Your comment on ${title} was not approved",
-            mapping={u"title":
-                safe_unicode(getParent(context).title_or_id())}),
-            context=context.REQUEST)
+                              default=u"Your comment on ${title} was not approved",
+                              mapping={u"title":
+                                       safe_unicode(
+                                           getParent(context).title_or_id())}),
+                            context=context.REQUEST)
         if user_email:
             template = 'rejected_comment_template'
             args = {'mto': user_email,
@@ -165,10 +167,11 @@ def send_email(reply, context, state):
     elif state == 'enable_reply_user_notification':
         template = 'reply_notify_template'
         subject = translate(_(u"reply_user_notification_subject",
-            default=u"Someone replied to your comment on ${title}",
-            mapping={u"title":
-                safe_unicode(getParent(context).title_or_id())}),
-            context=context.REQUEST)
+                              default=u"Someone replied to your comment on ${title}",
+                              mapping={u"title":
+                                       safe_unicode(
+                                           getParent(context).title_or_id())}),
+                            context=context.REQUEST)
         di_parrent = getDIParent(reply)
         if di_parrent:
             user_email = getEmail(di_parrent, context)
@@ -192,9 +195,9 @@ def send_email(reply, context, state):
                     'obj': reply_parent,
                     'organization_name': organization_name}
             subject = translate(_(u"published_notification_subject",
-                default=u"[${organization_name}] New comment added",
-                mapping={u"organization_name": organization_name}),
-                context=context.REQUEST)
+                                  default=u"[${organization_name}] New comment added",
+                                  mapping={u"organization_name": organization_name}),
+                                context=context.REQUEST)
         else:
             args = {}
 
@@ -207,10 +210,10 @@ def send_email(reply, context, state):
                     'obj': reply_parent,
                     'organization_name': organization_name}
             subject = translate(_(u"approve_notification_subject",
-                default=u"[${organization_name}] New comment awaits "
-                        u"moderation",
-                mapping={u"organization_name": organization_name}),
-                context=context.REQUEST)
+                                  default=u"[${organization_name}] New comment awaits "
+                                  u"moderation",
+                                  mapping={u"organization_name": organization_name}),
+                                context=context.REQUEST)
         else:
             args = {}
 
@@ -234,12 +237,14 @@ def send_email(reply, context, state):
                     'comment_desc': comment.description,
                     'comment_text': comment.text}
             subject = translate(_(u"report_abuse_subject",
-                default=u"[${organization_name}] A comment on ${title} has "
-                        u"been reported for abuse.",
-                mapping={u"organization_name": organization_name,
-                         u"title":
-                             safe_unicode(getParent(context).title_or_id())}),
-                context=context.REQUEST)
+                                  default=u"[${organization_name}] A comment on ${title} has "
+                                  u"been reported for abuse.",
+                                  mapping={u"organization_name": organization_name,
+                                           u"title":
+                                           safe_unicode(
+                                               getParent(
+                                                   context).title_or_id())}),
+                                context=context.REQUEST)
         else:
             args = {}
 
@@ -254,8 +259,8 @@ def send_email(reply, context, state):
                             subtype='plain', debug=False, charset=charset)
         except (smtplib.SMTPRecipientsRefused, smtplib.SMTPServerDisconnected):
             setStatusMsg(None, context,
-                _('Could not send the email notification. '
-                  'Have you configured an email server for Plone?'))
+                         _('Could not send the email notification. '
+                           'Have you configured an email server for Plone?'))
 
 
 def setStatusMsg(state, context, msg):

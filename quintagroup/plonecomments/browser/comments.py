@@ -129,18 +129,18 @@ class CommentsKSS(PloneKSSView):
         portal = getToolByName(self.context, 'portal_url').getPortalObject()
         if hasattr(context, 'captcha_validator'):
             dummy_controller_state = ControllerState(
-                                            id='comments.pt',
-                                            context=context,
-                                            button='submit',
-                                            status='success',
-                                            errors={},
-                                            next_action=None,)
+                id='comments.pt',
+                context=context,
+                button='submit',
+                status='success',
+                errors={},
+                next_action=None,)
             # get the form controller
             controller = portal.portal_form_controller
             # send the validate script to the form controller
             # with the dummy state object
             controller_state = controller.validate(dummy_controller_state,
-                                   request, ['captcha_validator', ])
+                                                   request, ['captcha_validator', ])
             errors.update(controller_state.errors)
 
         message = request.get('message')
@@ -157,7 +157,7 @@ class CommentsKSS(PloneKSSView):
                                      show_form=True,
                                      member=member,
                                      **request.form)
-            node = ksscore.getHtmlIdSelector('span-reply-form-holder-%s' % \
+            node = ksscore.getHtmlIdSelector('span-reply-form-holder-%s' %
                                              comment_id)
             ksscore.replaceInnerHTML(node, html)
             return self.render()
@@ -168,7 +168,7 @@ class CommentsKSS(PloneKSSView):
         html = self.macroContent('context/report_abuse_form/macros/form',
                                  member=member,
                                  **request.form)
-        node = ksscore.getHtmlIdSelector('span-reply-form-holder-%s' % \
+        node = ksscore.getHtmlIdSelector('span-reply-form-holder-%s' %
                                          comment_id)
         html = '<br/><span style="color:red">' \
             'You have reported this comment for abuse.</span>'

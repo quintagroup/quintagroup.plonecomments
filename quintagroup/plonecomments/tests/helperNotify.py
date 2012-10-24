@@ -7,7 +7,7 @@ ALL_PROPS = [
     'enable_rejected_user_notification', 'enable_moderation', 'require_email',
     'enable_anonymous_commenting', 'enable_published_notification',
     'enable_approve_notification',
-    ]
+]
 
 
 def setProperties(prop_sheet, *props):

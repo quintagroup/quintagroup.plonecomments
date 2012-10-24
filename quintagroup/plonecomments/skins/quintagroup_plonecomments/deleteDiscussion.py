@@ -30,5 +30,5 @@ view = redirect_target.getTypeInfo().immediate_view
 
 context.plone_utils.addPortalMessage(PloneMessageFactory(u'Reply deleted.'))
 
-context.REQUEST['RESPONSE'].redirect(redirect_target.absolute_url() + \
+context.REQUEST['RESPONSE'].redirect(redirect_target.absolute_url() +
                                      '/%s' % view)
