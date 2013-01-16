@@ -1,10 +1,14 @@
 Changelog
 =========
 
-4.1.9 (unreleased)
+4.1.9 (2013-01-16)
 ------------------
 
 - Added Romanian translation [ichimdav]
+
+- Fixed classifiers and keywords [kroman0]
+
+- Fixed code for pep8 [kroman0]
 
 
 4.1.8 (2011-10-28)
