@@ -289,9 +289,7 @@ msgstr ""
 "\n"
 "Причина скарги:\n"
 "---------------\n"
-"${report}\n"
-"\n"
-"\n"
+"${report}"
 
 #. Default: "Your comment on ${url} has been published. To see your comment, go to ${here_url}"
 #: ./quintagroup.plonecomments/quintagroup/plonecomments/skins/quintagroup_plonecomments/notify_comment_template.pt:12
