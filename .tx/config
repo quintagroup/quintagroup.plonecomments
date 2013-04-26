@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[quintagroup.plonecomments]
+file_filter = quintagroup/plonecomments/locales/<lang>/LC_MESSAGES/quintagroup.plonecomments.po
+source_file = quintagroup/plonecomments/locales/quintagroup.plonecomments.pot
+source_lang = en
+type = PO
