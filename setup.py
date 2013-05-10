@@ -6,9 +6,9 @@ version = '4.1.9'
 setup(name='quintagroup.plonecomments',
       version=version,
       description="Plone Comments",
-      long_description=open("README.txt").read() + "\n\n" +
-      open(os.path.join("docs", "INSTALL.txt")).read() + "\n\n" +
-      open(os.path.join("docs", "HISTORY.txt")).read(),
+      long_description=open("README.rst").read() + "\n\n" +
+      open(os.path.join("docs", "INSTALL.rst")).read() + "\n\n" +
+      open(os.path.join("docs", "HISTORY.rst")).read(),
       classifiers=[
           "Framework :: Plone",
           "Framework :: Plone :: 3.2",
