@@ -5,6 +5,9 @@ Plone Comments (quintagroup.plonecomments) is a Plone product developed
 to improve the site managers and editors experience with standard 
 commenting mechanism in Plone.
 
+.. image:: https://travis-ci.org/quintagroup/quintagroup.plonecomments.png
+          :target: https://travis-ci.org/quintagroup/quintagroup.plonecomments
+
 Features
 --------
 
@@ -62,7 +65,7 @@ Moderation is enabled and authors notification is turned on.
 Links
 -----
 
-* Get latest development version from "SVN": http://svn.quintagroup.com/products/quintagroup.plonecomments/trunk
+* Get latest development version: https://github.com/quintagroup/quintagroup.plonecomments
 
 * Watch Plone Comments Screencast http://quintagroup.com/cms/screencasts/plone-comments to learn how to install and set up Plone Comments on your buildout-based Plone instance for Plone 3.2 or above. You will also find one of the possible use cases of using Plone Comments Plone add-on included.
 
@@ -71,7 +74,7 @@ Links
 Requirements
 ------------
 
-* Plone 4
+* Plone 4.0
 * Plone 3.x
 
 Authors
