@@ -1,7 +1,7 @@
 [report]
 omit =
     /home/*/.buildout/eggs/*
-    /home/*/virtualenv/python2.6/lib/python2.6/site-packages/* 
+    /home/*/virtualenv/*
     /usr/*
     bin/test
     buildout-cache/eggs/*
