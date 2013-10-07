@@ -1,13 +1,18 @@
+python: 
+- 2.6
+script: 
+- bin/coverage.sh
+after_success:
+- coveralls 
+env: 
+  global: 
+    secure: hsjUwQmmabdnQMJDu8ylr/wmIPpik8X7zQR1gCVUxVjlioIEhkoQv8RtLOLoP9RfSXr8Lv9CAndXI9j59XjkDYB4p8HwNx46DxQthgd5SQM+W+A456r+w//nTY4w/37wNj1ELrjXyPSuBfyyarNduB1SuOSH+qG6OL6jf/HjEpA=
 language: python
-python:
-  - 2.6
-before_install:
-  - pip install http://effbot.org/downloads/Imaging-1.1.6.tar.gz
-  - sudo apt-get install -qq libxml2-dev libxslt-dev
-  - mkdir -p buildout-cache/eggs
-  - mkdir -p buildout-cache/downloads
-install:
-  - python bootstrap.py -c test.cfg
-  - bin/buildout -t 5 -Nqc test.cfg
-script:
-  - bin/test
+install: 
+- python bootstrap.py -c test.cfg
+- bin/buildout -t 5 -Nqc test.cfg
+before_install: 
+- pip install -q http://effbot.org/downloads/Imaging-1.1.6.tar.gz coveralls
+- sudo apt-get install -qq libxml2-dev libxslt-dev
+- mkdir -p buildout-cache/eggs
+- mkdir -p buildout-cache/downloads
