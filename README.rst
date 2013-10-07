@@ -6,7 +6,10 @@ to improve the site managers and editors experience with standard
 commenting mechanism in Plone.
 
 .. image:: https://travis-ci.org/quintagroup/quintagroup.plonecomments.png
-          :target: https://travis-ci.org/quintagroup/quintagroup.plonecomments
+	:target: https://travis-ci.org/quintagroup/quintagroup.plonecomments
+
+.. image:: https://coveralls.io/repos/quintagroup/quintagroup.plonecomments/badge.png
+  	:target: https://coveralls.io/r/quintagroup/quintagroup.plonecomments
 
 Features
 --------
